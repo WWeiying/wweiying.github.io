@@ -1,0 +1,1109 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//search.oi-wiki.org">
+      <link rel="dns-prefetch" href="//api.github.com">
+      <link rel="dns-prefetch" href="//www.google-analytics.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Record mathematics, Programs and Engineering">
+      
+      
+        <link rel="canonical" href="https://www.wweiying.top/cpu/ysyx/">
+      
+      
+        <meta name="author" content="Weiying">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../favicon/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>一生一芯 - Record mathematics, Programs and Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.6f7cfa25.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.27508f0e.js"></script>
+    
+    
+      
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/vendor/material-icons/iconfont/material-icons.css">
+    
+      <link rel="manifest" href="../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css?v=13">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "G-BQRVKTPNPP", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#pa0" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-header-nav__button md-logo">
+          
+            <img src="../../favicon/favicon-256x256.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Record mathematics, Programs and Engineering
+            </span>
+            <span class="md-header-nav__topic">
+              
+                一生一芯
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          开始
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          CPU设计
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../algorithm/cplus/" class="md-tabs__link">
+          算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../experience/linux/" class="md-tabs__link">
+          走过的坑
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-nav__button md-logo">
+      
+        <img src="../../favicon/favicon-256x256.png" width="48" height="48">
+      
+    </a>
+    Record mathematics, Programs and Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开始
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开始
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/news/" title="行业观察" class="md-nav__link">
+      行业观察
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/stars/" title="网站和工具" class="md-nav__link">
+      网站和工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../todolist/2022M5/" title="Todolist" class="md-nav__link">
+      Todolist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/format/" title="格式" class="md-nav__link">
+      格式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CPU设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CPU设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        一生一芯
+      </label>
+    
+    <a href="./" title="一生一芯" class="md-nav__link md-nav__link--active">
+      一生一芯
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pa0" class="md-nav__link">
+    PA0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pa1" class="md-nav__link">
+    PA1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    数字电路基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    Verilog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    功能部件
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    除法器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VCS课程笔记" class="md-nav__link">
+      VCS课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="Verdi课程笔记" class="md-nav__link">
+      Verdi课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" title="DC逻辑综合实践笔记" class="md-nav__link">
+      DC逻辑综合实践笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/cplus/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/algorithm/" title="数据结构" class="md-nav__link">
+      数据结构
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      走过的坑
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        走过的坑
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/git/" title="git" class="md-nav__link">
+      git
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pa0" class="md-nav__link">
+    PA0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pa1" class="md-nav__link">
+    PA1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    数字电路基础
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verilog" class="md-nav__link">
+    Verilog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    功能部件
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    除法器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/WWeiying/edit/master/docs/cpu/ysyx.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>一生一芯</h1>
+                
+                <h2 id="pa0">PA0<a class="headerlink" href="#pa0" title="Permanent link">&para;</a></h2>
+<p>坚持一年, 你就会发现有不同; 坚持两年, 你就会发现大有不同。——陈道蓄</p>
+<p>你在专业上的技不如人, 迟早有一天会找上来。——etone</p>
+<p>虚拟机VMWare/VirtualBox</p>
+<p><a href="http://www.computerhope.com/issues/ch000619.htm">GUI/CLI(Command Line Interface)，图形用户界面</a></p>
+<p>vim编辑器之神 emacs神之编辑器</p>
+<p>vim tutorials: </p>
+<ul>
+<li>vimtutor </li>
+<li><a href="http://vim-adventures.com/">Vim Adventures</a></li>
+<li><a href="http://www.vimsnake.com/">Vim SnakeOpen</a> </li>
+<li><a href="http://www.openvim.com/tutorial.html">Open Vim Tutorials</a></li>
+<li><a href="http://www.vimgenius.com/">Vim Genius</a></li>
+</ul>
+<blockquote>
+<p><code>vim</code> provides more improvements comparing with <code>vi</code>. But these improvements are disabled by default. Therefore, you should enable them first.</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>cp /etc/vim/vimrc ~/.vimrc
+<span class="nb">cd</span> ~
+ls -a <span class="c1">#show hidden files</span>
+vim .vimrc
+</code></pre></div></td></tr></table></div>
+<p><a href="http://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a></p>
+<p><a href="http://www.gnu.org/software/diffutils/manual/html_node/Unified-Format.html">GNU diff format</a>：diff格式是一种描述文件改动的常用方式。</p>
+<p>STFW(Search The Fucking Web):</p>
+<ul>
+<li>Google</li>
+<li><a href="http://en.wikipedia.org/">英文维基百科</a></li>
+<li><a href="http://stackoverflow.com/">Stack overflow</a></li>
+</ul>
+<p><a href="http://en.wikipedia.org/wiki/RTFM">RTFM</a>：</p>
+<ul>
+<li><a href="https://ysyx.oscc.cc/docs/ics-pa/man.html">man</a></li>
+</ul>
+<p>makeflie</p>
+<p><a href="http://www.cprogramming.com/gdb.html">GDB</a></p>
+<p>tmux</p>
+<p>Linux资料：</p>
+<ul>
+<li><a href="http://linux.vbird.org/linux_basic">鸟哥的Linux私房菜</a></li>
+<li><a href="http://www.harley.com/books/sg3.html">Harley Hahn's Guide to Unix and Linux</a></li>
+<li><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a></li>
+</ul>
+<p>科学提问：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>我在xxx的时候遇到了xxx的错误. 这个错误可以通过以下步骤重现: (描述具体的现象)
+1. 我的系统版本是xxx, 相关的工具版本是xxx
+2. 我做了xxx (必要的时候贴个图)
+3. 然后xxx (必要的时候贴个图)
+...
+为了排查这个错误, 我进行了以下尝试: (说明我很希望可以解决问题, 真的没办法才提问的)
+1. 我做了xxx, 出现了xxx的结果 (必要的时候贴个图)
+2. 我还做了xxx, 出现了xxx的结果 (必要的时候贴个图)
+...
+最后问题还没有解决, 请问我还需要做哪些事情?
+</code></pre></div></td></tr></table></div>
+<p><a href="https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/master/README-zh_CN.md">提问的智慧</a></p>
+<p><a href="https://github.com/tangx/Stop-Ask-Questions-The-Stupid-Ways/blob/master/README.md">别像弱智一样提问</a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code>df -h <span class="c1">#查看硬盘空间占用</span>
+poweroff <span class="c1">#关闭系统</span>
+su - <span class="c1">#切换到root</span>
+<span class="c1">#是root用户，$是普通用户</span>
+ping mirrors.tuna.tsinghua.edu.cn -c <span class="m">4</span> <span class="c1">#IPV6</span>
+ping www.baidu.com -c <span class="m">4</span> <span class="c1">#IPV4</span>
+cat /etc/apt/sources.list
+<span class="c1">#将账户加入sudo组</span>
+su -   <span class="c1"># we still need to switch to the root account first</span>
+adduser username sudo  <span class="c1"># change `username` to your user name</span>
+<span class="nb">exit</span>
+whoami <span class="c1">#查看当前用户</span>
+sudo whoami
+<span class="c1">#install tools</span>
+apt-get install build-essential    <span class="c1"># build-essential packages, include binary utilities, gcc, make, and so on</span>
+apt-get install man                <span class="c1"># on-line reference manual</span>
+apt-get install gcc-doc            <span class="c1"># on-line reference manual for gcc</span>
+apt-get install gdb                <span class="c1"># GNU debugger</span>
+apt-get install git                <span class="c1"># revision control system</span>
+apt-get install libreadline-dev    <span class="c1"># a library used later</span>
+apt-get install libsdl2-dev        <span class="c1"># a library used later</span>
+apt-get install llvm llvm-dev      <span class="c1"># llvm project, which contains libraries used later</span>
+apt-get install llvm-11 llvm-11-dev <span class="c1"># only for ubuntu20.04</span>
+apt-get install vim
+<span class="c1">#比较两个文件是否相同</span>
+diff
+md5sum
+<span class="c1">#列出一个C语言项目中所有被包含的头文件</span>
+find . -name <span class="s2">&quot;*.[ch]&quot;</span> <span class="p">|</span> xargs grep <span class="s2">&quot;#include&quot;</span> <span class="p">|</span> sort <span class="p">|</span> uniq
+git commit --allow-empty <span class="c1">#不做任何改动的提交</span>
+</code></pre></div></td></tr></table></div>
+<p>package manager: apt</p>
+<p>常用的命令行工具：</p>
+<ul>
+<li>文件管理 - <code>cd</code>, <code>pwd</code>, <code>mkdir</code>, <code>rmdir</code>, <code>ls</code>, <code>cp</code>, <code>rm</code>, <code>mv</code>, <code>tar</code></li>
+<li>文件检索 - <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>, <code>file</code>, <code>find</code></li>
+<li>输入输出控制 - 重定向, 管道, <code>tee</code>, <code>xargs</code></li>
+<li>文本处理 - <code>vim</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>, <code>sort</code>, <code>wc</code>, <code>uniq</code>, <code>cut</code>, <code>tr</code></li>
+<li>正则表达式</li>
+<li>系统监控 - <code>jobs</code>, <code>ps</code>, <code>top</code>, <code>kill</code>, <code>free</code>, <code>dmesg</code>, <code>lsof</code></li>
+</ul>
+<p><a href="http://askubuntu.com/questions/16178/why-is-it-bad-to-login-as-root">Why is it bad to login as root?</a></p>
+<p>git:</p>
+<ul>
+<li><a href="https://ysyx.oscc.cc/docs/ics-pa/git.html">https://ysyx.oscc.cc/docs/ics-pa/git.html</a></li>
+<li><a href="http://onlywei.github.io/explain-git-with-d3">Visualizing Git Concepts with D3</a></li>
+</ul>
+<p><a href="http://integrity.mit.edu/">MIT对学术诚信的诠释</a></p>
+<p><a href="http://integrity.mit.edu/handbook/writing-code">关于写代码的学术诚信</a></p>
+<p><a href="https://www.bilibili.com/video/BV1x7411H7wa">https://www.bilibili.com/video/BV1x7411H7wa</a></p>
+<p><a href="https://github.com/jlevy/the-art-of-command-line">The Art of Command Line</a></p>
+<p><a href="https://i.linuxtoy.org/docs/guide/index.html">开源世界旅行手册</a></p>
+<p>C语言资料：</p>
+<ul>
+<li><a href="https://docs.huihoo.com/c/linux-c-programming/">Linux C编程一站式学习</a></li>
+<li><a href="http://math.ecnu.edu.cn/~jypan/Teaching/ParaComp/books/The C Programming Language 2nd.pdf">The C programming language (2<sup>nd</sup> Edition)</a> <a href="http://en.wikipedia.org/wiki/Dennis_Ritchie">Dennis M. Ritchie</a></li>
+<li><a href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard">SEI CERT C Coding Standard</a></li>
+</ul>
+<p>verilator</p>
+<p>群聊记录：</p>
+<p><a href="https://www.qwqjsq8.com">科学上网</a></p>
+<p>fastgithub</p>
+<h2 id="pa1">PA1<a class="headerlink" href="#pa1" title="Permanent link">&para;</a></h2>
+<h2 id="_1">数字电路基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Chisel教程：</p>
+<ul>
+<li><a href="https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master">Chisel Bootcamp</a></li>
+<li><a href="https://www.chisel-lang.org/chisel3/docs/introduction.html">Chisel Users Guide</a></li>
+<li><a href="https://github.com/freechipsproject/chisel-cheatsheet/releases/latest/download/chisel_cheatsheet.pdf">Chisel小抄</a></li>
+<li><a href="https://www.chisel-lang.org/api/latest/chisel3/index.html">Chisel API</a></li>
+</ul>
+<p>Verilog：</p>
+<ul>
+<li><a href="https://hdlbits.01xz.net/wiki/Main_Page">Verilog在线学习网站</a></li>
+<li><a href="https://verilogoj.ustc.edu.cn/oj/">中科大的Verilog OJ平台</a></li>
+</ul>
+<h2 id="verilog">Verilog<a class="headerlink" href="#verilog" title="Permanent link">&para;</a></h2>
+<p>设计电路步骤：</p>
+<ul>
+<li>写HDL代码；</li>
+<li>编译代码产生电路；</li>
+<li>仿真电路和解决bug；</li>
+</ul>
+<p>mismatch</p>
+<p>timing diagrams test vectors</p>
+<p>status:</p>
+<ul>
+<li>Compile Error</li>
+<li>Simulation Error</li>
+<li>Incorrect</li>
+<li>Success!</li>
+</ul>
+<p>syntax语法 typos拼写错误 semicolon分号</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="n">top_module</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="n">zero</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Verilog-1995</span>
+<span class="k">endmodule</span><span class="w"></span>
+
+<span class="k">module</span><span class="w"> </span><span class="n">top_module</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="p">);</span><span class="w"> </span>
+
+<span class="w">    </span><span class="c1">// Verilog-2001</span>
+<span class="k">endmodule</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>verilog中的wire是定向的，source又称为驱动器driver，sink。</p>
+<p>continuous assignment，赋值语句右边改变，赋值也会继续。</p>
+<p>端口port有一个方向（input/output）。</p>
+<p>input port/driver/source output port/sink</p>
+<p>bitwise-NOT(~)/logical-NOT(!)</p>
+<p>bitwise-AND(&amp;)/logical-AND(&amp;&amp;)</p>
+<p>bitwise-OR (|) and logical-OR (||)</p>
+<p>bitwise-XOR (^)</p>
+<p>endianness字节序</p>
+<p>little-endian: the least significant bit has a lower index</p>
+<p>big-endian: the most significant bit has a higher index</p>
+<p>directive命令；指示</p>
+<p>Implicit nets</p>
+<p>`default_nettype none</p>
+<p><a href="http://www.asic-world.com/systemverilog/data_types10.html">Data Types Part-X (asic-world.com)</a></p>
+<p>{num{vector}}</p>
+<h2 id="_2">功能部件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">除法器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="prenomalization">Prenomalization<a class="headerlink" href="#prenomalization" title="Permanent link">&para;</a></h4>
+<p>除数归一化到<span class="arithmatex"><span class="MathJax_Preview">[\frac{1}{2}, 1)</span><script type="math/tex">[\frac{1}{2}, 1)</script></span>，被除数非必须归一化；</p>
+                
+                  
+                
+              
+              
+                 
+ 
+ 
+<!-- <hr><blockquote class="page-copyright">
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="https://github.com/WWeiying/edit/master/docs/cpu/ysyx.md" title="编辑此页" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors">OI-wiki</span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a></strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote> -->
+
+
+<h2 id="__comments" data-no-instant>评论</h2>
+<form id="gitalk-form" onsubmit="return!1" data-no-instant>
+<div id="gitalk-container" data-no-instant>
+</div>
+</form>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    id: '一生一芯',
+    owner: 'WWeiying',
+    repo: 'WWeiying.github.io',
+    admin: ['WWeiying'],
+    clientID: 'd3dc000b2047f49b2bd8',
+    clientSecret: 'b20c67ecf9762b0de64976355994ac758d506962',
+    distractionFreeMode: false,
+    pagerDirection: 'first'
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<script>function scrollFunction(){20<document.body.scrollTop||20<document.documentElement.scrollTop?document.getElementById("myBtn").style.display="block":document.getElementById("myBtn").style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollFunction()}</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../start/format/" title="格式" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                格式
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VCS课程笔记" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                VCS课程笔记
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2022 WWeiying
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+        <div id="miitbeian"></div>
+      </div>
+      
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：, 2022-10-13</a></span>
+      <script>
+        /* miitbeian */
+        if (window.location.hostname == "oi-wiki.com") {
+          document.getElementById("miitbeian").innerHTML = `<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>`;
+        }
+        /* Easter Egg */
+        console.log(`%c OI Wiki %c  %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        console.log('少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org');
+      </script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.411a9f9f.js"></script>
+      <script>app.initialize({version:"1.3.1",url:{base:"../.."}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+      
+        <script src="../../_static/js/extra.js?v=16"></script>
+      
+        <script src="../../assets/vendor/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../_static/js/baidu_tongji.js"></script>
+      
+    
+  </body>
+</html>

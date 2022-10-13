@@ -1,0 +1,1621 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//search.oi-wiki.org">
+      <link rel="dns-prefetch" href="//api.github.com">
+      <link rel="dns-prefetch" href="//www.google-analytics.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Record mathematics, Programs and Engineering">
+      
+      
+        <link rel="canonical" href="https://www.wweiying.top/cpu/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">
+      
+      
+        <meta name="author" content="Weiying">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../favicon/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>DC逻辑综合实践笔记 - Record mathematics, Programs and Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.6f7cfa25.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.27508f0e.js"></script>
+    
+    
+      
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/vendor/material-icons/iconfont/material-icons.css">
+    
+      <link rel="manifest" href="../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css?v=13">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "G-BQRVKTPNPP", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#lec1-introduction" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-header-nav__button md-logo">
+          
+            <img src="../../favicon/favicon-256x256.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Record mathematics, Programs and Engineering
+            </span>
+            <span class="md-header-nav__topic">
+              
+                DC逻辑综合实践笔记
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          开始
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../ysyx/" class="md-tabs__link md-tabs__link--active">
+          CPU设计
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../algorithm/cplus/" class="md-tabs__link">
+          算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../experience/linux/" class="md-tabs__link">
+          走过的坑
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-nav__button md-logo">
+      
+        <img src="../../favicon/favicon-256x256.png" width="48" height="48">
+      
+    </a>
+    Record mathematics, Programs and Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开始
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开始
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/news/" title="行业观察" class="md-nav__link">
+      行业观察
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/stars/" title="网站和工具" class="md-nav__link">
+      网站和工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../todolist/2022M5/" title="Todolist" class="md-nav__link">
+      Todolist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/format/" title="格式" class="md-nav__link">
+      格式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CPU设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CPU设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ysyx/" title="一生一芯" class="md-nav__link">
+      一生一芯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VCS课程笔记" class="md-nav__link">
+      VCS课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="Verdi课程笔记" class="md-nav__link">
+      Verdi课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        DC逻辑综合实践笔记
+      </label>
+    
+    <a href="./" title="DC逻辑综合实践笔记" class="md-nav__link md-nav__link--active">
+      DC逻辑综合实践笔记
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lec1-introduction" class="md-nav__link">
+    Lec1 Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec2-design-and-technology-data" class="md-nav__link">
+    Lec2 Design and Technology Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec3-design-and-library-objects" class="md-nav__link">
+    Lec3 Design and Library Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec4-timing-constraints" class="md-nav__link">
+    Lec4 Timing Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec5-environment-attributes" class="md-nav__link">
+    Lec5 Environment Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec6-synthesis-optimization-techniques" class="md-nav__link">
+    Lec6 Synthesis Optimization Techniques
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec7-timing-analysis" class="md-nav__link">
+    Lec7 Timing Analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec8-additional-constraint-options" class="md-nav__link">
+    Lec8 Additional Constraint Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec9-multiple-clocks-and-exceptions" class="md-nav__link">
+    Lec9 Multiple Clocks and Exceptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec10-conclusion" class="md-nav__link">
+    Lec10 Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/cplus/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/algorithm/" title="数据结构" class="md-nav__link">
+      数据结构
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      走过的坑
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        走过的坑
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/git/" title="git" class="md-nav__link">
+      git
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lec1-introduction" class="md-nav__link">
+    Lec1 Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec2-design-and-technology-data" class="md-nav__link">
+    Lec2 Design and Technology Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec3-design-and-library-objects" class="md-nav__link">
+    Lec3 Design and Library Objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec4-timing-constraints" class="md-nav__link">
+    Lec4 Timing Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec5-environment-attributes" class="md-nav__link">
+    Lec5 Environment Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec6-synthesis-optimization-techniques" class="md-nav__link">
+    Lec6 Synthesis Optimization Techniques
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec7-timing-analysis" class="md-nav__link">
+    Lec7 Timing Analysis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec8-additional-constraint-options" class="md-nav__link">
+    Lec8 Additional Constraint Options
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec9-multiple-clocks-and-exceptions" class="md-nav__link">
+    Lec9 Multiple Clocks and Exceptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lec10-conclusion" class="md-nav__link">
+    Lec10 Conclusion
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/WWeiying/edit/master/docs/cpu/数字逻辑综合实践笔记.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>DC逻辑综合实践笔记</h1>
+                
+                <p><strong>数字逻辑综合工具实践-DC之课程概要</strong></p>
+<p><a href="https://www.bilibili.com/video/BV1Wg4y1z7TF?p=1&amp;vd_source=4ebfb5af0d074e024489d08a42b368ee">数字逻辑综合工具实践-DC_哔哩哔哩_bilibili</a></p>
+<p>所谓综合就是把概念转化为可制造器件的过程，且该器件可以执行预期的功能。在现代的IC设计中，数字逻辑综合技术是数字IC设计工程师和后端设计工程师必须掌握的一门基本技能。首先，本课程主要基于业界主流的逻辑综合工具------synopsys公司的Design Compiler，从逻辑综合的基本概念，逻辑综合的基本流程作为切入点，让学员在大脑中先有一个总体的概念，对逻辑综合有一个初步的认识；其次，层层深入，逐步递进将枯燥乏味的逻辑综合命令一一呈现在读者面前；再者，以一个中小规模的RTL设计为例，运用课程中介绍的逻辑综合约束命令进行约束，并完成综合过程；最后，详细讲解和分析逻辑综合的结果；</p>
+<p>本课程最大的特色在于，不仅进行逻辑综合理论知识的阐述和剖析，而且进行现场操作和演示，显著提升教学效果，赢得广大学员的一致认可和好评！</p>
+<p>本课程共分为11次，每次课程约一小时左右，具体如下：</p>
+<p><strong>第1课：</strong>introduction。主要介绍逻辑综合的基本概念、逻辑综合的基本流程、常见的Linux/Unix命令、Linux操作系统下文本编辑器gvim的使用等。</p>
+<p><strong>第2课：</strong>Design and Technology Data。主要介绍如何编写逻辑综合工具Design Compiler的setup文件、如何启动Design Compiler、工艺库的加载和分析、以及读取RTL设计的基本命令。</p>
+<p><strong>第3课：</strong>Design and Library Objects。首先，主要介绍了逻辑综合中涉及的对象（Object）概念，如Design、cell、Port、pin、net及clock，并以具体的命令和约束为例介绍如何区分这些对象（object）；其次是介绍了物集（object collection）的概念，并通过具体的实例演示了如何区分列表（List）和物集（collection）的概念。</p>
+<p><strong>第4课：</strong>Timing Constraints。首先讲解了逻辑综合中路径（path）的概念，并在此基础上详细讲解如何创建时钟（clock），为理想时钟网络进行建模，如何设置输入延迟（input delay），输出延迟（output delay）等时序约束，并进行了上机操作和演示。</p>
+<p><strong>第5课：</strong>Environment Attributes。本节内容主要围绕环境约束的三要素（PVT，制程process，电压voltage，温度Temperature ）进行阐述，讲解在实际综合过程中，如何对我们的RTL级设计添加环境相关的约束及约束的技巧。</p>
+<p><strong>第6~8课：</strong>Synthesis Optimization Techniques 。本节主要介绍了综合的基本方式分为自顶向下（top-down）和自底向上（bottom---up），边界优化（Boundary optimization），路径组（grouping），pipeline设计的优化，多内核（Multi-core）工作机制及时序约束的主要内容。</p>
+<p><strong>第9课：</strong>Timing Analysis 。本节主要讲述逻辑综合结束之后如何对逻辑综合的结果进行时序分析，并介绍和演示了常见的时序分析的命令和技巧，能够根据综合结果进行问题的定位。</p>
+<p><strong>第10课：</strong>Additional Constraint Options 。本节主要是对前面约束的一些补充和说明，尤其是一个SoC系统中涉及多个时钟，双时钟沿触发，数据输入端口有多个驱动，输出和多个负载的情况进行了介绍和分析。</p>
+<p><strong>第11课：</strong>Post-output data &amp; Conclusion。主要介绍如何将逻辑综合的结果进行保存，以便后续分析和使用，主要包括综合之后的网表文件（.v）、数据库文件（.ddc）、约束文件（.sdc）等。</p>
+<h2 id="lec1-introduction">Lec1 Introduction<a class="headerlink" href="#lec1-introduction" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220801142934309" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c7559f1983a836ea7ad4e81c382009c7-c7559f1983a836ea7ad4e81c382009c7-image-20220801142934309-81c1f4-fd3687.png" /></p>
+<p><img alt="image-20220802150347101" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f12e943a112b63fe29b1412c2b19ccfb-image-20220802150347101-970272.png" /></p>
+<p><img alt="image-20220801101956081" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/809e84d82c7e97f732ac8a4e04e1d151-image-20220801101956081-df5b41.png" /></p>
+<p><img alt="image-20220801102101376" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a54afd2d88158874d01f42a77a6747e8-image-20220801102101376-dd768d.png" /></p>
+<p>RTL代码，工艺库，约束（告知DC需要什么器件，提供一个宏观约束，告诉DC如何工作）</p>
+<p><img alt="image-20220801102455816" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/d4e870c2e37c4c0cab43274b2d735794-image-20220801102455816-755fd9.png" /></p>
+<p><img alt="image-20220801102958181" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/db5d21d439b7aff637acb0efbd1e2e6b-image-20220801102958181-5fb8e4.png" /></p>
+<p><img alt="image-20220801103116287" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/1d06bd7eaad158ef78675f830b9588e0-image-20220801103116287-3e4297.png" /></p>
+<p><img alt="image-20220801103312316" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/3a585c7448cc47ab784df18a7464058e-image-20220801103312316-444fbb.png" /></p>
+<p><img alt="image-20220801103726605" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/2f5e9ac5159c18af299c17fa9d65075c-image-20220801103726605-25a1f1.png" /></p>
+<p><img alt="image-20220801103930378" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/2e3a23cad16a7ce1278690ed586d7750-image-20220801103930378-0fc63b.png" /></p>
+<p>将Verilog，sv等不同HDL描述转换成统一的GTECH，翻译成内部统一的表述</p>
+<p>根据约束选择不同的器件</p>
+<p>优化和映射</p>
+<p>吐出SDF文件 ddc（现在） sdc db（以前）</p>
+<p><img alt="image-20220801104544148" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/470596aba6b5f40a04a1fdff3f4fc752-image-20220801104544148-e8041d.png" /></p>
+<p>得到带时序信息的网表</p>
+<p>WLM线负载模型</p>
+<p>延迟：器件本身的延迟（基本单元的延迟），线延迟（线负载模型、拓扑结构（更精确，需要大概的布局信息））</p>
+<p><img alt="image-20220801104934688" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/c43d503db92d8d37eb72df4cfdbdf56e-image-20220801104934688-79e435.png" /></p>
+<p><img alt="image-20220801105141614" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/ac69f169cfe0d48a6875001f444eef6b-image-20220801105141614-4c3ec4.png" /></p>
+<p><img alt="image-20220801105154365" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/dff51bc591ad8e66996153b32f2b0c0d-image-20220801105154365-46b785.png" /></p>
+<p>延时，面积，期望又小又快，往往在Delay和Area之间做权衡。</p>
+<p><img alt="image-20220801105454141" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/deb048bcf4c7b62df07ed3ed4518cef9-image-20220801105454141-b5a984.png" /></p>
+<p>tee命令将终端log信息存到文件中。</p>
+<p><img alt="image-20220801105719920" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a8109f0440c9e82bdd56575f7f1159b4-image-20220801105719920-874689.png" /></p>
+<p><code>!!</code>重复上次命令</p>
+<p>执行Linux命令要加<code>sh</code></p>
+<p><img alt="image-20220801105856484" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/64eb96aaf30b8e0fd847bd3667f43aba-image-20220801105856484-9b81b7.png" /></p>
+<p>工艺库</p>
+<p><img alt="image-20220801110032918" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/f2c215dff84e874de2157ff454609232-image-20220801110032918-aaf276.png" /></p>
+<p><img alt="image-20220801110131456" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/72f42132ee1a481c265bc3eb0471c1df-image-20220801110131456-733c45.png" /></p>
+<p>上面的db文件（现在都是ddc文件）是给DC读的，下面的lib文件是给人读的，ff工艺角，1p98为1.98v，还有温度信息40度</p>
+<p>单位信息，缩放因子，线负载模型（根据不同的规模选择不同的线负载模型）</p>
+<p><img alt="image-20220801110844123" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/818c1de5b341236d1b3804a335e925f6-image-20220801110844123-967cee.png" /></p>
+<p>首先对工作目录做初步的划分，config里放些配置文件，makefiler是自动化的运行过程，mapped放置综合之后的网表，report放置报告的TXT、log文件，rtl放置代码，script放置脚本包括约束等，unmapped DC读入rtl设计后的统一的GTECH格式，在work目录下工作。</p>
+<p><img alt="image-20220801111402217" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/00487ef64813d70e2ffca8c4dc6f2392-image-20220801111402217-c8a31b.png" /></p>
+<p><code>.synopsys_dc.setup</code>文件是DC的配置文件，工作目录，搜索路径；</p>
+<p><code>dc_shell -topo | tee dc_start.log</code> 启动DC，以拓扑模式，并记录到dc_start.log日志文件；</p>
+<p><code>sh gvim dc_start.log &amp;</code> 在DC中启动gvim，打开dc_start.log日志文件；</p>
+<p><code>design_vision &amp;</code> 后台（终端不会锁死）打开DC GUI界面，弹出执行进程的进程号；</p>
+<h2 id="lec2-design-and-technology-data">Lec2 Design and Technology Data<a class="headerlink" href="#lec2-design-and-technology-data" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220801142934309" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/c7559f1983a836ea7ad4e81c382009c7-image-20220801142934309-81c1f4.png" /></p>
+<p><img alt="image-20220801142954763" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/6bc4c896701f73b1eb37f2f25a0cd583-image-20220801142954763-5bee61.png" /></p>
+<p><img alt="image-20220801143215248" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8087a7c3314bb5101c18f2d4a149a2dd-image-20220801143215248-0e58c0.png" /></p>
+<p><img alt="image-20220801143335161" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/1b2db7fcf05383fb73fc8bbefd9b3b0f-image-20220801143335161-46df22.png" /></p>
+<p>红色的是dc的关键词，alias是别名，history是命令历史</p>
+<p><img alt="image-20220801143512574" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/aa6a20c1629be732d0968dfb10615d72-image-20220801143512574-344dd7.png" /></p>
+<p><img alt="image-20220801143536303" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/0b526aea1e7e2222ffefedd16d91a30c-image-20220801143536303-22e7ec.png" /></p>
+<p>cons放约束，rtl放代码，libs放第三方的工艺库，有db,lib两种类型，library compiler可以把lib转为db格式。</p>
+<p><code>read_verilog</code>读入Verilog代码；</p>
+<p><img alt="image-20220801143924814" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/310c0f9993e281a6099d1ea0639c40b3-image-20220801143924814-60db62.png" /></p>
+<p><img alt="image-20220801144004041" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/65a96641cbf7a173d1a3fcda7105a774-image-20220801144004041-9365a1.png" /></p>
+<p><img alt="image-20220801144030010" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/6427ede0c065431b64108d670d6d5654-image-20220801144030010-117299.png" /></p>
+<p><code>check_timing</code>检查路径约束，每条路径都要有约束，DC是基于path的；</p>
+<p><code>compile_ultra</code>比较强的编译；</p>
+<p>默认工艺库的名字是<code>your_library.db</code>，自己定义了则使用自己的名字。</p>
+<p><img alt="image-20220801144332218" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/5666099f87b97eda92c078ac350d7126-image-20220801144332218-6f201c.png" /></p>
+<p>area面积，direction是指输出方向。</p>
+<p><img alt="image-20220801144649615" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a370dde0f1cec6d8944cd76a2de178ba-image-20220801144649615-e22d05.png" /></p>
+<p>使用<code>set_app_var</code>比<code>set</code>更安全，设置<code>target_library</code>要在<code>compile_ultra</code>之前，<code>target_library</code>只需放第三方的工艺库即可。</p>
+<p><img alt="image-20220801144924469" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/bd805ce47e80f0fdfa0ed364bb644a1b-image-20220801144924469-b00e19.png" /></p>
+<p>write命令产生Verilog形式的netlist、.sdf文件（描述时序信息），可用于后仿真和布局布线，还会保存.ddc（至少包括.v和.sdc的信息），.ddc是synopsys专用的用于ICC。</p>
+<p><img alt="image-20220801145538059" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/3ed3c502fa9dc77e1876f71b4c4500d0-image-20220801145538059-37bb7a.png" /></p>
+<p><code>report_constraint</code>查看是否有违反约束的；</p>
+<p><img alt="image-20220801145717471" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a850700b3ecf45a79e79be669c29909e-image-20220801145717471-89fc16.png" /></p>
+<p>购买的IP核是.ddc/.db类型，可以放置在<code>lint_library</code>中，但一般用<code>read_ddc</code>方式读入文件，*表示DC在内存中开辟一片区域给自己用，其他程序不能使用。</p>
+<p><img alt="image-20220801150004365" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/22311796df248391c95febdc147985ba-image-20220801150004365-b7071c.png" /></p>
+<p><img alt="image-20220801150110944" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/68e69a14e5b0b2dade1a320db04b579d-image-20220801150110944-d9d316.png" /></p>
+<p><img alt="image-20220801150151448" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/868d66fde3280934535f69eace1a84a9-image-20220801150151448-9fdc0b.png" /></p>
+<p><code>search_path</code>设置搜索路径。</p>
+<p><img alt="image-20220801152441187" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/ec24b51d32a5c047c3dbbb658699f195-image-20220801152441187-b47cb1.png" /></p>
+<p>1的优先级最低，2的优先级中等，3的优先级最高，配置文件在这三个地方。</p>
+<p><img alt="image-20220801152750625" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/1795eb125cceb058f795bcfb0b4b0f80-image-20220801152750625-fab9b8.png" /></p>
+<p><img alt="image-20220801152811970" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a78ac38027926d925f0b871560bc3c10-image-20220801152811970-f01189.png" /></p>
+<p><code>symbol_library</code>可以查看图形信息。</p>
+<p><img alt="image-20220801153403827" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/08ed16336b937c900bb46feebfc1917d-image-20220801153403827-88251c.png" /></p>
+<p><img alt="image-20220801153434154" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/24b19c7108f5dcf40e7e27d3dea313c9-image-20220801153434154-0e421e.png" /></p>
+<p><img alt="image-20220801153454258" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b70c534f42273926498658728e7f2350-image-20220801153454258-394211.png" /></p>
+<p><img alt="image-20220801153526452" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8691011dd3ade287fa015017991516c1-image-20220801153526452-98f7c0.png" /></p>
+<p><img alt="image-20220801153538202" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/59f65711cd11aa9b39fea263ed34c4cb-image-20220801153538202-a4cf42.png" /></p>
+<p><img alt="image-20220801153606227" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/51738f5e09b62d95d8c7bf818d63ccd3-image-20220801153606227-a4b962.png" /></p>
+<p><img alt="image-20220801153658214" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/092dc2787aee35627f79ed0538ffb712-image-20220801153658214-cdced3.png" /></p>
+<p><img alt="image-20220801153723776" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/5db90784dce59b70825bbf231f8aef6a-image-20220801153723776-d001c0.png" /></p>
+<p>层次化设计</p>
+<p><img alt="image-20220801153758119" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/145fec430846c9e79f2fa519ede2b52d-image-20220801153758119-771288.png" /></p>
+<p>Verilog文件一个一个地读，默认最后一个是顶层文件，花括号的读法默认第一个是顶层文件，一般通过<code>current_design</code>显式指明顶层文件。</p>
+<p><img alt="image-20220801153945900" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8c4eea36eeb2e742e0f692c069c92e5d-image-20220801153945900-7e72bd.png" /></p>
+<p><img alt="image-20220801154119494" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/3c030dc064784df2638ed74c821fba4a-image-20220801154119494-b8fc86.png" /></p>
+<p><img alt="image-20220801154150537" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/ffca772e95c63207e223688fafd34bbd-image-20220801154150537-3cfcc6.png" /></p>
+<p>error返回零，接下来是不能综合的。</p>
+<p><img alt="image-20220801154303292" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/aa3483ceef45af408ce5ab123d5c750e-image-20220801154303292-377fd2.png" /></p>
+<p><img alt="image-20220801154335612" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/f4aab84b9011957e5d8f2bec800b66cd-image-20220801154335612-699ef8.png" /></p>
+<p>读取设计文件的两种方式：</p>
+<ul>
+<li>read_verilog；</li>
+<li>analyze &amp; elaborate，analyze读取文件得到.pvc格式，然后通过elaborate指定顶层文件并得到GTECH类型文件，也可以传递参数；</li>
+</ul>
+<p><img alt="image-20220801154825818" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/2dd3b44dfe30221f00de7360ba76e34f-image-20220801154825818-0a9599.png" /></p>
+<p><img alt="image-20220801154840898" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/b7935a04d7d6748eeaa864b8d7f66b24-image-20220801154840898-9deec0.png" /></p>
+<p><img alt="image-20220801155113661" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/0fd852c01f2a5ce4e643559576b7df8a-image-20220801155113661-e5b84b.png" /></p>
+<p><img alt="image-20220801155200959" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/7a1c10696dd2523fee4cce5cf3e47c04-image-20220801155200959-11b946.png" /></p>
+<p><img alt="image-20220801155218848" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8cee02c26a366854d07370d67ee3ab82-image-20220801155218848-a51113.png" /></p>
+<p><img alt="image-20220801155530276" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8df558844916012d04e0f06b6a3f4637-image-20220801155530276-919e7d.png" /></p>
+<p>综合之前保存一版ddc，综合之后保存一版ddc用于后仿布局布线，综合之后的.v用于后仿或其他工具的布局布线。</p>
+<p><img alt="image-20220801155936135" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/3da9083ac176864a35eee02386d85a5e-image-20220801155936135-a59eb7.png" /></p>
+<p><img alt="image-20220801155949752" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/b04443728383bcf13f403f0948d52d68-image-20220801155949752-2710f4.png" /></p>
+<p><img alt="image-20220801160020407" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/978d150db7c965298da5e2399d7a0631-image-20220801160020407-417857.png" /></p>
+<p><img alt="image-20220801160041035" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/639b37c921b25253e716a43de6781f1d-image-20220801160041035-c23932.png" /></p>
+<p><img alt="image-20220801160052360" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/f31dbb6e563f2bc8622e7ff7d5159f21-image-20220801160052360-579920.png" /></p>
+<p><img alt="image-20220801160110802" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/abc86f3097b45de26d26ae9fd3a57af0-image-20220801160110802-b86ce4.png" /></p>
+<p><img alt="image-20220801172138502" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/6be082efc133357688980babed11c9d1-image-20220801172138502-838893.png" /></p>
+<p><code>.synopsys_dc.setup</code>里自定义变量用<code>set</code>，系统变量用<code>set_app_var</code>，这样敲错了系统变量名会报错。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">set</span> my_name <span class="s2">&quot;zhangsan&quot;</span>
+<span class="nb">echo</span> <span class="nv">$my_name</span>
+printvar target_library
+read_verilog -rtl <span class="o">[</span>list top.v counter.v<span class="o">]</span> <span class="c1">#方括号表示执行命令的嵌套</span>
+list_libs#查看有哪些库，转换，优化，翻译
+report 库名
+set_app_var -help <span class="c1">#查看帮助信息</span>
+man set_app_var <span class="c1">#查看更加详细的信息</span>
+get_app_var target_library <span class="c1">#获取一个变量</span>
+printvar target_library
+<span class="nb">echo</span> <span class="nv">$target_library</span>
+list_designs <span class="c1">#查看读入的设计</span>
+current_design <span class="c1">#查看当前顶层</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="lec3-design-and-library-objects">Lec3 Design and Library Objects<a class="headerlink" href="#lec3-design-and-library-objects" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220801190242779" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/680a8eef18fdba325a68472760c6c883-image-20220801190242779-9a67f4.png" /></p>
+<p><img alt="image-20220801190325288" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/0939504e2c1c39161f6b33537526b8a8-image-20220801190325288-55550e.png" /></p>
+<p><img alt="image-20220801190718359" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/334e7ba125c3b8c1c48007796635d0ee-image-20220801190718359-b21836.png" /></p>
+<p><img alt="image-20220801190734415" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a535f0c636b71c0bb744dc6d7225efd6-image-20220801190734415-76a64f.png" /></p>
+<p><img alt="image-20220801191020286" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/cc6e517bbabe8de236546af4f5f8df88-image-20220801191020286-d4a50b.png" /></p>
+<p><img alt="image-20220801191122808" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/90635c213d6de85b6d8b14ff0d5bd330-image-20220801191122808-115397.png" /></p>
+<p>把5个单位的（电容）负载放到SUM上去，但是SUM是指哪个？这5个单位负载放在port或net上，效果是不一样的。</p>
+<p>线负载模型-艾默尔模型</p>
+<p><img alt="image-20220801193723622" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/f6bb7004c15f67e468e8461789ba1577-image-20220801193723622-c899b5.png" /></p>
+<p>？*是通配符</p>
+<p><img alt="image-20220801194022487" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/acad7b51c02cb70ef436b081fcb7b607-image-20220801194022487-9d3516.png" /></p>
+<p><img alt="image-20220801194046529" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/f43c9fbbb0caa8ef42db787ac5624d12-image-20220801194046529-d2c41d.png" /></p>
+<p><img alt="image-20220801194228539" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/6b1d92f4a32aa35f9496d7a4d5391a98-image-20220801194228539-64c49a.png" /></p>
+<p><img alt="image-20220801194239725" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/daff44bd415ec0b9c3d3d85931d23512-image-20220801194239725-cb9077.png" /></p>
+<p><img alt="image-20220801194320783" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/b9ee5991f43254a2a9152a655ab86278-image-20220801194320783-991b63.png" /></p>
+<p><img alt="image-20220801194332725" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/c05a2a242a4a6127ba96ae5a5bd87e61-image-20220801194332725-aee102.png" /></p>
+<p><img alt="image-20220801194400712" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/779708c91f4016af332e9381fd638c6a-image-20220801194400712-b68456.png" /></p>
+<p>从collection中去除某个信号。</p>
+<p><img alt="image-20220801194610260" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/c6b3aa18e6db58279683f2daff011e4a-image-20220801194610260-4e3739.png" /></p>
+<p><img alt="image-20220801195346331" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/9cbcbcb302ac39298d0692fd1f280374-image-20220801195346331-e5a08c.png" /></p>
+<p><img alt="image-20220801195401299" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/e776b63a48de2001788081dce211953b-image-20220801195401299-90db67.png" /></p>
+<p><img alt="image-20220801195421598" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/950360798f98544b7a3c2c5e2ddc1064-image-20220801195421598-3b562b.png" /></p>
+<p><img alt="image-20220801195439699" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a230dcb14e4938662ac73cba5e5236b3-image-20220801195439699-942bb5.png" /></p>
+<p><img alt="image-20220801195458426" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/b63fc0ebd8a37ec43edf5b06dea412c8-image-20220801195458426-d8dc24.png" /></p>
+<p>object大概分为6大类。</p>
+<p><img alt="image-20220801195840976" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/3dd7d30d595398d372abf522f72f7ddb-image-20220801195840976-69669a.png" /></p>
+<p><img alt="image-20220801195944779" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/6c0d1a5fc473b9848f6726b12f1ff28c-image-20220801195944779-0962ea.png" /></p>
+<p><img alt="image-20220801200143960" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/a896628cf43877df222e082c6c5854a4-image-20220801200143960-ce6662.png" /></p>
+<p><img alt="image-20220801200242613" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/8e9c142e6f6e346562b9f5c53920186a-image-20220801200242613-a18312.png" /></p>
+<p>list是用户自己定义的，collection是DC根据design提取的</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code>dc_shell -xg <span class="p">|</span> tee dc_start.log
+all_inputs <span class="c1">#查看输入端口</span>
+all_outputs <span class="c1">#查看输出端口</span>
+all_clocks
+all_registers
+tcl <span class="c1">#tools command language</span>
+<span class="nb">set</span> all_in_exp_clk <span class="o">[</span>remove_from_collection <span class="o">[</span>all_inputs<span class="o">]</span> <span class="o">[</span>get_ports clk_i<span class="o">]]</span>
+sizeof_collection <span class="nv">$all_in_exp_clk</span>
+<span class="nb">echo</span> <span class="nv">$all_in_exp_clk</span> <span class="c1">#会显示句柄</span>
+query_objects <span class="nv">$all_in_exp_clk</span>
+<span class="nb">set</span> all_out_port <span class="o">[</span>all_outputs<span class="o">]</span>
+sizeof_collection <span class="nv">$all_out_port</span><span class="c1">#显示成员个数</span>
+set_output_delay <span class="m">4</span> -clock clk_i <span class="o">[</span>all_outputs<span class="o">]</span>
+index_collection <span class="nv">$all_out_port</span> <span class="m">1</span> <span class="c1">#访问all_out_port第1个单元</span>
+foreach_in_collection port <span class="nv">$all_out_port</span> <span class="o">{</span><span class="nb">echo</span> <span class="s2">&quot;Good!&quot;</span><span class="o">}</span>
+<span class="nb">help</span> *collection* <span class="c1">#显示有collection的命令的帮助，以下是命令的三种查看帮助的方式</span>
+index_collection -help
+man index_collection
+<span class="nb">set</span> names <span class="o">[</span>list as fasdg faas gfsdg<span class="o">]</span> <span class="c1">#创建一个names列表</span>
+<span class="nb">echo</span> <span class="nv">$names</span>
+llength <span class="nv">$names</span>
+lindex <span class="nv">$names</span> <span class="m">2</span> <span class="c1">#访问列表的某个成员</span>
+foreach name <span class="nv">$names</span> <span class="o">{</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$name</span><span class="s2"> is a nice name!&quot;</span><span class="o">}</span>
+<span class="nb">set</span> ages<span class="o">(</span>df<span class="o">)</span> <span class="m">23</span> <span class="c1">#定义了ages数组</span>
+<span class="nb">set</span> ages<span class="o">(</span>af<span class="o">)</span> <span class="m">54</span>
+...
+<span class="nb">echo</span> <span class="nv">$ages</span><span class="o">(</span>af<span class="o">)</span>
+array names env <span class="c1">#DC中有一个自定义数组env，查看数组成员，是用来存放环境变量的</span>
+array size env <span class="c1">#查看env数组大小</span>
+<span class="nb">echo</span> <span class="nv">$env</span><span class="o">(</span>DC_HOME<span class="o">)</span>
+get_unix_variable DC_HOME <span class="c1">#用来获取UNIX系统下定义的环境变量</span>
+getenv DC_HOME <span class="c1">#这个命令也可以获取定义的环境变量</span>
+setenv MY_ENV_VAR <span class="m">10</span>
+getenv MY_ENV_VAR
+array names env
+unsetenv MY_ENV_VAR
+</code></pre></div></td></tr></table></div>
+<h2 id="lec4-timing-constraints">Lec4 Timing Constraints<a class="headerlink" href="#lec4-timing-constraints" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220801205833359" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/01/b120229b2f1b3fff0f3f46d6138325af-image-20220801205833359-8cb66c.png" /></p>
+<p><img alt="image-20220802091514109" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/0a90cf667aec5f15e8e6adc8d4587de5-image-20220802091514109-6b60b9.png" /></p>
+<p>本节是时序约束，时序是约束寄存器和寄存器之间的延迟是多少，输入端口到寄存器，寄存器到输出端口，</p>
+<p><img alt="image-20220802091603618" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/fc61d32918776a19a971249d2b96b8f8-image-20220802091603618-c96325.png" /></p>
+<p><img alt="image-20220802091825375" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/de206bf0bd108296e394191f0209c81c-image-20220802091825375-052a59.png" /></p>
+<p>单个时钟，单沿（上升沿）触发</p>
+<p><img alt="image-20220802092021427" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/444b9f0c9cfd8d6ae72617ee7b16f4bc-image-20220802092021427-889c55.png" /></p>
+<p>寄存器到寄存器之间的延迟：前一个寄存器的时钟端到后一个寄存器的输入端D</p>
+<p>到第一个寄存器的输入D的延迟</p>
+<p>从后一个寄存器的时钟端到输出的延迟</p>
+<p><img alt="image-20220802092445757" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/01ef1aacf3ccdbac460c16623b9f3a0f-image-20220802092445757-068f68.png" /></p>
+<p>逻辑综合工具是基于路径的，路径：</p>
+<ul>
+<li>路径起点：输入端口，寄存器的时钟输入端</li>
+<li>路径终点：寄存器的D输入端，输出端口</li>
+</ul>
+<p>port是针对design而言的，pin是针对cell而言的。</p>
+<p><img alt="image-20220802092942105" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/a610cc817b2df7651ef63c2f1a171a0c-image-20220802092942105-32dab7.png" /></p>
+<p>约束X，默认单位是ns，默认占空比是50%，信号在下一个寄存器采样前要提前稳定，有一个 <span class="arithmatex"><span class="MathJax_Preview">T_{setup}</span><script type="math/tex">T_{setup}</script></span> 的时间。</p>
+<p><img alt="image-20220802093046922" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/a4f1b2ef42e12a133bc74dfca504ef71-image-20220802093046922-1dcd47.png" /></p>
+<p><img alt="image-20220802093305239" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e428b2038f910574a2e5cfa2fd681f18-image-20220802093305239-53d934.png" /></p>
+<p><img alt="image-20220802093337256" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/953f57a628eb728efe00425095c72c23-image-20220802093337256-ae52fc.png" /></p>
+<p><img alt="image-20220802093354792" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/01d95b6f9ec90d6d5a3adef1b0db93f9-image-20220802093354792-33cf60.png" /></p>
+<p>逻辑综合的时钟是理想时钟，时钟的高扇出的，DC算不准，放在CTS（时钟树综合）</p>
+<p><img alt="image-20220802093700661" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/0d106472540d83c5d32116786767907f-image-20220802093700661-3fb885.png" /></p>
+<p>时钟端口到不同寄存器的时钟输入端是有不同延迟的。相当于要有0.14的提前量。</p>
+<p><img alt="image-20220802094048816" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/55ee641975b9a119f26d9c6bc73c1962-image-20220802094048816-e62d38.png" /></p>
+<p><img alt="image-20220802094804257" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/933741e75b4fd00d8a1b9e009ce15534-image-20220802094804257-93e6d7.png" /></p>
+<p>加不加<code>-source</code>选项，一个是Source Latency，另一个是Network Latency。</p>
+<p><img alt="image-20220802094956773" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/0a3cf5c1cdd4cca8c9d6c414e7d8e86c-image-20220802094956773-59e479.png" /></p>
+<p>时钟不做约束是理想的CLK</p>
+<p><img alt="image-20220802095133703" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/eb940e8c644af2e683e19d6f6926e191-image-20220802095133703-d89b73.png" /></p>
+<p>时钟树综合之后，不需要人为设定相关时钟信息了，DC可以自己提取相关信息，相应的指令会发生变化。</p>
+<p><img alt="image-20220802095434030" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/410c3a898430f3bbf5d9ba8fbb1b567a-image-20220802095434030-126c58.png" /></p>
+<p>约束N组合逻辑的时序，长的线的延时是0.6ns，得到输入路径的延时，包括N的延时和<span class="arithmatex"><span class="MathJax_Preview">T_{setup}</span><script type="math/tex">T_{setup}</script></span></p>
+<p><img alt="image-20220802095719548" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/72d3b37d7a62eed3203cf9bae9e1525b-image-20220802095719548-cc4f2d.png" /></p>
+<p><img alt="image-20220802100105577" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/39cffdcb254f6dad9f76fd13847ed31e-image-20220802100105577-ed577f.png" /></p>
+<p><img alt="image-20220802100119182" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/a5ac6c60a46c9ae535993e317550f85a-image-20220802100119182-0b59aa.png" /></p>
+<p><img alt="image-20220802100231312" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/03800cb0bcb9687c5d6e0bb150cc28ca-image-20220802100231312-aab558.png" /></p>
+<p><img alt="image-20220802100308537" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/727a064809c9b949e5853d4b083e1d26-image-20220802100308537-faa252.png" /></p>
+<p><img alt="image-20220802100328234" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/81f7720c6c6427996bd3a1352f0e88d6-image-20220802100328234-970e85.png" /></p>
+<p>input delay不包括时钟，有一个参考是CLK，对多个输入端口同时约束</p>
+<p><img alt="image-20220802100918260" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/dedeab8207374878bec53f3bacf06d5e-image-20220802100918260-bad984.png" /></p>
+<p><img alt="image-20220802100936631" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/8e314337c552e524c002f9660c36187f-image-20220802100936631-9b20e9.png" /></p>
+<p>后面的命令会覆盖前面的命令，A、B的外部延迟是0.5，C的外部延迟是0.8，第三个命令把CLK踢出来。</p>
+<p>另外的纯组合逻辑F</p>
+<p><img alt="image-20220802101303604" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c8c50767be86698dbbb6eb0056dba994-image-20220802101303604-f89467.png" /></p>
+<p>纯组合逻辑没有CLK，需要创建一个虚拟时钟，</p>
+<p><img alt="image-20220802103148441" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/5566c44554f5e986c007c76538ae99d4-image-20220802103148441-0c4afc.png" /></p>
+<p><img alt="image-20220802103249106" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/70901bfb3fee73a724690ac20bd67399-image-20220802103249106-1f6c7d.png" /></p>
+<p><img alt="image-20220802103550219" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e1f8732c6dc02a25fa6b3818ded9ffc3-image-20220802103550219-e86022.png" /></p>
+<p><img alt="image-20220802103626564" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/3343cf5fdc9a71eeff45c6e4033a9865-image-20220802103626564-46b38a.png" /></p>
+<p>4、4，还有2ns的裕量。</p>
+<p><img alt="image-20220802103906856" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/cc7b25f63762ada890e0089a148f8587-image-20220802103906856-1dc4a8.png" /></p>
+<p><img alt="image-20220802104126591" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f9612c4f43aeb70ed579c74cac977fe7-image-20220802104126591-bb7197.png" /></p>
+<p>做设计时，保持设计的输出是寄存器输出，这样在做约束时是有好处的。</p>
+<p><img alt="image-20220802104514111" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/4460800239d75566c8a68eac03bb524a-image-20220802104514111-cd767c.png" /></p>
+<p><img alt="image-20220802104609874" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/25a49056a012524f8f36873f4fca72b0-image-20220802104609874-2d144d.png" /></p>
+<p><img alt="image-20220802161643146" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/efaa4d9cca6d0504738b705de04b44c7-image-20220802161643146-23cbbb.png" /></p>
+<p><img alt="image-20220802161709117" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/d3fd5590f4d62cfd0d7bea6efebac6eb-image-20220802161709117-4fd4b5.png" /></p>
+<p>此处DC启动和DC综合是一个步骤。</p>
+<p><img alt="image-20220802161819313" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/bc49934a37fdb8b9fe38f12ddc544cad-image-20220802161819313-0d6c9c.png" /></p>
+<p><img alt="image-20220802161847032" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/afd9ffee5ae3be3e09f88ceee54ea86d-image-20220802161847032-c9dcb1.png" /></p>
+<p>注释和命令写在一行，需要加分号。</p>
+<p><img alt="image-20220802162012099" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e4aece1a391f5a72f6f710ad2d255e7b-image-20220802162012099-5f6fad.png" /></p>
+<p><code>-p</code>是<code>-period</code>的简写。</p>
+<p><img alt="image-20220802162129894" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/b95943cadc1f7b28748ab58ee721998b-image-20220802162129894-545f41.png" /></p>
+<p>检查语法</p>
+<p><img alt="image-20220802162210319" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/cf4650819556164d0a1caff5be352966-image-20220802162210319-f8c692.png" /></p>
+<p><img alt="image-20220802162223505" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/8b05e710588b5a143e181162d078947f-image-20220802162223505-078b29.png" /></p>
+<p><img alt="image-20220802162233898" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/7a950a4dbf2b75c862f0f02a3efbf0b0-image-20220802162233898-4a9037.png" /></p>
+<p><img alt="image-20220802162453231" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/861fb43c04f224dab5a9fa22ddaa6ef3-image-20220802162453231-ecb9c1.png" /></p>
+<p><img alt="image-20220802162526367" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c4e07a7d59b838a361b22952db238712-image-20220802162526367-8905fe.png" /></p>
+<p><img alt="image-20220802162547904" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/a2027cc70bef8ec43e6914c2188d635e-image-20220802162547904-f184f1.png" /></p>
+<p><img alt="image-20220802162600265" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e21c0ccd50c0456c3f62603b91d25484-image-20220802162600265-dc2c6d.png" /></p>
+<p><img alt="image-20220802162610235" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/751483d225a2c11cffa31ac5637e94ce-image-20220802162610235-447bec.png" /></p>
+<p><img alt="image-20220802162638274" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/a6a735acc935e9242b0dff095bf2fdac-image-20220802162638274-9d0978.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>list_designs <span class="c1">#查看当前DC内存里读取的设计</span>
+remove_design -hierarchy <span class="c1">#清空DC内存里的设计</span>
+analyze -format verilog <span class="o">[</span>list top.v counter.v fsm_moore.v<span class="o">]</span>
+elaborate -architecture verilog top
+link <span class="c1">#上面两个命令会自动link，为了保险起见会手动link，但是是没有必要的</span>
+check_design <span class="c1">#在综合之前检查设计的问题，返回0是很严重的，1还可以</span>
+reset_design <span class="c1">#添加约束之前：把设计的约束清掉，保持干干净净</span>
+create_clock -period <span class="m">10</span> -waveform <span class="o">[</span>list <span class="m">0</span> <span class="m">5</span><span class="o">]</span> <span class="o">[</span>get_ports clk_i<span class="o">]</span> <span class="c1">#创建的时钟的名字默认与clk_i一致，虚拟时钟需要指定名字,对于单时钟单沿触发的占空比设置与否，没关系，第一个上升沿在0ns，第一个下降沿在5ns，DDR器件（clk上升沿、下降沿都用到了）占空比影响很大，必须设置占空比。</span>
+set_input_delay <span class="m">6</span> -clock clk_i <span class="o">[</span>all_inputs<span class="o">]</span> <span class="c1">#默认最大延迟最小延迟均为6ns，参考时钟为clk_i</span>
+remove_input_delay <span class="o">[</span>get_ports clk_i<span class="o">]</span>
+set_output_delay <span class="m">6</span> -clock clk_i <span class="o">[</span>all_outputs<span class="o">]</span>
+check_timing <span class="c1">#选择是否有路径没有约束，漏掉时序</span>
+compile -map_effort high -area_effort high -boundary_optimization
+report_constraint -all_violators <span class="c1">#查看约束是否有违规</span>
+dcprocheck ../script/fsm_moore.tcl <span class="c1">#检查tcl脚本有没有语法错误</span>
+<span class="nb">source</span> ../script/top.tcl
+report_timing -delay_type max <span class="c1">#查看时序</span>
+report_area
+</code></pre></div></td></tr></table></div>
+<p>DC 综合之前需要对所有的路径添加约束，DC据此约束选择器件。</p>
+<h2 id="lec5-environment-attributes">Lec5 Environment Attributes<a class="headerlink" href="#lec5-environment-attributes" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220802150433288" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f12e943a112b63fe29b1412c2b19ccfb-image-20220802150433288-50e940.png" /></p>
+<p><img alt="image-20220802150731391" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1514173ff57010dba3ae3931e3768d6f-image-20220802150731391-20d47b.png" /></p>
+<p>输入驱动</p>
+<p>输出负载</p>
+<p>PVT（process、voltage、temperature）工艺、电压、温度</p>
+<p>寄生参数</p>
+<p><img alt="image-20220802151326030" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/4402668787aa7f1e7ec7d7acec344de8-image-20220802151326030-68c935.png" /></p>
+<p><img alt="image-20220802151403674" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/6d165c0ceae1d48d6934188a03fc2085-image-20220802151403674-0f6fc0.png" /></p>
+<p>DC不加约束也是可以运行的，但是得到的不能满足要求。</p>
+<p><img alt="image-20220802151855909" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/5d2789f4e68ffce847a3e96ed82fd736-image-20220802151855909-1c9acd.png" /></p>
+<p><img alt="image-20220802152023634" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/581eacfeeb7b43a574a97ddff308d990-image-20220802152023634-164fc3.png" /></p>
+<p>一般选择最差的情形去工作</p>
+<p><img alt="image-20220802152531004" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/06b697d13945e004e2c79688093cb5ec-image-20220802152531004-0563f6.png" /></p>
+<p>单位定义在工艺库中</p>
+<p><img alt="image-20220802152644623" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1b7038a9c82e56edadc54a566534a97c-image-20220802152644623-2f6ce5.png" /></p>
+<p>库里的单元的pin脚的电容值接到端口B</p>
+<p><img alt="image-20220802152926717" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/6c4437320389395745f1c7d950e7e719-image-20220802152926717-cfbdb3.png" /></p>
+<p>单元的延迟与其输入信号的转换时间（波形不是直来直去的）和输出负载有关。</p>
+<p><img alt="image-20220802153044081" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f11fcf021734564ae551566ed9f211e2-image-20220802153044081-f04315.png" /></p>
+<p><img alt="image-20220802153356871" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/8ca8027bb4c8b75edc287f110cb60119-image-20220802153356871-da6863.png" /></p>
+<p><img alt="image-20220802153455251" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/ec8f96e5ce5f6139b25ba1277eb799b7-image-20220802153455251-56c54e.png" /></p>
+<p><img alt="image-20220802153536690" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e63596c631c99f82b3bef6fef7ab947a-image-20220802153536690-fec598.png" /></p>
+<p><img alt="image-20220802153635396" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/cbd52825bdb433e3c3ab5fd1a5275020-image-20220802153635396-7462a3.png" /></p>
+<p><img alt="image-20220802153913747" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/8977c40ab44e957aa30c6370dd450615-image-20220802153913747-47a546.png" /></p>
+<p>DRC不能放松，Design rule check</p>
+<p><img alt="image-20220802154204433" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/95b09ee1796947000f4105130c46fef1-image-20220802154204433-1ee410.png" /></p>
+<p>PVT（工作条件）</p>
+<p><img alt="image-20220802154234433" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/6a2b227dd071b493b8dc39707ce89f47-image-20220802154234433-085ecb.png" /></p>
+<p><img alt="image-20220802154311554" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f62420eb349e3f4d2bfebca676500046-image-20220802154311554-884c51.png" /></p>
+<p><img alt="image-20220802154358828" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/0aae28d79f4ad99bbeee96c2077ab7da-image-20220802154358828-b962d7.png" /></p>
+<p><img alt="image-20220802154737253" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/cd45bcc9cd006f477d2dcb8d92ddca89-image-20220802154737253-5f168b.png" /></p>
+<p><img alt="image-20220802154802197" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c3f01a3a7f9a5be156c64af9b6dd24ea-image-20220802154802197-6abe69.png" /></p>
+<p>WLM线负载模型</p>
+<p><img alt="image-20220802155048612" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/acfe4ac6a9f05d98bf2527983a78bc8e-image-20220802155048612-64a57f.png" /></p>
+<p><img alt="image-20220802155207670" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/95af5993089fcb4f54e9315039b050de-image-20220802155207670-b24edf.png" /></p>
+<p>关掉自动选择线负载模型</p>
+<p><img alt="image-20220802155246904" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/04724a49bd7cd3513371d0fbbfe1b0ce-image-20220802155246904-0da2a9.png" /></p>
+<p><img alt="image-20220802155301569" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1f7e453be5f47c0aa589ed7d50a2a126-image-20220802155301569-426587.png" /></p>
+<p><img alt="image-20220802155655814" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/b1f1502ca4c0c9651657380c2ec96e48-image-20220802155655814-95a0d6.png" /></p>
+<p>再次跑的时候，直接跑.ddc文件即可，不用前两个步骤了</p>
+<p><img alt="image-20220802160650318" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e246067abad5edc4d7eacdfbd9b70ea8-image-20220802160650318-810119.png" /></p>
+<p><code>top.tcl</code></p>
+<p>重定向命令把执行<code>fsm_moore.tcl</code>的结果放到<code>compile.log</code>文件中，<code>-tee</code>输出到终端的同时输出到文件中。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>list_libs <span class="c1">#查看当前设计里有哪些工艺库</span>
+report_libscx_csm_18ic_ss_1p62v_125c <span class="c1">#查看该工艺库</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="lec6-synthesis-optimization-techniques">Lec6 Synthesis Optimization Techniques<a class="headerlink" href="#lec6-synthesis-optimization-techniques" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220802162824859" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c60a0c0648adaaca069735a35bc7a0ba-image-20220802162824859-018979.png" /></p>
+<p><img alt="image-20220802162835252" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1ef417dd13cc9b78e2f02d22ab85e381-image-20220802162835252-068b96.png" /></p>
+<p>一般用top-down的综合方式。
+<img alt="image-20220802163858037" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c45ae91cc94944262a26cfff51d06acc-image-20220802163858037-c16f56.png" /></p>
+<p><img alt="image-20220802163919248" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/998edd972fb8395206c50133d16ea94c-image-20220802163919248-a90514.png" /></p>
+<p><code>compile_ultra</code>会将模块打散，只能看到顶层。</p>
+<p><img alt="image-20220802164623217" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1cda52b449dab9f36f9144114edde39c-image-20220802164623217-95e137.png" /></p>
+<p>完整的准确的约束</p>
+<p><img alt="image-20220802164856731" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/6735a5cf6cf0f7180d0d1f7ec131b013-image-20220802164856731-abab3e.png" /></p>
+<p>结构级优化</p>
+<p>逻辑级优化</p>
+<p>门级优化</p>
+<p>满足时序并且最小化面积</p>
+<p><img alt="image-20220802165440487" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/448c75ba774fc8a68a3e10c490e3788d-image-20220802165440487-a2b3f3.png" /></p>
+<p>关键路径：延时最大的路径，做完了前面的优化，如果有路径延时很大，反过来会对关键路径再做优化。</p>
+<p><img alt="image-20220802165710328" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/ac2efe7257d16240e64dbbbd9d6257f7-image-20220802165710328-c91d3f.png" /></p>
+<p><img alt="image-20220802165955238" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e9112e985615b60b359d5ce7fa935349-image-20220802165955238-7513c4.png" /></p>
+<p>满足时序要求情况下最小化面积，时序是最重要的因素，时序优先级高于面积优先级。</p>
+<p><img alt="image-20220802170125582" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/e63973f82fa1ab4d80bf9bedd88f0b6d-image-20220802170125582-e0095a.png" /></p>
+<p><img alt="image-20220802170205231" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/7b3cf98c46927be34220e6eee210625a-image-20220802170205231-cd3ee2.png" /></p>
+<p><img alt="image-20220802170316698" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/9cdd9e0710d9e583f940447c192a07f4-image-20220802170316698-669097.png" /></p>
+<p>关键路径延迟比较大，DC多复制了一个与非门，用面积换取速度。</p>
+<p>单元的延迟与输入的转换时间和输出的负载有关。</p>
+<p><img alt="image-20220802170642447" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/61c227f25a2db648d3e51c376b9c342c-image-20220802170642447-c36bf6.png" /></p>
+<p>库分析</p>
+<p><img alt="image-20220802190202039" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/faf7247c26b3c633c24ae2629787a8f2-image-20220802190202039-e5df4e.png" /></p>
+<p><img alt="image-20220802190450879" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/98b9874078bfa72a30100db934fc563c-image-20220802190450879-995412.png" /></p>
+<p><img alt="image-20220802190502417" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/956e24022f13a69a234d2b5178e95a1e-image-20220802190502417-c044a7.png" /></p>
+<p><img alt="image-20220802190521745" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/cc4d080803b8c1b9774a6a98f1ce3527-image-20220802190521745-0f30f3.png" /></p>
+<p>边界优化，如果做了边界优化，信号名后会加BAR，DC做的改动在<code>default.svf</code>中，做形式验证时会需要这个文件。</p>
+<p><img alt="image-20220802193328528" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/ab24ea97af432c3683f0f07bf3f65ff5-image-20220802193328528-53f58c.png" /></p>
+<p>ungroup打散。</p>
+<p><img alt="image-20220802193424522" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/1123ac700412271f4de2273faf4a518d-image-20220802193424522-16e7ed.png" /></p>
+<p><img alt="image-20220802193438089" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/ba52b70269563ced3bfbee8c7fede04d-image-20220802193438089-9a5315.png" /></p>
+<p><img alt="image-20220802193808312" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/0cd75ae5ab64edecd1be1b30ee3c0152-image-20220802193808312-5888e0.png" /></p>
+<p><img alt="image-20220802193846609" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/d620f2c5407b5f089c15c8f4f34d4c0c-image-20220802193846609-f21749.png" /></p>
+<p><img alt="image-20220802194200810" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/c3d165de457dd0364fbb8617474f6ce0-image-20220802194200810-c3f5cd.png" /></p>
+<p>这个选项会将时序的优先级优于DRC，DC综合时有三个方面的要求：</p>
+<ul>
+<li>DRC，DRC是工艺厂商提出的要求，</li>
+<li>timing</li>
+<li>area</li>
+</ul>
+<p><img alt="image-20220802194535412" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/d4270b7941373790e374f8ff496c4d7b-image-20220802194535412-41f732.png" /></p>
+<p><img alt="image-20220802194644325" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/4f012ae1d6342acd63e2dcc4bf58b36e-image-20220802194644325-123a24.png" /></p>
+<p><img alt="image-20220802195350780" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/8716924a5cd889505c50ab6c5f6f11e4-image-20220802195350780-6a1648.png" /></p>
+<p>这几种电路的转换实现的电路时序、功能等价</p>
+<p><img alt="image-20220802195630512" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/dd92cf3ed8c677cf64e11b306d617714-image-20220802195630512-944d4f.png" /></p>
+<p><img alt="image-20220802195712634" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f06038ab8e80cbe9379e814b4ed438c1-image-20220802195712634-aa6d54.png" /></p>
+<p><img alt="image-20220802195726141" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/df60b30f221edc3bd7b914dcc3eda8b8-image-20220802195726141-b54ff7.png" /></p>
+<p><img alt="image-20220802195810157" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/3840a6b113c063748c3fc2209baa3995-image-20220802195810157-380289.png" /></p>
+<p>DC默认会对关键路径做优化，关键路径是同一路径组里表现最差的路径。把路径分成若干路径组，分别对不同路径组里的关键路径做优化。</p>
+<p><img alt="image-20220802200318714" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/f80e54fa804508ce0093bc04d3b0d905-image-20220802200318714-1e69e4.png" /></p>
+<p><img alt="image-20220802200513788" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/21a047b520d63e4469a9ea2a1cc60d08-image-20220802200513788-4c56b2.png" /></p>
+<p><img alt="image-20220802200525606" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/41f7b00af5fd0f03a544b903390f014d-image-20220802200525606-31a291.png" /></p>
+<p><img alt="image-20220802200554134" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/dd0afcc0361d510abddb1f74c656c51d-image-20220802200554134-0479a9.png" /></p>
+<p><img alt="image-20220802200726672" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/81de65bd2997555508ea6dae1d3481bd-image-20220802200726672-f2f94b.png" /></p>
+<p>权重从1到5，最差的给5</p>
+<p><img alt="image-20220802200855164" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/7822dfa18379bbfd7be9690aa4035990-image-20220802200855164-27bdd9.png" /></p>
+<p><img alt="image-20220802201226876" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/02/9e30a7069bf0469ebf25aed7fbbd538a-image-20220802201226876-818308.png" /></p>
+<p><img alt="image-20220803082329246" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2704caa0695c3d08b21c29c3b6517437-image-20220803082329246-8f3916.png" /></p>
+<p>时钟周期确定，寄存器和寄存器之间的延时确定下来了。</p>
+<p><img alt="image-20220803082738802" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/54e87e45bedcb1402143cdc492a988d0-image-20220803082738802-164e6a.png" /></p>
+<p>一个D触发器需要八、九个与非门，插入寄存器，以面积换取性能。</p>
+<p>划分流水线太多，初始延时（initial delay）比较大，面积也比较大。</p>
+<p><img alt="image-20220803083106768" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/56c86883d25afe86ad00c19dd128dee6-image-20220803083106768-6a50a0.png" /></p>
+<p><img alt="image-20220803083143496" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/09bebfa8754d591e541c7d090d67f8c1-image-20220803083143496-c08a7a.png" /></p>
+<p>这个命令用来优化流水线寄存器的，-retime对一般寄存器优化，把每一级的延迟调的差不多，逻辑挪一挪</p>
+<p><img alt="image-20220803083349485" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/cda76f1e6162e0577e330ce8f672bdea-image-20220803083349485-1981de.png" /></p>
+<p><img alt="image-20220803083712173" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/9eb6602843720af1f4047df5d6b51a3f-image-20220803083712173-bbb6af.png" /></p>
+<p><img alt="image-20220803083818488" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/6210ca4b75c762b948607b7675815c97-image-20220803083818488-3892e0.png" /></p>
+<p><img alt="image-20220803083850825" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/fda4c9c9a73d20e764d12ec6671790bb-image-20220803083850825-b1a391.png" /></p>
+<p><img alt="image-20220803083944338" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/89abcddc15f7add88da0ea1f40dbcfcf-image-20220803083944338-828cf4.png" /></p>
+<p>为了保持寄存器输出，设定某一个寄存器不可以做<code>-retime</code>的优化调整。组合逻辑输出相对于寄存器输出毛刺比较多，在做<code>set_input_delay</code>和<code>set_output_delay</code>时比较容易做时序的预算，</p>
+<p><img alt="image-20220803084250443" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/e2253f0ed4c56b4f252a7274af10a57d-image-20220803084250443-055aa8.png" /></p>
+<p><code>report_host_options</code></p>
+<p><img alt="image-20220803084448985" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/c5cc7a4efc2529e701a52d3f5bda828f-image-20220803084448985-0c2bca.png" /></p>
+<p><img alt="image-20220803084516358" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/6663302bd66579c9c0ae2bdaa6525de7-image-20220803084516358-6e82e2.png" /></p>
+<p><img alt="image-20220803084532831" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/0e50bf0737fe1753e0a8800a1621d90c-image-20220803084532831-4387ff.png" /></p>
+<p><img alt="image-20220803084600696" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/4c8323479043194a027c12c410071a26-image-20220803084600696-5c9a9c.png" /></p>
+<p><img alt="image-20220803084612019" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/a849abcafabf4b1f3f77fca6e523ff0c-image-20220803084612019-6484e5.png" /></p>
+<p>DRC设计规则违规是最重要的，一定不可以，其次是timing违规，最后是area违规。</p>
+<p><img alt="image-20220803084920398" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/a846c314c63cf68678ecb7bd51c4a762-image-20220803084920398-fedb34.png" /></p>
+<p><img alt="image-20220803085146620" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/d719b8411a8cd722d968803591098a88-image-20220803085146620-4db5a7.png" /></p>
+<p>增量编译</p>
+<p><img alt="image-20220803085301839" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/9026f0e969006d4662940ce902299ae0-image-20220803085301839-16b1b0.png" /></p>
+<p><img alt="image-20220803085425544" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/8ccf6b9388b5f4a5375e0fe96c0108f7-image-20220803085425544-e250c8.png" /></p>
+<p><img alt="image-20220803085528901" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/a5f6cd9a7023561b18e6439a94df0424-image-20220803085528901-cae010.png" /></p>
+<p><img alt="image-20220803090038279" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/06fe4e4dd517c5b7a1c2d4d0dfa44b6e-image-20220803090038279-ea8a21.png" /></p>
+<p>资源共享</p>
+<p><img alt="image-20220803091110519" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/6fea2b2acff087e3cd5c5978b0e38ff9-image-20220803091110519-a7c1f9.png" /></p>
+<p>当前的代码延时大于之前的</p>
+<p><img alt="image-20220803091331167" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3ebd035ae1e3c39fa2c74454817c36a5-image-20220803091331167-5e31bd.png" /></p>
+<p><img alt="image-20220803091421342" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/d13e4120db58b5802b800aaaacc5e0d4-image-20220803091421342-9bb8be.png" /></p>
+<p><img alt="image-20220803091539041" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/0a5654ca753f1adf2bd6e6bfac1825d4-image-20220803091539041-3e6512.png" /></p>
+<p><img alt="image-20220803091737014" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/33a2e082bd7f708ce411c47f44506206-image-20220803091737014-f4aecf.png" /></p>
+<p><img alt="image-20220803092116029" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/ec3535b03a4e70c39c4ab66b568d2931-image-20220803092116029-34a3a1.png" /></p>
+<p><img alt="image-20220803092140278" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/8b0520d4ced1825c33fac0d73376ea9b-image-20220803092140278-281c38.png" /></p>
+<p><img alt="image-20220803093125322" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/6cfcc26432011eac7121403c0b0011a2-image-20220803093125322-02d609.png" /></p>
+<p><img alt="image-20220803093229813" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/d7a63999436dcf94e2fbeeaafb555d22-image-20220803093229813-c309c9.png" /></p>
+<p><img alt="image-20220803093330489" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2931457a8c355a9b93eadb3c292f1f2c-image-20220803093330489-f046d3.png" /></p>
+<p><img alt="image-20220803093339954" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/f76cce8f323a3e2a98c2d206f716a836-image-20220803093339954-7533a8.png" /></p>
+<p><img alt="image-20220803093401514" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3c63285f24b2180d4c4a6fc8d83edf6b-image-20220803093401514-b680fa.png" /></p>
+<p><img alt="image-20220803093419440" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/d233d1168c83996a3665d36900d8081b-image-20220803093419440-2ea7b0.png" /></p>
+<p><img alt="image-20220803093431236" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/edb8ae8636cef6a7c0f1276dfd87a975-image-20220803093431236-fc330e.png" /></p>
+<p><img alt="image-20220803093448084" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/dbfa5e0fdec958a79f26696ef400126d-image-20220803093448084-836c99.png" /></p>
+<p>DFT测生产缺陷</p>
+<p>自动测试生成器</p>
+<p><img alt="image-20220803093732360" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/982c56a7011d03eea0e5030c7bff72db-image-20220803093732360-c00d08.png" /></p>
+<p><img alt="image-20220803093855045" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/14285e8314b9a2bcbf6771a6f6bc5d77-image-20220803093855045-eb9a14.png" /></p>
+<p>与非门输入端接1，或非门接1。DFT是将生产过程中产生的一些短路、开路测试出来。DFT怎样将激励向量送进去，怎样将测到的结果挪出来。</p>
+<p><img alt="image-20220803095648845" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/e60d3601ae3937f6a29ab35c973f6c40-image-20220803095648845-e2c483.png" /></p>
+<p><img alt="image-20220803095711860" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b57a7289847652c7a17e54c1f533b55a-image-20220803095711860-502a20.png" /></p>
+<p><img alt="image-20220803095734843" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/4d3873ecd60aedf5f15ba1d6223636c2-image-20220803095734843-a1bba7.png" /></p>
+<p><img alt="image-20220803095747909" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/a3186b6533f96b5fed4d2503bb4b152c-image-20220803095747909-cc00f6.png" /></p>
+<p><img alt="image-20220803100629492" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/990f053bd4ea54172d97882f11641d44-image-20220803100629492-085e37.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>report_timing -delay_type max <span class="c1">#查看最差的路径</span>
+report_path_group <span class="c1">#查看当前不分组的路径组，默认是一个路径组</span>
+ungroup -flatten -all <span class="c1">#打散后就只有一个顶层了</span>
+compile -scan <span class="c1">#加上扫描链，看一下加上mux的寄存器能不能满足做DFT的时序要求</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="lec7-timing-analysis">Lec7 Timing Analysis<a class="headerlink" href="#lec7-timing-analysis" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220803102325607" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/042156f945f4a6b7e0cde7b32b31f47c-image-20220803102325607-356bd0.png" /></p>
+<p><img alt="image-20220803102358094" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/e3c37a2a54da8279254cb19d432e1abf-image-20220803102358094-9c5261.png" /></p>
+<p><img alt="image-20220803102410679" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b37b985a97ea0ff6fc9b013555958a48-image-20220803102410679-328153.png" /></p>
+<p><img alt="image-20220803102521113" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/889bb15cb74d14964ac41cfa60eecb74-image-20220803102521113-836577.png" /></p>
+<p>DC内部集成了时序分析的功能，有更加专业的Prime time时序分析工具。</p>
+<p>check_timing综合之前检查约束是否完整，report_timing在综合之后检查网表有没有时序问题。</p>
+<p><img alt="image-20220803102926932" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/51d27f288a2f534900626efca4dade7e-image-20220803102926932-db1331.png" /></p>
+<p><img alt="image-20220803103043167" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/6e3010455ea060110c926631a96e981e-image-20220803103043167-dc1994.png" /></p>
+<p><img alt="image-20220803103354819" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b75435bbce4a05ca5850a43106008829-image-20220803103354819-020d3a.png" /></p>
+<p><img alt="image-20220803103616160" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/33b5221a17b9e35101eeec74e3b08c2e-image-20220803103616160-804a7a.png" /></p>
+<p><img alt="image-20220803103806965" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/7a548e9ad9634f42314e285bbc468220-image-20220803103806965-ff5a96.png" /></p>
+<p><img alt="image-20220803103937232" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/80930bf0efd1a9aa8810ace420fd36c8-image-20220803103937232-72973b.png" /></p>
+<p>不加上<code>-input_pins</code>选项将线延迟和单元延迟加在一起显示，加上该选项则将线延迟和单元延迟分别显示。</p>
+<p><code>-nets</code>报告连线上挂载的负载个数</p>
+<p><code>-significant_digits_number</code>报告小数点之后的位数，最多是13位。</p>
+<p><img alt="image-20220803104532447" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/bcba31b9be0ea87f5a0adcb21c39039b-image-20220803104532447-b11660.png" /></p>
+<p><img alt="image-20220803104555375" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b164469aa00d8e46b0527d218c45d558-image-20220803104555375-600b6b.png" /></p>
+<p><code>report_timing -max_paths 2</code> 针对路径组里的路径，不只看一条。</p>
+<p><code>-nworst 2 -max_paths 2</code> 所有路径里看最差的两条。</p>
+<p><img alt="image-20220803105222998" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/af97ac6e118ae92535560db583a44e9d-image-20220803105222998-de5098.png" /></p>
+<p><img alt="image-20220803105437714" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/414a851661d0e1306200a1e25962ed6f-image-20220803105437714-7dc5a0.png" /></p>
+<p><img alt="image-20220803105846204" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3faf2badb49479e062bece5d3d2e9079-image-20220803105846204-a18574.png" /></p>
+<p><img alt="image-20220803105931512" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/809ef82e757b8f91a8ce929e40987274-image-20220803105931512-86f8b7.png" /></p>
+<p><img alt="image-20220803110015246" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/4b3096c220eddbde5a7b4b63f4dc3268-image-20220803110015246-7f66fa.png" /></p>
+<p><img alt="image-20220803110037846" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b2acd24b9e2d00c1cb6cc46312a6a586-image-20220803110037846-f11dc8.png" /></p>
+<p><img alt="image-20220803110055073" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/9ae92c1363b0df7aafeeab8572cfc724-image-20220803110055073-c9e13b.png" /></p>
+<p><img alt="image-20220803110104720" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/ce56539f7a80e6392662cb4a236ca23c-image-20220803110104720-02492c.png" /></p>
+<p><img alt="image-20220803110150148" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/a33a446ba53c0e93fb32ee922ec01ccf-image-20220803110150148-732b8d.png" /></p>
+<p><img alt="image-20220803110425288" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/02b9c644c976f69c20494af46bc5119f-image-20220803110425288-4d5339.png" /></p>
+<p>路径属于哪个CLK控制，就属于哪个CLK路径组。</p>
+<p><img alt="image-20220803110711077" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/46e360bd39a88cdfe322b9d76221e46f-image-20220803110711077-c263f3.png" /></p>
+<p><img alt="image-20220803110823513" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/23d98d98fec4b3d8e20a0967ddcb781d-image-20220803110823513-b2c068.png" /></p>
+<p><img alt="image-20220803111017430" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/09f9fe00b841da28a0004ad576d6aca8-image-20220803111017430-babd0f.png" /></p>
+<p>单元延迟（cell delay）：根据非线性延迟模型，取决于输入信号的转换时间，输出信号的负载。</p>
+<p>线延迟（net delay）：线负载模型（更粗略的东西，统计出来的东西，相对来说并不准确），拓扑结构模型</p>
+<p><img alt="image-20220803111259011" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2b2573ff53afa1b56129c11b3c24cc81-image-20220803111259011-0aa97a.png" /></p>
+<p>计算上升延迟，下降延迟，这两个延迟是不一样的。</p>
+<p><img alt="image-20220803111644707" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/7276b19d525a5df36f7fde71564b27f2-image-20220803111644707-1db3b0.png" /></p>
+<p>report_timing -loops 显示有没有组合逻辑环</p>
+<h2 id="lec8-additional-constraint-options">Lec8 Additional Constraint Options<a class="headerlink" href="#lec8-additional-constraint-options" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220803112729521" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/94e28888f4a841a910b5b1e37cb56997-image-20220803112729521-505cc6.png" /></p>
+<p><img alt="image-20220803112804529" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/68dee3c2d5c0c9b65c99be1c296a6e8e-image-20220803112804529-d91f25.png" /></p>
+<p><img alt="image-20220803113147492" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/12/e17ed7b995faa7cfe785950760cf272c-image-20220803113147492-fde914.png" /></p>
+<p><img alt="image-20220803113210823" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/836e8211d31c646d866c6ad79c11f43e-image-20220803113210823-13c8a7.png" /></p>
+<p><img alt="image-20220803144422108" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/38edc5db0e526b08b02505184a4b9cda-image-20220803144422108-941d5a.png" /></p>
+<p><img alt="image-20220803144453332" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/e83f959d7221f044c5059bd7c0969b94-image-20220803144453332-b3d75e.png" /></p>
+<p><img alt="image-20220803144538071" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/0e9171732fcf72f1bc3b8d14a9330164-image-20220803144538071-327065.png" /></p>
+<p>初始偏移量，不推荐这样做。</p>
+<p><img alt="image-20220803144626466" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/68f9aca8c2e3ab4524ec6f782b2d1679-image-20220803144626466-2940f8.png" /></p>
+<p><img alt="image-20220803145037385" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/0f5191ad2bc8f30194bb502e1b283808-image-20220803145037385-e51308.png" /></p>
+<p><img alt="image-20220803145109569" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/f7819078a13da3fe819245a8918ceec0-image-20220803145109569-f7db63.png" /></p>
+<p>写脚本约束的过程就是为芯片建模的过程。</p>
+<p><img alt="image-20220803145341430" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/37f2defeb75e3812791ad5747ace01c3-image-20220803145341430-421d91.png" /></p>
+<p>默认是相对于参考时钟的上升沿，<code>-clock_fall</code>选项是相对于时钟的下降沿。</p>
+<p><img alt="image-20220803145655767" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/4e7a2f7630ebe48d3017d6d8e6651ef6-image-20220803145655767-e8d265.png" /></p>
+<p><img alt="image-20220803145720923" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/c2ebabccf86786ed387306745a9f0ff4-image-20220803145720923-953d1e.png" /></p>
+<p><code>-add_delay</code>选项说明A端口不只有一条约束，两条约束作比较，DC选择更紧的约束，如果不加，默认会用后一条覆盖前一条约束。</p>
+<p><img alt="image-20220803150211454" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3b16e7d7011746618c89f2f1b1db0d77-image-20220803150211454-a25fab.png" /></p>
+<p><img alt="image-20220803150319228" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/11d48ae57c4468a44f3b944134b74db7-image-20220803150319228-17e3dd.png" /></p>
+<p><code>set_driving_cell</code>给实际的时钟增加了Incremental delay。</p>
+<p><img alt="image-20220803150632696" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/1285199865fb0f7f5dc0ec6af0d04e16-image-20220803150632696-736fee.png" /></p>
+<p><img alt="image-20220803150747870" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/1de909eba191354fd9fd7323cc604d6b-image-20220803150747870-c3a69b.png" /></p>
+<p><img alt="image-20220803151016627" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/83cf5fd56b08dc9e76070d44a8e57298-image-20220803151016627-8d6c30.png" /></p>
+<p>下面的路径是下降沿触发的，上面的是上升沿触发。</p>
+<p><img alt="image-20220803151209335" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b8a461313a5ed5ba25a88312d6615924-image-20220803151209335-ecd663.png" /></p>
+<p><img alt="image-20220803151320710" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/69aefa6c3020200a91db51dec02a6a07-image-20220803151320710-6ccc1a.png" /></p>
+<p><img alt="image-20220803151554302" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/00abaa0577c38dfc401f586fd1719db3-image-20220803151554302-9437e0.png" /></p>
+<p><img alt="image-20220803151916439" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3bd45fc6fae1753592d556bc11d36f36-image-20220803151916439-95ca4a.png" /></p>
+<p>tcl命令：</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>open data.txt w+ <span class="c1">#以写的方式打开data.txt文件，“+”表示如果不存在，则创建一个新文件。</span>
+open和close一定是成对使用的
+proc#子程序的关键字
+</code></pre></div></td></tr></table></div>
+<h2 id="lec9-multiple-clocks-and-exceptions">Lec9 Multiple Clocks and Exceptions<a class="headerlink" href="#lec9-multiple-clocks-and-exceptions" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220803155806024" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/4fd8e4579180ffa9f84a2d14884ece87-image-20220803155806024-023f35.png" /></p>
+<p><img alt="image-20220803155819955" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/38140199601b53ed13bd3099eda2802f-image-20220803155819955-143e10.png" /></p>
+<p><img alt="image-20220803155852004" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/9881a516d6c2bb16ea9848b2eb94ae30-image-20220803155852004-096d88.png" /></p>
+<p><img alt="image-20220803155921597" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/750d54a7c2844262a3322192398ccb1e-image-20220803155921597-30567c.png" /></p>
+<p><img alt="image-20220803155935519" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/15dbd4937116d9575f498a6cd18558d8-image-20220803155935519-f675ae.png" /></p>
+<p>同步时钟，多个时钟由一个时钟源分频得到。</p>
+<p><img alt="image-20220803160220469" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/1b4bdbb37f22c4819df96ce61f5e6489-image-20220803160220469-467cd8.png" /></p>
+<p>虚拟时钟需要指定名字，输入延迟要指代参考时钟</p>
+<p><img alt="image-20220803160459425" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/ab31a05da1a50a507b2e4a2a1953cc2a-image-20220803160459425-6ae846.png" /></p>
+<p><img alt="image-20220803161602536" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/5472107c318ca74f2ca491a55b964008-image-20220803161602536-a68202.png" /></p>
+<p>两个时钟上升沿之间最短的延时</p>
+<p><img alt="image-20220803161746927" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/70a5629df48cf5ebd0645083d9f4776d-image-20220803161746927-660004.png" /></p>
+<p><img alt="image-20220803162016325" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/17bd4ea050bbab24cfcee7a7771cb9ee-image-20220803162016325-92f293.png" /></p>
+<p><img alt="image-20220803164121157" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/f17099f60706790919e4e689a5c5009e-image-20220803164121157-39f916.png" /></p>
+<p><img alt="image-20220803164506298" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/c3b50b70e91e8167321647e76b1fbd3d-image-20220803164506298-079150.png" /></p>
+<p><img alt="image-20220803165143939" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/351644298c4add1bc3fa02db5b938b0f-image-20220803165143939-eb855a.png" /></p>
+<p><img alt="image-20220803165218522" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2221669a94b5b2c44a6dbbb5d93a1a39-image-20220803165218522-9ed39f.png" /></p>
+<p><img alt="image-20220803165334869" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/802fc13d93558af5ba4b655c6bb7c32c-image-20220803165334869-fc41fe.png" /></p>
+<p>逻辑互斥，逻辑伪路径，交叉的两条路径虽然存在，但是逻辑上实际上不会存在，DC不必去做优化，优化是没有意义的。</p>
+<p><img alt="image-20220803184139731" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/bc4d9f85a67a2d6f7531f26f778fe8cf-image-20220803184139731-990f56.png" /></p>
+<p><img alt="image-20220803184304238" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2337e207121c365b21cc897859596b00-image-20220803184304238-1f03ad.png" /></p>
+<p>前面的路径依然会优化，靠近输出端口的路径不做优化。</p>
+<p>不会出现２.３.的时钟组合。</p>
+<p><img alt="image-20220803184450165" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/714f51d83de09990c616e814ad6d29cb-image-20220803184450165-f6360b.png" /></p>
+<p><img alt="image-20220803184705149" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/1c2a1f076c3988c39b8ffa7c9154743e-image-20220803184705149-93aa80.png" /></p>
+<p><img alt="image-20220803185202288" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/d65f78df024cb25bc14430a5d0ab62a4-image-20220803185202288-48f35e.png" /></p>
+<p>第５行告诉DC默认允许多个clk，默认是１个。</p>
+<p><img alt="image-20220803185843255" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/c850b30b0eba5366899e6b2794175eee-image-20220803185843255-2ca1f9.png" /></p>
+<p>两个时钟，来自不同的时钟源</p>
+<p><img alt="image-20220803190136813" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/62a8912ea3b2c8300b56636bcbabc244-image-20220803190136813-60841f.png" /></p>
+<p>告诉DC两个时钟是异步时钟，不需要DC做优化，手工来。</p>
+<p><img alt="image-20220803190413387" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/957d0a5209ed50298bbc2ae51d43da4c-image-20220803190413387-42e4df.png" /></p>
+<p><img alt="image-20220803190828549" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/25b57257917f4d1a9532229acbaf23e9-image-20220803190828549-da5537.png" /></p>
+<p>hold time 的检查：寄存器、寄存器之间的所允许的最小延时的检查。</p>
+<p>setup time 的检查：寄存器、寄存器之间的所允许的最大延时的检查。</p>
+<p>寄存器寄存器之间的逻辑并不是越简单越好，有的时候要插入buffer。</p>
+<p><img alt="image-20220803191528805" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/f2e1fc6dc1192d5c2ee34c7ff74cd25c-image-20220803191528805-6808f2.png" /></p>
+<p><img alt="image-20220803191759889" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/52cc516b42d4e8176f4f6e7064632e96-image-20220803191759889-d6c4ad.png" /></p>
+<p><img alt="image-20220803194617849" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/902e8d77769429077b47faf71443abc8-image-20220803194617849-1b7d8a.png" /></p>
+<p><img alt="image-20220803194636103" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2d5045387521e1d95795568415aeb285-image-20220803194636103-8c4986.png" /></p>
+<p><img alt="image-20220803194726673" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/29b6ca675b7cafb47f19a93b84723f95-image-20220803194726673-c807ba.png" /></p>
+<p><img alt="image-20220803194744398" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/df45c4639ae18979d79f1c352605e98f-image-20220803194744398-95eaa5.png" /></p>
+<p><img alt="image-20220803194755412" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/0ef80982fae21d0252a03aa15fca539a-image-20220803194755412-db1725.png" /></p>
+<h2 id="lec10-conclusion">Lec10 Conclusion<a class="headerlink" href="#lec10-conclusion" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220803200344887" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/06e830783582630f7d70e77adaea334b-image-20220803200344887-bed99c.png" /></p>
+<p><img alt="image-20220803200851008" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/18c73a7dd0014911a2d7229a1044e172-image-20220803200851008-aef0c6.png" /></p>
+<p><img alt="image-20220803200903419" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/815b5b18951af1c6351bbd1d35643a51-image-20220803200903419-150b7b.png" /></p>
+<p><img alt="image-20220803200914225" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/53d14e232cde22134b9dea504d112e51-image-20220803200914225-9d8cc8.png" /></p>
+<p><img alt="image-20220803201256411" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/e53340526c94528ac61a5b7ef1519612-image-20220803201256411-49e0e8.png" /></p>
+<p><img alt="image-20220803201401812" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/04fc32938b267c678d190fddebd2d3eb-image-20220803201401812-fd8114.png" /></p>
+<p><img alt="image-20220803201446782" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/b9849519da2a763e6fe85053d65e95bc-image-20220803201446782-216473.png" /></p>
+<p>两个输入端都是理想的，输出才是理想的。</p>
+<p><img alt="image-20220803201601521" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/f2385f285213e7abcac9c3d54d52fe23-image-20220803201601521-f42791.png" /></p>
+<p><code>set_idea_network</code>一般是针对port或pin的，针对net设置，则说明驱动net的port或者pin是idea的。</p>
+<p><img alt="image-20220803203729264" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/86d2156e1922899627cac687ddffc66c-image-20220803203729264-9e1ae1.png" /></p>
+<p><img alt="image-20220803203917348" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/70871edb734c76c99d8f1a854a7d1bbc-image-20220803203917348-317b86.png" /></p>
+<p><img alt="image-20220803204529377" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/bdd670dcb94e4a627d387646ec799052-image-20220803204529377-88fb07.png" /></p>
+<p>从DC中得到的文件。</p>
+<p><img alt="image-20220803204709757" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/2b02cd1b291010e3eb8a175fc0c4fbdb-image-20220803204709757-53138d.png" /></p>
+<p><img alt="image-20220803204755822" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/50948af9e92395a78315d12b17148805-image-20220803204755822-804de4.png" /></p>
+<p><img alt="image-20220803204841393" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/76b4f64c167ac938ea0049e75eaea58a-image-20220803204841393-607be3.png" /></p>
+<p><img alt="image-20220803204850863" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/7e95f780432c61a8f6ac426c4bc07381-image-20220803204850863-2b38ae.png" /></p>
+<p>一般来说，rtl中只允许出现wire/reg/integer/genvar的数据类型。</p>
+<p><img alt="image-20220803205117567" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/efaf3ba79eab6e182e82dd0270ba132a-image-20220803205117567-720970.png" /></p>
+<p>在综合之前增加下列选项避免多端口连线，下列情况都叫多端口连线。</p>
+<p><img alt="image-20220803205320011" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3bee70c19d32577d640a9e3d4b22c67e-image-20220803205320011-f39e3c.png" /></p>
+<p><img alt="image-20220803205514281" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/3575c560f9f07313fea6e3a29adead33-image-20220803205514281-754e02.png" /></p>
+<p><img alt="image-20220803205624293" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/8eca2e75e4c0643fd24c38449867d1d9-image-20220803205624293-8ed3eb.png" /></p>
+<p>网表里的特殊字符</p>
+<p><img alt="image-20220803205916768" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/c9f7f768f310cf455326995e948a3950-image-20220803205916768-748844.png" /></p>
+<p><img alt="image-20220803210136044" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/1a281708e44384b987add73434c7ce58-image-20220803210136044-5809f8.png" /></p>
+<p>这个命令一般在compile之后，write命令之前。</p>
+<p><img alt="image-20220803210301711" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/08/03/9ec944f0fccb1a6c7cab371c2dd17263-image-20220803210301711-c0a08f.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>set_isolate_ports -type buffer <span class="o">[</span>get_ports q_o<span class="o">]</span> <span class="c1">#在输出端口插入缓存单元，将输出端口和内部电路隔离开。当出现反馈结构，输出端口会影响综合结果。</span>
+</code></pre></div></td></tr></table></div>
+                
+                  
+                
+              
+              
+                 
+ 
+ 
+<!-- <hr><blockquote class="page-copyright">
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="https://github.com/WWeiying/edit/master/docs/cpu/数字逻辑综合实践笔记.md" title="编辑此页" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors">OI-wiki</span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a></strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote> -->
+
+
+<h2 id="__comments" data-no-instant>评论</h2>
+<form id="gitalk-form" onsubmit="return!1" data-no-instant>
+<div id="gitalk-container" data-no-instant>
+</div>
+</form>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    id: 'DC逻辑综合实践笔记',
+    owner: 'WWeiying',
+    repo: 'WWeiying.github.io',
+    admin: ['WWeiying'],
+    clientID: 'd3dc000b2047f49b2bd8',
+    clientSecret: 'b20c67ecf9762b0de64976355994ac758d506962',
+    distractionFreeMode: false,
+    pagerDirection: 'first'
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<script>function scrollFunction(){20<document.body.scrollTop||20<document.documentElement.scrollTop?document.getElementById("myBtn").style.display="block":document.getElementById("myBtn").style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollFunction()}</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="Verdi课程笔记" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Verdi课程笔记
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../algorithm/cplus/" title="C++" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                C++
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2022 WWeiying
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+        <div id="miitbeian"></div>
+      </div>
+      
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：, 2022-10-13</a></span>
+      <script>
+        /* miitbeian */
+        if (window.location.hostname == "oi-wiki.com") {
+          document.getElementById("miitbeian").innerHTML = `<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>`;
+        }
+        /* Easter Egg */
+        console.log(`%c OI Wiki %c  %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        console.log('少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org');
+      </script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.411a9f9f.js"></script>
+      <script>app.initialize({version:"1.3.1",url:{base:"../.."}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+      
+        <script src="../../_static/js/extra.js?v=16"></script>
+      
+        <script src="../../assets/vendor/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../_static/js/baidu_tongji.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1138 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//search.oi-wiki.org">
+      <link rel="dns-prefetch" href="//api.github.com">
+      <link rel="dns-prefetch" href="//www.google-analytics.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Record mathematics, Programs and Engineering">
+      
+      
+        <link rel="canonical" href="https://www.wweiying.top/cpu/VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+      
+      
+        <meta name="author" content="Weiying">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../favicon/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>VCS课程笔记 - Record mathematics, Programs and Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.6f7cfa25.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.27508f0e.js"></script>
+    
+    
+      
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/vendor/material-icons/iconfont/material-icons.css">
+    
+      <link rel="manifest" href="../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css?v=13">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "G-BQRVKTPNPP", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#verilog-simulation-event-queueverilog" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-header-nav__button md-logo">
+          
+            <img src="../../favicon/favicon-256x256.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Record mathematics, Programs and Engineering
+            </span>
+            <span class="md-header-nav__topic">
+              
+                VCS课程笔记
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          开始
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../ysyx/" class="md-tabs__link md-tabs__link--active">
+          CPU设计
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../algorithm/cplus/" class="md-tabs__link">
+          算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../experience/linux/" class="md-tabs__link">
+          走过的坑
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-nav__button md-logo">
+      
+        <img src="../../favicon/favicon-256x256.png" width="48" height="48">
+      
+    </a>
+    Record mathematics, Programs and Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开始
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开始
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/news/" title="行业观察" class="md-nav__link">
+      行业观察
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/stars/" title="网站和工具" class="md-nav__link">
+      网站和工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../todolist/2022M5/" title="Todolist" class="md-nav__link">
+      Todolist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/format/" title="格式" class="md-nav__link">
+      格式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CPU设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CPU设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ysyx/" title="一生一芯" class="md-nav__link">
+      一生一芯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="VCS课程笔记" class="md-nav__link md-nav__link--active">
+      VCS课程笔记
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="Verdi课程笔记" class="md-nav__link">
+      Verdi课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" title="DC逻辑综合实践笔记" class="md-nav__link">
+      DC逻辑综合实践笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/cplus/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/algorithm/" title="数据结构" class="md-nav__link">
+      数据结构
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      走过的坑
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        走过的坑
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/git/" title="git" class="md-nav__link">
+      git
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/WWeiying/edit/master/docs/cpu/VCS课程笔记.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <p>课程地址：<a href="https://www.bilibili.com/video/BV1Y3411Y7Um?spm_id_from=333.337.search-card.all.click">数字IC设计之仿真工具synopsys VCS -降噪版_哔哩哔哩_bilibili</a></p>
+<h2 id="verilog-simulation-event-queueverilog">Verilog Simulation Event Queue（Verilog 仿真事件队列）<a class="headerlink" href="#verilog-simulation-event-queueverilog" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220514110820167" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/379e09d1c5ccec4531482154aeb56bc6-image-20220514110820167-c8a62a.png" /></p>
+<p>仿真器基于Verilog语言标准的</p>
+<p>用软件模拟硬件的并发性，不同仿真器执行同一层的事件顺序是不同的，IEEE1364不可能定义得这么详细，不同厂商有不同理解和设计。</p>
+<p><img alt="image-20220514111154914" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a8dc17b6b877589eac494c41b01be336-image-20220514111154914-bd7cf7.png" /></p>
+<p><img alt="image-20220514111808329" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/9c97adf3d9b5ee08483a23e4483229d7-image-20220514111808329-7ac05f.png" /></p>
+<h1 id="000inactive-region">0语句和不加#0的语句在不同区执行，#0语句在inactive region执行。<a class="headerlink" href="#000inactive-region" title="Permanent link">&para;</a></h1>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">vcs</span><span class="w"> </span><span class="o">+</span><span class="n">v2k</span><span class="w"> </span><span class="n">xx</span><span class="p">.</span><span class="n">v</span><span class="w"> </span><span class="o">-</span><span class="n">debug_all</span><span class="c1">//支持Verilog-2001</span>
+<span class="c1">//simv是一个二进制可执行文件，编译产生的，仿真就是在执行这个文件</span>
+<span class="p">.</span><span class="o">/</span><span class="n">simv</span><span class="w"> </span><span class="o">-</span><span class="n">gui</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="c1">//启动GUI界面，后台启动</span>
+</code></pre></div></td></tr></table></div>
+<p>modelsim和VCS都是编译型仿真器，解释性仿真器边解释边执行，类似于脚本执行。在modelsim中，得到的结果和vcs不同，没有对错之分，是基于厂商不同的理解，同一厂商同软件不同版本的执行结果也有可能不同。</p>
+<p>always时序逻辑不建议使用阻塞赋值，不允许使用#0赋值。</p>
+<p>避免latch，always用*号。</p>
+<h2 id="lab1-vcs">Lab1 VCS仿真基础<a class="headerlink" href="#lab1-vcs" title="Permanent link">&para;</a></h2>
+<h3 id="vcs">vcs介绍<a class="headerlink" href="#vcs" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514113242162" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/2b928caadd51e92f4e925c90ae9a90a1-image-20220514113242162-1ed0d9.png" /></p>
+<p><img alt="image-20220514113303146" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/63060e9fafe706bd49101dd46f00fb1d-image-20220514113303146-d19cc5.png" /></p>
+<p><img alt="image-20220514113409659" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/31edca05e0c02bc1a051289baed98c57-image-20220514113409659-b8f9cb.png" /></p>
+<p>后仿真：gate-level regression，与工艺库相关。</p>
+<p>vcs仿真尽头的衡量尺度是覆盖率，包括代码覆盖率和功能覆盖率，确保设计是完善的。</p>
+<p><img alt="image-20220514113716028" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/ffdfd3c98957efbc824bd0ee3abba05f-image-20220514113716028-3b8c45.png" /></p>
+<p><img alt="image-20220514113743292" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/2fbad6ccedd596bee47271b293982615-image-20220514113743292-af5c73.png" /></p>
+<p><img alt="image-20220514113834496" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/b401e82a5cd7603843fa42d6209a960f-image-20220514113834496-0248f6.png" /></p>
+<p><img alt="image-20220514113853293" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/653fd1c3821e36a010184eea9f877c20-image-20220514113853293-808c6e.png" /></p>
+<p>不同抽象级别：</p>
+<ol>
+<li>行为级描述</li>
+<li>RTL（寄存器传输级）</li>
+<li>Gate-level（门级），与具体工艺库相关（TSMC，SMIC，CSMC华润上华）</li>
+</ol>
+<h3 id="_1">编译<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514114321065" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/eac1ad5e82ed396be86790dedbbdf3b5-image-20220514114321065-4598ba.png" /></p>
+<p><img alt="image-20220514141333134" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/39312b909158b0c8dd1e9e4e5d41523d-image-20220514141333134-673bb0.png" /></p>
+<p><img alt="image-20220514141412221" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/620032f6016ceb93e785ee0cc76bf65b-image-20220514141412221-5c1922.png" /></p>
+<p>-Mupdate 增量编译</p>
+<p>-R 编译仿真</p>
+<p>-l 记录log信息</p>
+<p><img alt="image-20220514141622317" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/55be1bb41dab56ec7932ab3cbed97f22-image-20220514141622317-61ddcd.png" /></p>
+<p>-v 在文件中发现黑盒到文件里去寻找</p>
+<p>-y 到目录里去找</p>
+<p>增量编译，大型项目节省大量时间。</p>
+<p><img alt="image-20220514141956450" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/5f6b5d3b26fe2a163b2a4a7d96683cfc-image-20220514141956450-2fc8db.png" /></p>
+<p><img alt="image-20220514142027945" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d7f300ebfc3ca5f05d14cf1bb3cf9d77-image-20220514142027945-a8b045.png" /></p>
+<h3 id="_2">仿真<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>编译时的开关叫静态开关；仿真时的开关叫动态开关。</p>
+<p><img alt="image-20220514142307014" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/7aa428c6c652ddb38a3a6a9689593766-image-20220514142307014-03f95b.png" /></p>
+<p><img alt="image-20220514142319373" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a2929efd212607a1b8b52fb496c94eaf-image-20220514142319373-10634c.png" /></p>
+<p>$plusargs()在仿真过程中接受来自键盘的信息。</p>
+<h3 id="_3">实例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514142458943" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/b82985a609cf2afd2cbe02556e197d4a-image-20220514142458943-c18be0.png" /></p>
+<p>调用库，DesignWare时synopsys公司提供的RTL代码，与工艺不相关，在VCS安装目录下。</p>
+<p><img alt="image-20220514142707900" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/95929ce45fd2ec023e459adcfa0edabe-image-20220514142707900-3d536e.png" /></p>
+<p><img alt="image-20220514142719622" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a3cb37950dd66f5bcdc316e06e6e55a5-image-20220514142719622-ad8e55.png" /></p>
+<h3 id="_4">虚拟机演示<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>simv是二进制可执行文件</p>
+<p>csrc是c语言文件夹，makefile是维护增量编译的文件</p>
+<p>-R -gui 编译后立即仿真，同时使用图形界面</p>
+<p>DVE F快捷键全屏显示</p>
+<p>VIM ctrl+p自动补齐</p>
+<p>定义宏：</p>
+<ul>
+<li>
+<p>可以在源RTL代码文件里定义</p>
+</li>
+<li>
+<p>touch global_define.vh，在该文件里定义宏，然后`include “global_define.vh”在RTL代码里。加上选项+incdir+./rtl/，虽然在一个文件夹里，但是要给一个路径。</p>
+</li>
+<li>加上选项 +define+宏名字</li>
+</ul>
+<h2 id="lab2-vcs-debug">Lab2 VCS debug基础<a class="headerlink" href="#lab2-vcs-debug" title="Permanent link">&para;</a></h2>
+<h3 id="_5">介绍<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514151331858" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d5725d7d13d0a75f544a7d9b9e5766ff-image-20220514151331858-05d085.png" /></p>
+<p><img alt="image-20220514151348925" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/dc0a2bd17ec7d3052b962d3f9983182d-image-20220514151348925-960184.png" /></p>
+<p>三个通常的debug方式：</p>
+<ul>
+<li>通过系统函数</li>
+<li>通过命令行方式UCLI</li>
+<li>通过图形界面方式DVE（用得较多）</li>
+</ul>
+<p>Verdi（Linux）专做仿真，有Debussy（Windows）。</p>
+<p>考虑因素：</p>
+<ul>
+<li>仿真速度：仿真级别、代码……</li>
+<li>信号可见性</li>
+<li>信号可追溯性</li>
+<li>可用性</li>
+</ul>
+<p><img alt="image-20220514152221037" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/16e7c1ba8b45240f5e6a5291b7db5971-image-20220514152221037-260ed3.png" /></p>
+<h3 id="debug">调用系统函数debug<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514152236141" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d249c3bb96eb85ac61473cbf12ea1f83-image-20220514152236141-c1b775.png" /></p>
+<p>$display在仿真事件队列的active region</p>
+<p>$monitor在仿真事件队列的monitor region</p>
+<p>$stop相当于暂停，会出现UCLI%，输入run继续进行。</p>
+<p>打印一个变量的值，一个是赋值之前的值，一个是赋值之后的值，其执行区域、时间点是不同的。</p>
+<p>$readmemh 读一个初始化的16进制数据文件</p>
+<p>$readmemb 读一个初始化的2进制数据文件</p>
+<p><img alt="image-20220514153055772" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/aafcd8efc3af763e8006fcf768d631f1-image-20220514153055772-43e729.png" /></p>
+<h3 id="debug_1">命令行方式debug<a class="headerlink" href="#debug_1" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220514153238506" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/683346c10c5b5e0f16028a75cfd65318-image-20220514153238506-9aa320.png" /></p>
+<p><img alt="image-20220514153326462" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/9fccb223322bb75c419d955539a7bd12-image-20220514153326462-516a0e.png" /></p>
+<p>一个步骤</p>
+<p>两个步骤</p>
+<p>-debug打开一部分选项</p>
+<p>-debug_all打开全部选项</p>
+<p>-debug_pp打开大部分选项尽量不影响性能</p>
+<p><img alt="image-20220514153559445" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/1c15279c6fcf5838ae4848ff9f3dfbe5-image-20220514153559445-39a236.png" /></p>
+<p><img alt="image-20220514153621981" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a180fd50df9093849bf6b7e5b7c1927b-image-20220514153621981-3ce056.png" /></p>
+<p><img alt="image-20220514153635181" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/376522e19cb418a6d0e9129c232c74b3-image-20220514153635181-63cdf0.png" /></p>
+<p><img alt="image-20220514153657829" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/34cdcf5a8249c34bd72b43b90eb34695-image-20220514153657829-9533ec.png" /></p>
+<p><img alt="image-20220514153712337" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c73d25f2339181cd761e2011dfbd435a-image-20220514153712337-a9ec19.png" /></p>
+<p><img alt="image-20220514153737456" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/f83022c80512ce2ff90c303ad5839a29-image-20220514153737456-3a1bd7.png" /></p>
+<p>$scope告知当前在那一层</p>
+<p><img alt="image-20220514153819804" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8b3233073cdd12c02d9561eebf4dc847-image-20220514153819804-bfafcf.png" /></p>
+<p><img alt="image-20220514153837257" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/99c27f089e29edf2f20e851417662eec-image-20220514153837257-c963ab.png" /></p>
+<p><img alt="image-20220514153911316" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/0fadea265d6ef13272adf2ef3d91ae1b-image-20220514153911316-f53fa1.png" /></p>
+<p>可能会进入零延迟的死循环。</p>
+<p>CTRL-C </p>
+<p>PID kill</p>
+<p><img alt="image-20220514154041275" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/bfe475d4af04421b532c292886c2aa05-image-20220514154041275-194a48.png" /></p>
+<p><img alt="image-20220514154116386" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/47edc9c4344620893d9112d68d2ae48c-image-20220514154116386-3730d0.png" /></p>
+<h2 id="lab3-dve">Lab3 图形界面方式DVE<a class="headerlink" href="#lab3-dve" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220514154316431" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/df60e53a7e7dfe6104aae13ee901e73d-image-20220514154316431-ceb9da.png" /></p>
+<p><img alt="image-20220514154333135" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/af5335cb96cd4c93c6f9eb4409bee2e1-image-20220514154333135-7dd272.png" /></p>
+<p><img alt="image-20220514154448675" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/054e4e32123d0b23efbf164a61e2a0e6-image-20220514154448675-193b9f.png" /></p>
+<p>支持交互（在设计和验证初期）和后仿真分析</p>
+<p><img alt="image-20220514154704041" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/72cf201499487535775db27ae19ca0ce-image-20220514154704041-c8fc79.png" /></p>
+<p><img alt="image-20220514154757925" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/253d75457d0d6da3663f871e1c5b308d-image-20220514154757925-043220.png" /></p>
+<p><img alt="image-20220514154807485" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8de91702953810bc77256c916048cc76-image-20220514154807485-ce6bef.png" /></p>
+<p><img alt="image-20220514154939716" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/da254229ff250977ccb15bb30b91e41b-image-20220514154939716-3b9023.png" /></p>
+<p><img alt="image-20220514154951130" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/24b2ea766ec756065dc2141d1d5c612a-image-20220514154951130-d853c4.png" /></p>
+<p><img alt="image-20220514155034621" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/21a73c94bc7c1248582407e72de53e75-image-20220514155034621-4ee3fc.png" /></p>
+<p>波形文件格式vcd/vpd(占用空间更小)</p>
+<p>Verdi 中的格式是sdb</p>
+<p><img alt="image-20220514160833289" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8fd4b038f0e9b2ed4e11ef68b42a4b4f-image-20220514160833289-8f6b5f.png" /></p>
+<p><img alt="image-20220514160848446" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/f6de4077749eeae5482ec653cf83be98-image-20220514160848446-ba746a.png" /></p>
+<p><img alt="image-20220514160859074" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/3395ea298f1fc5fef7c5b14dd6e22fa4-image-20220514160859074-673092.png" /></p>
+<p>信号查找：</p>
+<p><img alt="image-20220514160932291" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a5d7cf75338e9dfbfb3f14368f098f95-image-20220514160932291-8b19c3.png" /></p>
+<p><img alt="image-20220514160945121" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/7d57277d03eebd59e220f79c835b3026-image-20220514160945121-c1cea5.png" /></p>
+<p>信号分组：</p>
+<p><img alt="image-20220514161028199" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/0a88d228bc69647b5efcf43013fdc81e-image-20220514161028199-986f32.png" /></p>
+<p><img alt="image-20220514161123448" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/71797e8373c9c5ec25c02a83cd8ecf68-image-20220514161123448-969463.png" /></p>
+<p>信号比较：</p>
+<p><img alt="image-20220514161138090" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/07d5acaec2c6ff63fa5151d2c8011993-image-20220514161138090-8e134d.png" /></p>
+<p><img alt="image-20220514161202401" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/437147231858f43dee0b492dc60bbe95-image-20220514161202401-e6c11f.png" /></p>
+<p><img alt="image-20220514161308453" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/b16747da7a81123b161df826d957b7f9-image-20220514161308453-13843c.png" /></p>
+<p><img alt="image-20220514161316603" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/145158dbe6e50f65117ec10cbbff72a7-image-20220514161316603-d5d52f.png" /></p>
+<p><img alt="image-20220514161328797" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/69f7cb9d15d9c95da82b0e3c30c54368-image-20220514161328797-b1ccc1.png" /></p>
+<p><img alt="image-20220514161354116" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d3aa2f02cfa0ac8201d0548636cf7fac-image-20220514161354116-04d87f.png" /></p>
+<p><img alt="image-20220514161414576" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/855fa07f4f49baee360abe300ac3d995-image-20220514161414576-dd2ffb.png" /></p>
+<p><img alt="image-20220514161443647" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/5318799a384e0df874527aa7b4d00434-image-20220514161443647-1e8592.png" /></p>
+<p><img alt="image-20220514161500030" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d886d3278eb82d975758e6be8ccbc6c6-image-20220514161500030-d612e9.png" /></p>
+<p><img alt="image-20220514161510093" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/46a8e69ed5b67554a040103cdc79a066-image-20220514161510093-035392.png" /></p>
+<p>调用C语言</p>
+<p><img alt="image-20220514161701349" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c1e9313a4e97db0e0b1cc3c8db11d983-image-20220514161701349-0c1441.png" /></p>
+<p><img alt="image-20220514161750507" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8a559ddba36b997a02d689c3eaab67c4-image-20220514161750507-8f7ed1.png" /></p>
+<p><img alt="image-20220514161801279" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/6bc85953c210993da670bfb88d223575-image-20220514161801279-798ed4.png" /></p>
+<p><img alt="image-20220514161826654" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/dcc15d25b255809759bec05ee588c535-image-20220514161826654-445a17.png" /></p>
+<p><img alt="image-20220514161835491" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/e1f57703b8bc8fdac3a47959c6a386a7-image-20220514161835491-c4a5a7.png" /></p>
+<h3 id="_6">虚拟机演示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>信号分组：拖到新组里。</p>
+<p>寻找信号指代信号值、上升沿、下降沿。</p>
+<p>信号比较</p>
+<p>构造成一条总线，几个信号合成一个</p>
+<p>在Verilog调用C语言（加上C语言路径和-sverilog选项）：</p>
+<p><img alt="image-20220514164147113" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/daa110639759326d8133fc2871768454-daa110639759326d8133fc2871768454-image-20220514164147113-370bc7-146fe1.png" /></p>
+<h2 id="lab4-post-processing-with-vcd-files">Lab4 Post-processing with VCD+ files<a class="headerlink" href="#lab4-post-processing-with-vcd-files" title="Permanent link">&para;</a></h2>
+<p>vcd+是vcd的改进格式。</p>
+<p><img alt="image-20220514192307142" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/dcaf3390ba4869c369fbdec703a13368-image-20220514192307142-af8f72.png" /></p>
+<p><img alt="image-20220514192512946" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/dd7edd36c0116e84892d2468a566a28f-image-20220514192512946-19fd07.png" /></p>
+<p><img alt="image-20220514193019053" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/16e7e48108dc8dfeef573c485180a2d1-image-20220514193019053-4e8794.png" /></p>
+<p><img alt="image-20220514193110509" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c5bb009adfd11ec0bd7c581dd66139e4-image-20220514193110509-0524b8.png" /></p>
+<p><img alt="image-20220514193201315" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/ec95cbf5e6f784833cb30afb3234af4b-image-20220514193201315-9f0c5e.png" /></p>
+<p><img alt="image-20220514193321403" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/46e7893f042819b4e9e645bf64a8377e-image-20220514193321403-5153b6.png" /></p>
+<p>$vcdpluson开始记录波形</p>
+<p>$vcdplusoff终止记录波形</p>
+<p><img alt="image-20220514193540582" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/ce5cdab5bb33a6045edb66e244f81f32-image-20220514193540582-2bce02.png" /></p>
+<p><img alt="image-20220514193552108" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/950fe79728c3f8c505b4f6d4fa9715c9-image-20220514193552108-034c82.png" /></p>
+<p><img alt="image-20220514193600349" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/ebee0a579f0ffa455513b6917ff03821-image-20220514193600349-0dc38e.png" /></p>
+<p>$readmemh 把文件读到数组中</p>
+<p><img alt="image-20220514193708952" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/cb21b40c01de850144c76a97df20b92d-image-20220514193708952-9cc1fe.png" /></p>
+<p><img alt="image-20220514193850843" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/3c0e320562849771e13875dec10b807a-image-20220514193850843-3d5ffb.png" /></p>
+<p><img alt="image-20220514193950716" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/3ce248469d9dd3661e2a8012644e2037-image-20220514193950716-6997ac.png" /></p>
+<p><img alt="image-20220514194008961" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8a9f213dcba88bcec7dc39054cc4fdf6-image-20220514194008961-e0819b.png" /></p>
+<p><img alt="image-20220514194024519" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/78646acc3078c0a14159ff78840d83cc-image-20220514194024519-6fbb01.png" /></p>
+<p>:set nu显示行号</p>
+<p>：tabnew ./在当前目录下打开新文件</p>
+<p>dve &amp; 然后打开波形</p>
+<p>dve -vpd 波形文件名 &amp;打开波形</p>
+<p>可以只查看一层的波形文件 </p>
+<p>$vcdplusmemon记录数组波形</p>
+<p>$display(`_<em>FILE_</em>, `_<em>LINE_</em>)显示是哪个文件、哪一个行执行的</p>
+<h2 id="lab5-debugging-simulation-mismatches">Lab5 Debugging simulation mismatches<a class="headerlink" href="#lab5-debugging-simulation-mismatches" title="Permanent link">&para;</a></h2>
+<p>if(data==3)少写一个=是一个惨痛的错误</p>
+<p>if(3==data)这是一个好的写法</p>
+<p><img alt="image-20220514203347138" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/b668492fbc5b95cb854a4bff221c8343-image-20220514203347138-3f9a06.png" /></p>
+<p>vcddiff比较两个vpd文件</p>
+<p><img alt="image-20220514203557827" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/78f1de59036414b4588fec86322c799f-image-20220514203557827-d3f59b.png" /></p>
+<p><img alt="image-20220514203758783" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d322ae735a88c04fe98e118ae8d7272e-image-20220514203758783-e08ac6.png" /></p>
+<p><img alt="image-20220514203829607" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/19ec4ebc664eb902d8dee1b1f0f127dc-image-20220514203829607-36b8cc.png" /></p>
+<p><img alt="image-20220514204018697" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/0ce63cad8f5a43fb0707ad221945cecd-image-20220514204018697-7637b1.png" /></p>
+<p><img alt="image-20220514204122441" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c2128def73c9d3cd57d395f65f735bd9-image-20220514204122441-cf30d5.png" /></p>
+<p><img alt="image-20220514205106559" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/cae500c83ce288fb9805381fd420580b-image-20220514205106559-dc40f3.png" /></p>
+<p>在时序电路中用非阻塞赋值</p>
+<p><img alt="image-20220514205250853" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c09d781f9e2fab9957aff7cb0cae6dd4-image-20220514205250853-d97bed.png" /></p>
+<p>不定态x指有可能为0，有可能为1，只存在仿真中，不存在综合中，是随机的0/1，可能为0或1。</p>
+<p><img alt="image-20220514205559791" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/cbae23b37c7c3dae5b79cf0269d066fe-image-20220514205559791-c82ffe.png" /></p>
+<p>阻塞赋值的执行顺序可能有好几种，非阻塞赋值的顺序是确定的。</p>
+<p><img alt="image-20220514205810950" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/524262bd3827722ef4749cd74eff1eb4-image-20220514205810950-7f290a.png" /></p>
+<p>x到0是下降沿还是不是下降沿，这是不确定的。</p>
+<p><img alt="image-20220514205957545" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/e6db14993bf4113b97073a8462886c7a-image-20220514205957545-b2c134.png" /></p>
+<p><img alt="image-20220514210334154" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/dc2affb57324e59256e1f92862bca40f-image-20220514210334154-f45de8.png" /></p>
+<p>0时刻的竞争，一上来赋值能不能传过来。</p>
+<p><img alt="image-20220514210419038" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/429398aa7af75fe70f6274862b7c0005-image-20220514210419038-d21b6e.png" /></p>
+<p><img alt="image-20220514210606175" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/667249a22b369236c6892f420032f876-image-20220514210606175-ded9d5.png" /></p>
+<p>前面的电路不一定正确，这个电路是正确的。</p>
+<p><img alt="image-20220514210636496" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c8a31da29a51d14cf390a44602fa7ae0-image-20220514210636496-0b06f9.png" /></p>
+<p>描述时序逻辑电路用非阻塞赋值，描述组合逻辑电路用阻塞赋值。</p>
+<p>一个变量只在一个always或者assign里面赋值。</p>
+<p><img alt="image-20220514211301287" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/a22d4d0b9aede242c7d6a488466dd39a-image-20220514211301287-dec048.png" /></p>
+<p><img alt="image-20220514211329504" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/32be24e078368069a3278fdf16f93cdb-image-20220514211329504-c0a8c4.png" /></p>
+<p><img alt="image-20220514211552806" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/464ca012345a9ef58ceb1200b96a5026-image-20220514211552806-f372a4.png" /></p>
+<p><img alt="image-20220514211603717" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/996a86275bae250bd4d02ef4ac43110e-image-20220514211603717-7f6bb1.png" /></p>
+<p>加上这个选项会报告一些竞争风险。</p>
+<p><img alt="image-20220514211644823" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d439d3dc01cf2160f31cea6fe3335e14-image-20220514211644823-abaeae.png" /></p>
+<p><img alt="image-20220514211653093" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/1cb8503a632590c2e8a73b68ff110c82-image-20220514211653093-a24870.png" /></p>
+<p><img alt="image-20220514211702811" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/5fd29a1c67fbbf6e0327af88c05dc42b-image-20220514211702811-0b700d.png" /></p>
+<p><img alt="image-20220514211710261" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/1dca3bbf08f1184c84a54e928ff4cc34-image-20220514211710261-a93274.png" /></p>
+<h2 id="lab6-fast-rtl-level-verification">Lab6 Fast RTL-level verification<a class="headerlink" href="#lab6-fast-rtl-level-verification" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220514224639728" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/fad21b03554aae34e944fbc48e8bc4b8-image-20220514224639728-0e4439.png" /></p>
+<p>改善RTL仿真性能：</p>
+<ul>
+<li>
+<p>好的编码风格</p>
+</li>
+<li>
+<p>+rad选项</p>
+</li>
+</ul>
+<p><img alt="image-20220514224847144" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/688064d1839d43fdc359c50422a4eb00-image-20220514224847144-c74b50.png" /></p>
+<p>重编译</p>
+<p><img alt="image-20220514225008768" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/ed90daf774c9b21f5447094895dff428-image-20220514225008768-7fd063.png" /></p>
+<p>Parser</p>
+<p><img alt="image-20220514225142504" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/bd3fed208fe047524cc317a8b2859632-image-20220514225142504-ece0f9.png" /></p>
+<p>编码指导：</p>
+<ul>
+<li>
+<p>使用可综合语句</p>
+</li>
+<li>
+<p>提升抽象层次，行为级风格，后仿的事件可能特别长，适当用状态机（优化的比较好）。</p>
+</li>
+<li>避免效率低的结构</li>
+<li>使用小的激励块</li>
+</ul>
+<p><img alt="image-20220514225858961" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/be80bd4287fac5d072b124c9c4711c49-image-20220514225858961-ce537f.png" /></p>
+<p>行为级语言都是不可综合的，不用。</p>
+<p><img alt="image-20220514230009180" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/26a004a9cf4ff4bf936b7f4124650885-image-20220514230009180-f536a3.png" /></p>
+<ul>
+<li>门级结构</li>
+<li>不用奇葩的数据类型</li>
+<li>跨模块访问，不利于reuse</li>
+</ul>
+<p><img alt="image-20220514230148035" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/17f3e13ec6be06970e2d880c29755672-image-20220514230148035-820069.png" /></p>
+<p><img alt="image-20220514230202493" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/65a24731f204be20557feb1da71d5a9e-image-20220514230202493-243410.png" /></p>
+<p>等价地提高抽象层次，简洁，明了</p>
+<p><img alt="image-20220514230249935" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/75e3d44c5d3db99a97e3ee29ac56095f-image-20220514230249935-953580.png" /></p>
+<p><img alt="image-20220514230336004" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/614b941887a1c7d89cf711b26d692abd-image-20220514230336004-e871b0.png" /></p>
+<p><img alt="image-20220514230356188" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/30c182398dfc047646efc6ed3f24bb77-image-20220514230356188-84059e.png" /></p>
+<p>配置文件指定对哪个module还是instance做优化</p>
+<p><img alt="image-20220514230438911" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/8553af78ab7529a05c69bcb9c87ae877-image-20220514230438911-c966e6.png" /></p>
+<p>prof是通过统计做性能分析的，告诉那个模块消耗资源比较多</p>
+<p><img alt="image-20220514230629744" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/31c9744e06fe71be002e4bdafe6830b5-image-20220514230629744-bd5128.png" /></p>
+<p><img alt="image-20220514230645146" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/06534c0327a4c6a79797a56ffddf9600-image-20220514230645146-e45060.png" /></p>
+<p><img alt="image-20220514230725079" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/1d01f7b36edffded83922c1ecb0c5c0a-image-20220514230725079-e8ba4f.png" /></p>
+<p><img alt="image-20220514230749931" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c5a12b2153da5dcd4adbd8e0486472b0-image-20220514230749931-7e613d.png" /></p>
+<p><img alt="image-20220514230759374" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/d3d867925123915be9a5b02acc7d2740-image-20220514230759374-7283af.png" /></p>
+<p><img alt="image-20220514230809087" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/e4dee4981ea4253cf62ba6b1f61c070a-image-20220514230809087-a06e46.png" /></p>
+<p><img alt="image-20220514230820252" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/600cafe2df2241385540182ac3fc78f1-image-20220514230820252-238938.png" /></p>
+<p><img alt="image-20220514230834588" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/0048e00cdbcbdae4761574da7c1e3b9a-image-20220514230834588-8147b1.png" /></p>
+<p><img alt="image-20220514230841658" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/cfa7d18f1b670fc22f5c26a3fdd101eb-image-20220514230841658-37e22f.png" /></p>
+<p>找到仿真瓶颈，针对性优化</p>
+<p><img alt="image-20220514230906447" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/67a2865183eb452267070a35ce351b00-image-20220514230906447-92474e.png" /></p>
+<p>新版本+prof不支持了，-simprofile -lca两个代替。</p>
+<p>设计验证过于简单，统计数据太小了，这种统计不好做，没意义。</p>
+<p>例化1000次：</p>
+<p>localparam MEM_DPT=1000;//外面不可以传递参数</p>
+<p><img alt="image-20220514232416957" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/c11823adf086d032e8dfcae6249d6a18-image-20220514232416957-624af2.png" /></p>
+<p>终端上display彩色打印：</p>
+<p><img alt="image-20220514232828291" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/14/b0ec7a8ba264b3be9649f4f2203d4ab1-image-20220514232828291-450bff.png" /></p>
+<p>这不是Verilog的，是终端的。</p>
+<h2 id="lab7-fast-gate-level-verification">Lab7 Fast Gate-level verification<a class="headerlink" href="#lab7-fast-gate-level-verification" title="Permanent link">&para;</a></h2>
+<p>（前仿）功能仿真，是不带时序信息的，仅仅验证代码功能</p>
+<p>后仿真，器件自身有延时，取决于实现方式、工艺等，更关注跳变覆盖率</p>
+<p><img alt="image-20220515095440438" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/42ae04603afa07d08590af05c682fd54-image-20220515095440438-44cb19.png" /></p>
+<p>DC的门级网表的延时是不准的，因为它没有版图信息、物理信息，是根据算法模型计算的。</p>
+<p>SDF是DC得到的时序信息，标准延时格式</p>
+<p><img alt="image-20220515095911358" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/8234878dcee1ea72a57ac067ddefb216-image-20220515095911358-662e3d.png" /></p>
+<p>sdc</p>
+<p>ddc</p>
+<p><img alt="image-20220515100032983" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/759f2d5cf9b45c26ceb31c6c0f4906fc-image-20220515100032983-1b04b2.png" /></p>
+<p><img alt="image-20220515100040362" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/a189b67051064748097c6984af06cc8f-image-20220515100040362-eb7494.png" /></p>
+<p><img alt="image-20220515100223636" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/06b81ede20d4247138764928bfd27434-image-20220515100223636-10d60b.png" /></p>
+<p><img alt="image-20220515100242219" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/02b60985f838cc2ccf0c73a5b53dfe41-image-20220515100242219-284e4b.png" /></p>
+<p><img alt="image-20220515100312925" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/6f0dbe18e44828e0d6c3dde0fe38b0bc-image-20220515100312925-98a4cf.png" /></p>
+<p><img alt="image-20220515100406065" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/ff9164c643f7248982cb447510a5be5a-image-20220515100406065-24ee84.png" /></p>
+<p><img alt="image-20220515100419437" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/7f8ad901221682b52c4cc30ac032ffd4-image-20220515100419437-0f71e9.png" /></p>
+<p><img alt="image-20220515100451019" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/5346db8fe812e75a3bd66c3b2c64eb9c-image-20220515100451019-2c1854.png" /></p>
+<p>sdf文件太大了，先预编译，然后xx</p>
+<p><img alt="image-20220515100532379" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/6c94f348bf2f81107d2268bca9385b00-image-20220515100532379-30465c.png" /></p>
+<p><img alt="image-20220515100547862" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/9ab96bf9ead082859bfe9d7159b102a1-image-20220515100547862-0ed2a1.png" /></p>
+<p>惯性延时：输入脉冲和输出脉冲有一定延时，输入脉冲宽度足够小，输出没反应了，被过滤掉，器件的惯性延时</p>
+<p>传输延时：连线的延时，不会被过滤掉，总会传过去</p>
+<p><img alt="image-20220515101539922" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/5b09eeffda4de8593732c6e3964ccab7-image-20220515101539922-b3c242.png" /></p>
+<p><img alt="image-20220515101548059" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/b3d099428f03d01989f82da548270d35-image-20220515101548059-a95a9b.png" /></p>
+<p><img alt="image-20220515101628721" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/876f096ff765fec6fac308a29193038a-image-20220515101628721-7b9a07.png" /></p>
+<p><img alt="image-20220515101655415" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/c93c616b7739b2f92c77b20633397bae-image-20220515101655415-f12590.png" /></p>
+<p><img alt="image-20220515101703296" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/081a0349380874ecb2070b7c55739d50-image-20220515101703296-802a6b.png" /></p>
+<p><img alt="image-20220515101809437" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/e396019bfd39e22505d04bc676da6365-image-20220515101809437-4379fc.png" /></p>
+<h3 id="_7">演示<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220515102603385" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/3608f886336449a2a164b41b06056459-image-20220515102603385-ff4e11.png" /></p>
+<p>ctrl+shift+t终端分屏</p>
+<h2 id="lab8-code-coverage">Lab8 Code coverage<a class="headerlink" href="#lab8-code-coverage" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220515091332680" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/7b2ea4cdffad7627e445732c30b52a0c-image-20220515091332680-068bb2.png" /></p>
+<p>代码行覆盖率：代码每行都执行了么</p>
+<p>状态机的状态都覆盖了么</p>
+<p><img alt="image-20220515091528534" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/569027889abd66ea85f5aef46dccc809-image-20220515091528534-c65955.png" /></p>
+<p><img alt="image-20220515091615329" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/5a10432e09df1c02c19d0a09650a32d1-image-20220515091615329-f84dab.png" /></p>
+<p>代码覆盖率：</p>
+<ul>
+<li>
+<p>行覆盖率</p>
+</li>
+<li>
+<p>跳变覆盖率</p>
+</li>
+<li>
+<p>条件覆盖率</p>
+</li>
+<li>状态机覆盖率</li>
+<li>路径覆盖率</li>
+</ul>
+<p><img alt="image-20220515091829046" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/acd52a81df3bbaf310fe0417d56b94ea-image-20220515091829046-d7156b.png" /></p>
+<p><img alt="image-20220515091847086" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/a946df6e5405380f45ff8d738288c179-image-20220515091847086-3f2c0e.png" /></p>
+<p><img alt="image-20220515091906845" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/1c4c749259bd32e4a1af7661faebf745-image-20220515091906845-a255bc.png" /></p>
+<p><img alt="image-20220515091919136" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/670443700bba9af058a5caec952e2e82-image-20220515091919136-80c397.png" /></p>
+<p><img alt="image-20220515091932741" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/b20524b4dd8ab3b556c552ad26f4c570-image-20220515091932741-582968.png" /></p>
+<p><img alt="image-20220515091956908" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/a8260dd6c7b8ce67d8e56a375c460221-image-20220515091956908-eba24d.png" /></p>
+<p><img alt="image-20220515092009838" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/c03c46a45ec5de77af285d4277007efb-image-20220515092009838-503bba.png" /></p>
+<p><img alt="image-20220515092032895" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/598e4a838150a3df3557eb6a5a0c0dab-image-20220515092032895-be8a04.png" /></p>
+<p><img alt="image-20220515092047520" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/0750a7c32d7dc8a0293421fcfbf6406a-image-20220515092047520-c025dd.png" /></p>
+<p><img alt="image-20220515092054768" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/cb07d1b9e7b8d1e6c1c9c6923f870f7e-image-20220515092054768-821a4a.png" /><img alt="image-20220515092104165" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/70b0ab32cdd5242be0c5c0bf29c0b28e-image-20220515092104165-94a81e.png" /></p>
+<p><img alt="image-20220515092125891" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/33aa77d8651317238987d8ab12151abd-image-20220515092125891-ce503f.png" /></p>
+<p><img alt="image-20220515092137681" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/f0e0c344c822457e1e434049f524b1c3-image-20220515092137681-4fd641.png" /></p>
+<p><img alt="image-20220515092153650" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/55d778d3382a7b6b2308f9146e97cff3-image-20220515092153650-f6bce6.png" /></p>
+<p><img alt="image-20220515092205081" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/021abaf4b21502d4fca4ec23e5e4a995-image-20220515092205081-8274bf.png" /></p>
+<p><img alt="image-20220515092254359" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/a8f492f319bd0f18bfc562e6357e29fd-image-20220515092254359-06fddb.png" /></p>
+<p><img alt="image-20220515092301704" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/b7dc2d8fefb0353f44f0872ce2c87f79-image-20220515092301704-d15392.png" /></p>
+<p><img alt="image-20220515092312373" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/5c700c3e0bf26e39b5eb5666a64f63c4-image-20220515092312373-b9f9a2.png" /></p>
+<p><img alt="image-20220515092353840" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/f299f0ebf3dfc8f77bd1c2b5fb65fdfb-image-20220515092353840-6cfd2e.png" /></p>
+<p><img alt="image-20220515092438235" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/615e0b5acbeb02bd842be85b862d9850-image-20220515092438235-2139e6.png" /></p>
+<p><img alt="image-20220515092511027" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/a32f8bcf8a1837da83c3e8ab730d0a19-image-20220515092511027-c68aed.png" /></p>
+<p>某个模块不想统计覆盖率</p>
+<p>某些代码块不统计</p>
+<p>-cm_hier哪些文件模块不用统计覆盖率</p>
+<p><img alt="image-20220515092734331" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/0f28ef78804c68a6e7ac54281ad7f24e-image-20220515092734331-cf19a2.png" /></p>
+<p><img alt="image-20220515092747814" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/13c21c7f48498bed6e3d656e9d544368-image-20220515092747814-bc4272.png" /></p>
+<p><img alt="image-20220515092836455" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/7edb992fcac17a14e94813d61f3dec89-image-20220515092836455-ebcbbf.png" /></p>
+<p><img alt="image-20220515092843820" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/1fbf259e76f8bef9a324e9ae051dad2c-image-20220515092843820-36003b.png" /></p>
+<p><img alt="image-20220515092902478" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/58837fe338874f6b568a85d5353ea2d4-image-20220515092902478-b4298f.png" /></p>
+<p><img alt="image-20220515092914625" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/8e224661db395af8bcd42b44b3e1fb1e-image-20220515092914625-3d176b.png" /></p>
+<p><img alt="image-20220515092923959" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/ebbbcba5ce381ae79b366d58459d6a21-image-20220515092923959-7767a9.png" /></p>
+<p><img alt="image-20220515093002297" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/daaf2bc9b971021febfc7ec9533d3d3c-image-20220515093002297-4fe9a5.png" /></p>
+<p><img alt="image-20220515093121354" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/9f44f6a8cf11ab42d35e81493bd2d20d-image-20220515093121354-13826f.png" /></p>
+<p><img alt="image-20220515093211922" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/d2f9d2318cb7840d6cb0935c259fb8bb-image-20220515093211922-c06be3.png" /></p>
+<p><img alt="image-20220515093231326" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/dd1ef3686895b5899f421249b17db45d-image-20220515093231326-1ef96c.png" /></p>
+<p><img alt="image-20220515093352753" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/7fe083d1d11436c42c04d35b9233396a-image-20220515093352753-1a88ae.png" /></p>
+<p><img alt="image-20220515093432924" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/15/444cfdf8747565c2346af8f782fe6515-image-20220515093432924-6c0342.png" /></p>
+<p>vdb文件夹里有覆盖率</p>
+<p>可以在dve中转换产生文本或网页的覆盖率报告。</p>
+<p>//VCS coverage off</p>
+<p>//VCS coverage on</p>
+<p>上面注释（特殊的注释）中间的代码不统计覆盖率</p>
+<p>//synopsys translate_off</p>
+<p>//synopsys translate_on</p>
+<p>上面注释（特殊的注释）中间的代码告诉综合工具不综合、不统计覆盖率。</p>
+<p>创建文件vcs_cov.cfg</p>
+<p>输入 -module 文件名，不看该模块覆盖率；编程减号，只看该模块覆盖率。+tree某个路径；+file；</p>
+<p>vcs -cm_hier ./vcs_cov.cfg </p>
+                
+                  
+                
+              
+              
+                 
+ 
+ 
+<!-- <hr><blockquote class="page-copyright">
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="https://github.com/WWeiying/edit/master/docs/cpu/VCS课程笔记.md" title="编辑此页" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors">OI-wiki</span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a></strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote> -->
+
+
+<h2 id="__comments" data-no-instant>评论</h2>
+<form id="gitalk-form" onsubmit="return!1" data-no-instant>
+<div id="gitalk-container" data-no-instant>
+</div>
+</form>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    id: 'VCS课程笔记',
+    owner: 'WWeiying',
+    repo: 'WWeiying.github.io',
+    admin: ['WWeiying'],
+    clientID: 'd3dc000b2047f49b2bd8',
+    clientSecret: 'b20c67ecf9762b0de64976355994ac758d506962',
+    distractionFreeMode: false,
+    pagerDirection: 'first'
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<script>function scrollFunction(){20<document.body.scrollTop||20<document.documentElement.scrollTop?document.getElementById("myBtn").style.display="block":document.getElementById("myBtn").style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollFunction()}</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../ysyx/" title="一生一芯" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                一生一芯
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="Verdi课程笔记" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Verdi课程笔记
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2022 WWeiying
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+        <div id="miitbeian"></div>
+      </div>
+      
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：, 2022-10-13</a></span>
+      <script>
+        /* miitbeian */
+        if (window.location.hostname == "oi-wiki.com") {
+          document.getElementById("miitbeian").innerHTML = `<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>`;
+        }
+        /* Easter Egg */
+        console.log(`%c OI Wiki %c  %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        console.log('少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org');
+      </script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.411a9f9f.js"></script>
+      <script>app.initialize({version:"1.3.1",url:{base:"../.."}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+      
+        <script src="../../_static/js/extra.js?v=16"></script>
+      
+        <script src="../../assets/vendor/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../_static/js/baidu_tongji.js"></script>
+      
+    
+  </body>
+</html>

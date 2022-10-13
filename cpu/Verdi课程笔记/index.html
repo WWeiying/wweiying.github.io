@@ -1,0 +1,946 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta http-equiv="x-dns-prefetch-control" content="on">
+      <link rel="dns-prefetch" href="//oi-wiki.org">
+      <link rel="dns-prefetch" href="//search.oi-wiki.org">
+      <link rel="dns-prefetch" href="//api.github.com">
+      <link rel="dns-prefetch" href="//www.google-analytics.com">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Record mathematics, Programs and Engineering">
+      
+      
+        <link rel="canonical" href="https://www.wweiying.top/cpu/Verdi%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+      
+      
+        <meta name="author" content="Weiying">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../../favicon/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>Verdi课程笔记 - Record mathematics, Programs and Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.6f7cfa25.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.27508f0e.js"></script>
+    
+    
+      
+        <style>@font-face{font-family:'Fira Sans';font-style:normal;font-weight:300;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-300.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:italic;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot);src:local('Fira Sans'),local('FiraSans-Italic'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-italic.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Sans';font-style:normal;font-weight:700;src:url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot);src:local('Fira Sans'),local('FiraSans-Normal'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-sans/fira-sans-700.svg#FiraSans) format('svg')}@font-face{font-family:'Fira Mono';font-style:normal;font-weight:regular;src:url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot);src:local('Fira Mono'),local('FiraMono-Normal'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.eot?#iefix) format('embedded-opentype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff2) format('woff2'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.woff) format('woff'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.ttf) format('truetype'),url(//lib.baomitu.com/fonts/fira-mono/fira-mono-regular.svg#FiraMono) format('svg')}body,input{font-family:"Fira Sans","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Fira Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/vendor/material-icons/iconfont/material-icons.css">
+    
+      <link rel="manifest" href="../../manifest.webmanifest">
+    
+    
+      <link rel="stylesheet" href="../../_static/css/extra.css?v=13">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "G-BQRVKTPNPP", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="white" data-md-color-accent="red">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-header-nav__button md-logo">
+          
+            <img src="../../favicon/favicon-256x256.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Record mathematics, Programs and Engineering
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Verdi课程笔记
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." class="md-tabs__link">
+          开始
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../ysyx/" class="md-tabs__link md-tabs__link--active">
+          CPU设计
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../algorithm/cplus/" class="md-tabs__link">
+          算法
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../experience/linux/" class="md-tabs__link">
+          走过的坑
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.wweiying.top/" title="Record mathematics, Programs and Engineering" class="md-nav__button md-logo">
+      
+        <img src="../../favicon/favicon-256x256.png" width="48" height="48">
+      
+    </a>
+    Record mathematics, Programs and Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/WWeiying" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    Weiying's github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      开始
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        开始
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/news/" title="行业观察" class="md-nav__link">
+      行业观察
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/stars/" title="网站和工具" class="md-nav__link">
+      网站和工具
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../todolist/2022M5/" title="Todolist" class="md-nav__link">
+      Todolist
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../start/format/" title="格式" class="md-nav__link">
+      格式
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      CPU设计
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        CPU设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ysyx/" title="一生一芯" class="md-nav__link">
+      一生一芯
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VCS课程笔记" class="md-nav__link">
+      VCS课程笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Verdi课程笔记
+      </label>
+    
+    <a href="./" title="Verdi课程笔记" class="md-nav__link md-nav__link--active">
+      Verdi课程笔记
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    环境变量问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsdb" class="md-nav__link">
+    生成fsdb波形问题
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    实战经验
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsdb_1" class="md-nav__link">
+    查看fsdb波形
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtl" class="md-nav__link">
+    追踪RTL代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" title="DC逻辑综合实践笔记" class="md-nav__link">
+      DC逻辑综合实践笔记
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      算法
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/cplus/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../algorithm/algorithm/" title="数据结构" class="md-nav__link">
+      数据结构
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      走过的坑
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        走过的坑
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../experience/git/" title="git" class="md-nav__link">
+      git
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    环境变量问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsdb" class="md-nav__link">
+    生成fsdb波形问题
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    实战经验
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fsdb_1" class="md-nav__link">
+    查看fsdb波形
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtl" class="md-nav__link">
+    追踪RTL代码
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/WWeiying/edit/master/docs/cpu/Verdi课程笔记.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Verdi课程笔记</h1>
+                
+                <p><img alt="image-20220521224236061" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/48991a5c80bb5fbd9f135c0699949c2d-image-20220521224236061-be1c10.png" /></p>
+<h2 id="_1">环境变量问题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220521214306359" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/5d6e5e0bee647f4399d560f661abcdf8-image-20220521214306359-32fe55.png" /></p>
+<p><img alt="image-20220521214328238" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/b473fefb7fa2d7d2488c19def09863bc-image-20220521214328238-8495f1.png" /></p>
+<p>比较新的仿真器一般是VERDI_HOME</p>
+<p><img alt="image-20220521214453554" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/2c0d4548e6339248dae5159971056dd5-image-20220521214453554-789256.png" /></p>
+<p><img alt="image-20220521214701575" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/62bbca548ec9947b173201e6d729794c-image-20220521214701575-fe6a9b.png" /></p>
+<p><img alt="image-20220521214849064" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/0ea2760b8144e428af6a36a6e3fe1224-image-20220521214849064-01dc4f.png" /></p>
+<p><img alt="image-20220521215151797" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/a25a444d4d32bfd5cc5b688ffa00b1f3-image-20220521215151797-ff04c5.png" /></p>
+<p><img alt="image-20220521215201798" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/3f9a9e869d32b565aac1028d8e382c3c-image-20220521215201798-269784.png" /></p>
+<p><img alt="image-20220521215339083" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/7002f14d3b9e9e7d2a80535a226740a3-image-20220521215339083-943132.png" /></p>
+<h2 id="fsdb">生成fsdb波形问题<a class="headerlink" href="#fsdb" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220521215355498" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/b8a0135400c55d562a644eea9d95967f-image-20220521215355498-84a096.png" /></p>
+<p>三大EDA厂商产品+verdi</p>
+<p><img alt="image-20220521215716406" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/01749e898a7da37ba40047470ce894dc-image-20220521215716406-401876.png" /></p>
+<p>有debug选项才能使能ucli命令</p>
+<p><img alt="image-20220521215948502" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/b5082c7159f9101001c3209ea8fc69b8-image-20220521215948502-ded8d4.png" /></p>
+<p><img alt="image-20220521220810747" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/4c5397bf0d85552e7a800e2c2d0dbdcd-image-20220521220810747-6b6a87.png" /></p>
+<p><img alt="image-20220521220851046" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/ce144f81737cca6205808b926a8f9c4a-image-20220521220851046-a9902b.png" /></p>
+<p><img alt="image-20220521221001788" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/10213b51a1ede63715bd931119fb5418-image-20220521221001788-cbb479.png" /></p>
+<p><img alt="image-20220521221024861" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/801addfdd12d3ad651cd6fee21894770-image-20220521221024861-331cb1.png" /></p>
+<p><img alt="image-20220521221539772" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/32b91059dd56c4eafdd2ff28bb5169c4-image-20220521221539772-7a1f18.png" /></p>
+<p>基于ucli/tcl，有修改选项不需要重新编译</p>
+<p><img alt="image-20220521222205779" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/3c3cc8b249e7567e3922d03f4e8fb755-image-20220521222205779-b26718.png" /></p>
+<p><img alt="image-20220521222838067" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/c19b2cfbf2ec46154f166210a2317daa-image-20220521222838067-552e6f.png" /></p>
+<p><img alt="image-20220521222912049" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/8f9d9028ccab9f4482883e7eae47c1c5-image-20220521222912049-5227c7.png" /></p>
+<p><img alt="image-20220521223005803" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/d14db5543861e0d18fbdbc67a320d678-image-20220521223005803-c99828.png" /></p>
+<p>irun不自动结束，加quit</p>
+<p><img alt="image-20220521223121589" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/876b468e1c7023e2db13c4d4f995f7cc-image-20220521223121589-aa323c.png" /></p>
+<p><img alt="image-20220521223138726" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/95dbd53390cfc9dfc654cc0df4c43e18-image-20220521223138726-f0c870.png" /></p>
+<p><img alt="image-20220521223215713" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/1300c0e79ecbeefb9887b9a83c095148-image-20220521223215713-01bccc.png" /></p>
+<p><img alt="image-20220521223301018" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/671b3e2fa036c7b3f0d0a9eb12c012e3-image-20220521223301018-a81701.png" /></p>
+<p><strong>g makefile</strong></p>
+<p><img alt="image-20220521223417578" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/8d70a982c262f36820134310b71459f4-image-20220521223417578-858cdf.png" /></p>
+<h3 id="_2">实战经验<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20220521223843531" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/59d0480ea789616a3a71ea421fad4766-image-20220521223843531-8ea4b9.png" /></p>
+<p>空间角度：只收集关注block的波形</p>
+<p>不同场景对波形时间的不同需求</p>
+<p><img alt="image-20220521224104521" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/a659ab7dd09391132c56b593ca938de6-image-20220521224104521-418c3c.png" /></p>
+<h2 id="fsdb_1">查看fsdb波形<a class="headerlink" href="#fsdb_1" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220521224511607" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/512708405da18bf059992626aa6ce2ff-image-20220521224511607-706a3a.png" /></p>
+<p><img alt="image-20220521225030045" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/b362bc6652dd1fd009c52448784afa2a-image-20220521225030045-4e2a28.png" /></p>
+<p><img alt="image-20220521225259696" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/48caf1d05a789bf91f66555e7eee86bc-image-20220521225259696-035ef8.png" /></p>
+<p><img alt="image-20220521225449507" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/eb17650bfbc225325cf45697d5bebf84-image-20220521225449507-bba744.png" /></p>
+<p><img alt="image-20220521230232854" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/e4d8e06c0b14d3f4ae454b2ada69d8fe-image-20220521230232854-f5d5a0.png" /></p>
+<p><img alt="image-20220521230415382" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/da98f2c7c27e5a73bafe60a2636659e7-image-20220521230415382-3c211b.png" /></p>
+<p><img alt="image-20220521231158497" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/d0d7f03c0470d8833c1b3ba17b444908-image-20220521231158497-ad0b55.png" /></p>
+<p><img alt="image-20220521231211795" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/e0b250134ef05a4a00bf6a560b0adf11-image-20220521231211795-52a28c.png" /></p>
+<p><img alt="image-20220521231659970" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/696a2c3cd707ced862ef2ef50a92b7a7-image-20220521231659970-e4c216.png" /></p>
+<p><img alt="image-20220521231935688" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/53c90b96e727aa963a9ce3e5ee244582-image-20220521231935688-ed5d9b.png" /></p>
+<p><img alt="image-20220521232216603" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/3508d566a5f1dc181439596d19b9c061-image-20220521232216603-e9e090.png" /></p>
+<p><img alt="image-20220521232820555" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/690006f70169ab66f0906bca560b5f83-image-20220521232820555-42f462.png" /></p>
+<p><img alt="image-20220521232947798" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/f76041a75f3b8f808b44b44c80f6298a-image-20220521232947798-3cdc0b.png" /></p>
+<p><img alt="image-20220521233019073" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/e55192334ae9afe9be61a27bd10f36cb-image-20220521233019073-2b645d.png" /></p>
+<p><img alt="image-20220521233516283" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/a5781f1cb6346aab5b7216be61ca10fc-image-20220521233516283-ade576.png" /></p>
+<p><img alt="image-20220521234814349" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/9994338d39ffd110c67deae57f2e06d9-image-20220521234814349-bf92e3.png" /></p>
+<h2 id="rtl">追踪RTL代码<a class="headerlink" href="#rtl" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220521235028051" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/5b968c69826589686618fc98dc8cd266-image-20220521235028051-029843.png" /></p>
+<p><img alt="image-20220521235041128" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/21/30886a0db5d3e2bd6c952d1feea50d4b-image-20220521235041128-87539c.png" /></p>
+<p><img alt="image-20220521235221983" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/61878709373e9a4f2e5007cef322c4cd-image-20220521235221983-e66a9b.png" /></p>
+<p><img alt="image-20220522000154976" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/a0f56da24999bebb0fa8d495885f73d5-image-20220522000154976-d589ff.png" /></p>
+<p><img alt="image-20220522000413113" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/dfe8678dee4928028a484c111f7a400d-image-20220522000413113-014b76.png" /></p>
+<p><img alt="image-20220522000535287" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/37d0cfce011e8c254484b9b92a8ab453-image-20220522000535287-8794cd.png" /></p>
+<h2 id="_3">总结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20220522000754981" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/329f795c5ef00a7aa2178fe92cb4db9a-image-20220522000754981-e91cf9.png" /></p>
+<p><img alt="image-20220522000828549" src="https://cdn.jsdelivr.net/gh/WWeiying/Figurebed/blog-images/2022/05/22/f2f882e4a3a8a18bccb4ab160ff82b2a-image-20220522000828549-303a09.png" /></p>
+                
+                  
+                
+              
+              
+                 
+ 
+ 
+<!-- <hr><blockquote class="page-copyright">
+  <span><i class="md-icon">build</i>本页面最近更新：</span><span class="facts_modified"></span>，<a class="edit_history">更新历史</a><br>
+  <span><i class="md-icon">edit</i>发现错误？想一起完善？ <a href="https://github.com/WWeiying/edit/master/docs/cpu/Verdi课程笔记.md" title="编辑此页" class="page_edit_url">在 GitHub 上编辑此页！</a></span><br>
+  <span><i class="md-icon">people</i>本页面贡献者：</span><span class="page_contributors">OI-wiki</span><br>
+  <span><i class="md-icon">copyright</i>本页面的全部内容在 <strong><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a></strong> 协议之条款下提供，附加条款亦可能应用</span>
+</blockquote> -->
+
+
+<h2 id="__comments" data-no-instant>评论</h2>
+<form id="gitalk-form" onsubmit="return!1" data-no-instant>
+<div id="gitalk-container" data-no-instant>
+</div>
+</form>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    id: 'Verdi课程笔记',
+    owner: 'WWeiying',
+    repo: 'WWeiying.github.io',
+    admin: ['WWeiying'],
+    clientID: 'd3dc000b2047f49b2bd8',
+    clientSecret: 'b20c67ecf9762b0de64976355994ac758d506962',
+    distractionFreeMode: false,
+    pagerDirection: 'first'
+  })
+  gitalk.render('gitalk-container')
+</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<script>function scrollFunction(){20<document.body.scrollTop||20<document.documentElement.scrollTop?document.getElementById("myBtn").style.display="block":document.getElementById("myBtn").style.display="none"}function topFunction(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollFunction()}</script>
+<button onclick="topFunction()" id="myBtn" class="data-tip-left" data-tip="回到顶部">
+  <svg class="Zi Zi--BackToTop data-tip-left" data-tip="回到顶部" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+    <path d="M16.036 19.59a1 1 0 0 1-.997.995H9.032a.996.996 0 0 1-.997-.996v-7.005H5.03c-1.1 0-1.36-.633-.578-1.416L11.33 4.29a1.003 1.003 0 0 1 1.412 0l6.878 6.88c.782.78.523 1.415-.58 1.415h-3.004v7.005z"></path>
+  </svg>
+</button>
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../VCS%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" title="VCS课程笔记" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                VCS课程笔记
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" title="DC逻辑综合实践笔记" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                DC逻辑综合实践笔记
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2022 WWeiying
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+        <div id="miitbeian"></div>
+      </div>
+      
+      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：, 2022-10-13</a></span>
+      <script>
+        /* miitbeian */
+        if (window.location.hostname == "oi-wiki.com") {
+          document.getElementById("miitbeian").innerHTML = `<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>`;
+        }
+        /* Easter Egg */
+        console.log(`%c OI Wiki %c  %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
+        console.log('少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org');
+      </script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.411a9f9f.js"></script>
+      <script>app.initialize({version:"1.3.1",url:{base:"../.."}}),"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
+      
+        <script src="../../_static/js/extra.js?v=16"></script>
+      
+        <script src="../../assets/vendor/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../../_static/js/baidu_tongji.js"></script>
+      
+    
+  </body>
+</html>
