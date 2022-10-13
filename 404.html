@@ -76,31 +76,6 @@
     
     
       
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "G-BQRVKTPNPP", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
     
     
   </head>
@@ -241,32 +216,6 @@
   
 
       
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="/algorithm/cplus/" class="md-tabs__link">
-          算法
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
-    <li class="md-tabs__item">
-      
-        <a href="/experience/linux/" class="md-tabs__link">
-          走过的坑
-        </a>
-      
-    </li>
-  
-
-      
     </ul>
   </div>
 </nav>
@@ -365,30 +314,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/todolist/2022M5/" title="Todolist" class="md-nav__link">
-      Todolist
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/start/format/" title="格式" class="md-nav__link">
-      格式
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -457,102 +382,6 @@
   <li class="md-nav__item">
     <a href="/cpu/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%BB%BC%E5%90%88%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" title="DC逻辑综合实践笔记" class="md-nav__link">
       DC逻辑综合实践笔记
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
-    
-    <label class="md-nav__link" for="nav-3">
-      算法
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        算法
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/algorithm/cplus/" title="C++" class="md-nav__link">
-      C++
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/algorithm/algorithm/" title="数据结构" class="md-nav__link">
-      数据结构
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      走过的坑
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        走过的坑
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/experience/linux/" title="Linux" class="md-nav__link">
-      Linux
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="/experience/git/" title="git" class="md-nav__link">
-      git
     </a>
   </li>
 
