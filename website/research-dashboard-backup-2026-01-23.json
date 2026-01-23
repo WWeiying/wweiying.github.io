@@ -1,0 +1,85 @@
+{
+  "notes": "daf a",
+  "todos": [],
+  "resources": {
+    "Academic Search": [
+      {
+        "name": "arXiv",
+        "url": "https://arxiv.org",
+        "key": "a",
+        "icon": "A"
+      },
+      {
+        "name": "Google Scholar",
+        "url": "https://scholar.google.com",
+        "key": "s",
+        "icon": "G"
+      },
+      {
+        "name": "DBLP",
+        "url": "https://dblp.org",
+        "key": "d",
+        "icon": "D"
+      },
+      {
+        "name": "Semantic Scholar",
+        "url": "https://semanticscholar.org",
+        "key": null,
+        "icon": "S"
+      },
+      {
+        "name": "Github",
+        "url": "https://github.com",
+        "key": "g",
+        "icon": "G"
+      }
+    ],
+    "New Category": [
+      {
+        "name": "New Resource",
+        "url": "https://",
+        "key": null,
+        "icon": "N"
+      }
+    ]
+  },
+  "quickAccess": [
+    {
+      "name": "Overleaf",
+      "url": "https://www.overleaf.com/",
+      "icon": "folder",
+      "desc": "LaTeX Editor"
+    },
+    {
+      "name": "元宝",
+      "url": "https://yuanbao.tencent.com/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "千问",
+      "url": "https://chat.qwen.ai/",
+      "icon": "star",
+      "desc": "LLM"
+    },
+    {
+      "name": "Chatgpt",
+      "url": "https://chatgpt.com/",
+      "icon": "code",
+      "desc": "LLM"
+    },
+    {
+      "name": "Jupyter Notebook",
+      "url": "http://localhost:8888/lab",
+      "icon": "calendar",
+      "desc": "Python Env"
+    },
+    {
+      "name": "B站",
+      "url": "https://www.bilibili.com/",
+      "icon": "document",
+      "desc": "Video"
+    }
+  ],
+  "lastUpdated": "2026-01-23T14:27:31.547Z"
+}
