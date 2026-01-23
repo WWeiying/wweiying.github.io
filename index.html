@@ -277,7 +277,7 @@ border-bottom: none;
 background: rgba(79, 70, 229, 0.02);
 transform: translateX(2px);
 }
-/* Most urgent DDL highlighting */
+/* 最近DDL突出效果 - 已移除 Next 标签 */
 .ddl-item.urgent {
 background: rgba(239, 68, 68, 0.03);
 border-left: 3px solid var(--danger);
@@ -528,7 +528,7 @@ border-radius: 8px;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 16px;
+font-size: 18px;
 background: var(--accent);
 color: white;
 }
@@ -580,6 +580,15 @@ border-color: var(--accent);
 .notes-btn svg {
 width: 12px;
 height: 12px;
+}
+.storage-warning {
+background-color: rgba(245, 158, 11, 0.1);
+border: 1px solid var(--warning);
+border-radius: 6px;
+padding: 8px 12px;
+margin-top: 8px;
+font-size: 12px;
+color: var(--warning);
 }
 #quickNotes {
 flex: 1;
@@ -899,6 +908,23 @@ border: none;
 background: var(--border);
 border: none;
 }
+.add-category-btn {
+background: var(--success);
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 6px;
+margin-bottom: 16px;
+}
+.add-category-btn svg {
+width: 16px;
+height: 16px;
+}
 /* ===== Quick Access Editor Modal ===== */
 .quick-access-editor-modal {
 position: fixed;
@@ -935,33 +961,88 @@ font-weight: 600;
 .quick-access-editor-form {
 padding: 20px;
 }
-.quick-access-category {
-margin-bottom: 20px;
+/* Simplified icon selection */
+.icon-selector {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin: 10px 0;
+max-height: 150px;
+overflow-y: auto;
+padding: 10px;
 border: 1px solid var(--border);
 border-radius: 8px;
-padding: 15px;
-background: rgba(0,0,0,0.01);
+background: rgba(0,0,0,0.02);
+}
+.icon-option {
+width: 32px;
+height: 32px;
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 16px;
+cursor: pointer;
+background: white;
+border: 1px solid var(--border);
+transition: var(--transition);
+}
+.icon-option:hover, .icon-option.selected {
+background: var(--accent);
+color: white;
+border-color: var(--accent);
+}
+.icon-option svg {
+width: 20px;
+height: 20px;
 }
 .quick-access-item-editor {
 display: flex;
 align-items: center;
-margin-bottom: 8px;
-padding: 8px;
+margin-bottom: 16px;
+padding: 12px;
 border: 1px solid var(--border);
 border-radius: 6px;
 background: white;
 }
-.quick-access-item-editor input {
-padding: 4px 8px;
+.quick-access-inputs {
+display: flex;
+flex-direction: column;
+flex: 1;
+gap: 8px;
+}
+.quick-access-name-input {
+width: 100%;
+padding: 6px 10px;
 border: 1px solid var(--border);
 border-radius: 4px;
-margin-right: 8px;
+font-size: 13px;
 }
-.quick-access-category-name {
-font-weight: 500;
-font-size: 14px;
-padding: 8px;
+.quick-access-url-input {
 width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.quick-access-desc-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.icon-preview {
+width: 40px;
+height: 40px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+background: var(--accent);
+color: white;
+margin-right: 12px;
 }
 .quick-access-editor-footer {
 display: flex;
@@ -985,6 +1066,38 @@ border: none;
 .quick-access-editor-footer .cancel-btn {
 background: var(--border);
 border: none;
+}
+.remove-item-btn {
+background: none;
+border: 1px solid var(--border);
+color: var(--muted);
+padding: 4px 8px;
+border-radius: 4px;
+cursor: pointer;
+margin-left: 8px;
+transition: var(--transition);
+}
+.remove-item-btn:hover {
+background: var(--danger);
+color: white;
+border-color: var(--danger);
+}
+.add-item-btn {
+background: var(--success);
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 6px;
+margin-top: 16px;
+}
+.add-item-btn svg {
+width: 16px;
+height: 16px;
 }
 /* ===== Footer ===== */
 footer {
@@ -1061,6 +1174,12 @@ font-size: 11px;
 .todo-list {
 max-height: 200px;
 }
+.notes-area {
+min-height: 250px; /* Increased for mobile */
+}
+#quickNotes {
+min-height: 200px; /* Increased for mobile */
+}
 }
 </style>
 </head>
@@ -1089,8 +1208,7 @@ max-height: 200px;
 <!-- 搜索框 -->
 <div class="search-box">
 <div class="search-icon">🔍</div>
-<input type="text" id="search" placeholder="Search with shortcuts: a arXiv, s Scholar, g GitHub, r RISC-V..."
-autocomplete="off" spellcheck="false">
+<input type="text" id="search" placeholder="Search with shortcuts: a arXiv, s Scholar, g GitHub, r RISC-V..." autocomplete="off" spellcheck="false">
 </div>
 <!-- 所有搜索提示放在搜索框下方 -->
 <div class="search-hints">
@@ -1190,6 +1308,9 @@ Save
 <div class="card-content">
 <div class="notes-area">
 <textarea id="quickNotes" placeholder="Type your notes here... Markdown supported"></textarea>
+<div class="storage-warning">
+<i>⚠️ Note: All your settings and data are saved in your browser's localStorage. Clearing browser data will erase everything. Use the "Export all data" button in footer to back up your content.</i>
+</div>
 <div class="notes-footer">
 <div id="notesStatus">Auto-saved</div>
 <div id="notesStats">0 words, 0 chars</div>
@@ -1200,8 +1321,9 @@ Save
 </div>
 </div>
 <footer>
-<p>Research Dashboard v5.1 • Press letter keys for quick access (a, s, g, r, etc.)</p>
-<p>Notes are saved automatically in your browser • <a href="javascript:void(0)" onclick="exportData()">Export all data</a></p>
+<p>Research Dashboard v6.1 • Press letter keys for quick access (a, s, g, r, etc.)</p>
+<p>Notes and Todos are saved automatically in your browser • <a href="javascript:void(0)" onclick="exportData()">Export all data</a></p>
+<p><small>ℹ️ All settings are stored in your browser's localStorage. Clearing browser history or site data will remove your settings.</small></p>
 </footer>
 <!-- Citation Generator Modal -->
 <div class="citation-modal" id="citationModal" style="display: none;">
@@ -1258,12 +1380,10 @@ Select citation format and fill in details to generate a citation
 <div class="card-title">Edit Resources</div>
 </div>
 <div class="card-content">
-<div style="margin-bottom: 20px;">
-<button class="timer-btn" onclick="addResourceCategory()" style="background: var(--success)">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+<button class="add-category-btn" onclick="addResourceCategory()">
+<svg viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
 Add Category
 </button>
-</div>
 <div id="resourceEditorForm">
 <!-- Resource editor form will be populated by JavaScript -->
 </div>
@@ -1286,14 +1406,13 @@ Cancel
 <button class="close-modal-btn" onclick="closeQuickAccessEditor()">&times;</button>
 </div>
 <div class="quick-access-editor-form">
-<div style="margin-bottom: 20px;">
-<button class="timer-btn" onclick="addQuickAccessCategory()" style="background: var(--success)">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-Add Category
-</button>
+<div id="quickAccessEditorItems">
+<!-- Quick Access editor items will be populated by JavaScript -->
 </div>
-<div id="quickAccessEditorForm">
-<!-- Quick Access editor form will be populated by JavaScript -->
+<button class="add-item-btn" onclick="addQuickAccessItem()">
+<svg viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+Add Item
+</button>
 </div>
 <div class="quick-access-editor-footer">
 <button class="save-btn" onclick="saveQuickAccessEditor()">
@@ -1306,8 +1425,22 @@ Cancel
 </div>
 </div>
 </div>
-</div>
 <script>
+// ===== SVG Icon Library =====
+const iconLibrary = {
+  'article': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M4 6H2v16h16v-2H4V6zm18-4H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h16v16zM9 9h6v2H9zm0 4h6v2H9z"/></svg>`,
+  'github': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>`,
+  'document': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M14.59 2.59c-.39-.39-1.02-.39-1.41 0L6 9.67V19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-8.33l5.09-5.09c.39-.39.39-1.02 0-1.41L19.41 1.59c-.39-.39-1.02-.39-1.41 0l-3.59 3.59-4.41-4.41-3.59 3.59L14.59 2.59zm2.82 13.42H8V9.67l5.21-5.21 5.21 5.21V16h-4.83v-2.59c0-.55-.45-1-1-1s-1 .45-1 1V16zm-5.41-8.42l2 2H10V7.59l2 2z"/></svg>`,
+  'code': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4zM7 18h4v-2H7v2zm0-6h8V2H7v10z"/></svg>`,
+  'cloud': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`,
+  'folder': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>`,
+  'search': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>`,
+  'settings': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49 1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>`,
+  'star': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`,
+  'calendar': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>`,
+  'link': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>`
+};
+
 // ===== Time and Date Display =====
 function updateClock() {
 const now = new Date();
@@ -1476,26 +1609,24 @@ console.log('Failed to load cached weather');
 // ===== Conference Deadlines 优化 =====
 const conferences = [
 {
-name: 'ISCA 2026',
-url: 'https://iscaconf.org',
-deadline: '2026-11-15T23:59:00',
-abbr: 'ISCA',
-location: 'Los Angeles, USA',
-rank: 'A*',
-ccf: 'A',
-type: 'Architecture',
-timezone: 'America/Los_Angeles'
+  name: 'ASAP 2026',
+  url: 'https://2026.asap-conf.org/',
+  deadline: '2026-04-03T23:59:00',
+  abbr: 'ASAP',
+  location: 'London, UK',
+  ccf: 'C',
+  type: 'Architecture',
+  timezone: 'Etc/GMT+12'
 },
 {
-name: 'MICRO 2025',
-url: 'https://www.microarch.org',
-deadline: '2026-09-05T23:59:00',
-abbr: 'MICRO',
-location: 'Tokyo, Japan',
-rank: 'A*',
-ccf: 'A',
-type: 'Architecture',
-timezone: 'Asia/Tokyo'
+  name: 'ICCD 2026',
+  url: 'https://www.iccd-conf.com/Home.html', 
+  deadline: '2026-05-11T23:59:00', 
+  abbr: 'ICCD',
+  location: 'USA',
+  ccf: 'B',
+  type: 'Architecture',
+  timezone: 'Etc/GMT+12'
 },
 {
 name: 'ASPLOS 2026',
@@ -1577,7 +1708,6 @@ return Math.round((conferenceDate - beijingDate) / (1000 * 60));
 }
 function getDeadlineClass(diffMs, index) {
 if (diffMs <= 0) return 'expired';
-// Remove the next label
 if (diffMs < 7 * 24 * 60 * 60 * 1000) return 'urgent'; // 7天内
 if (diffMs < 30 * 24 * 60 * 60 * 1000) return 'warn'; // 30天内
 return '';
@@ -2030,15 +2160,15 @@ window.quickAccessItems = savedQuickAccess;
 } else {
 // 初始Quick Access
 window.quickAccessItems = [
-{ name: 'arXiv CS.AR', url: 'https://arxiv.org/list/cs.AR/recent', icon: '📰', desc: 'Latest Architecture Papers' },
-{ name: 'GitHub', url: 'https://github.com', icon: '💻', desc: 'Code & Projects' },
-{ name: 'Overleaf', url: 'https://overleaf.com', icon: '📝', desc: 'LaTeX Editor' },
-{ name: 'Compiler Exp', url: 'https://godbolt.org', icon: '⚡', desc: 'Assembly Explorer' }
+{ name: 'arXiv CS.AR', url: 'https://arxiv.org/list/cs.AR/recent', icon: 'article', desc: 'Latest Architecture Papers' },
+{ name: 'GitHub', url: 'https://github.com', icon: 'github', desc: 'Code & Projects' },
+{ name: 'Overleaf', url: 'https://overleaf.com', icon: 'document', desc: 'LaTeX Editor' },
+{ name: 'Compiler Exp', url: 'https://godbolt.org', icon: 'code', desc: 'Assembly Explorer' }
 ];
 saveQuickAccessToStorage();
 }
 }
-// Render Quick Access
+// Render Quick Access with SVG icons
 function renderQuickAccess() {
 const container = document.getElementById('quickAccessGrid');
 container.innerHTML = '';
@@ -2047,8 +2177,10 @@ const btn = document.createElement('a');
 btn.className = 'quick-btn';
 btn.href = item.url;
 btn.target = '_blank';
+// Get SVG icon or fallback to text
+let iconHtml = iconLibrary[item.icon] || iconLibrary['article'];
 btn.innerHTML = `
-<div class="quick-icon">${item.icon}</div>
+<div class="quick-icon">${iconHtml}</div>
 <div class="quick-label">${item.name}</div>
 <div class="quick-desc">${item.desc}</div>
 `;
@@ -2058,109 +2190,104 @@ container.appendChild(btn);
 // 打开Quick Access编辑器
 function openQuickAccessEditor() {
 document.getElementById('quickAccessEditorModal').style.display = 'flex';
-renderQuickAccessEditorForm();
+renderQuickAccessEditorItems();
 }
 // 关闭Quick Access编辑器
 function closeQuickAccessEditor() {
 document.getElementById('quickAccessEditorModal').style.display = 'none';
 }
-// 渲染Quick Access编辑表单
-function renderQuickAccessEditorForm() {
-const formContainer = document.getElementById('quickAccessEditorForm');
-formContainer.innerHTML = '';
-// Group items by category (or create a single category if needed)
-// For simplicity, we'll treat each item individually in a flat structure here
-let itemIndex = 0;
-quickAccessItems.forEach(item => {
+// 渲染Quick Access编辑项
+function renderQuickAccessEditorItems() {
+const container = document.getElementById('quickAccessEditorItems');
+container.innerHTML = '';
+quickAccessItems.forEach((item, index) => {
 const itemEl = document.createElement('div');
-itemEl.className = 'quick-access-category';
-itemEl.innerHTML = `
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<input type="text" class="quick-access-category-name" value="Quick Access Item" readonly style="flex:1; padding:8px; border:1px solid var(--border); border-radius:6px; font-weight:500; background: #f0f0f0; color: #888;">
-<button type="button" class="timer-btn secondary" style="margin-left:10px;" onclick="removeQuickAccessItem(${itemIndex})">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
-</button>
-</div>
-<div class="quick-access-items" style="margin-left: 20px; margin-bottom: 20px;">
-<div class="quick-access-item-editor">
-<input type="text" class="quick-access-name" value="${item.name}" placeholder="Name" style="width: 150px;">
-<input type="url" class="quick-access-url" value="${item.url}" placeholder="URL" style="flex:1;">
-<input type="text" class="quick-access-icon" value="${item.icon}" placeholder="Icon" maxlength="1" style="width: 40px; text-align: center;">
-<input type="text" class="quick-access-desc" value="${item.desc}" placeholder="Description" style="width: 120px;">
-</div>
+itemEl.className = 'quick-access-item-editor';
+// Generate icon options selector
+let iconOptionsHtml = '';
+Object.keys(iconLibrary).forEach(iconKey => {
+const selected = iconKey === item.icon ? 'selected' : '';
+iconOptionsHtml += `
+<div class="icon-option ${selected}" onclick="selectQuickAccessIcon(${index}, '${iconKey}')">
+${iconLibrary[iconKey]}
 </div>
 `;
-formContainer.appendChild(itemEl);
-itemIndex++;
 });
-// Add button for new items
-const addButtonDiv = document.createElement('div');
-addButtonDiv.style.marginTop = '20px';
-addButtonDiv.innerHTML = `<button class="timer-btn" onclick="addQuickAccessItem()" style="background: var(--success)">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
-Add New Item
-</button>`;
-formContainer.appendChild(addButtonDiv);
+itemEl.innerHTML = `
+<div class="icon-preview">${iconLibrary[item.icon] || iconLibrary['article']}</div>
+<div class="quick-access-inputs">
+<input type="text" class="quick-access-name-input" value="${item.name}" placeholder="Name">
+<input type="url" class="quick-access-url-input" value="${item.url}" placeholder="URL">
+<input type="text" class="quick-access-desc-input" value="${item.desc}" placeholder="Description">
+<div class="icon-selector">
+${iconOptionsHtml}
+</div>
+</div>
+<button type="button" class="remove-item-btn" onclick="removeQuickAccessItem(${index})">
+<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
+Remove
+</button>
+`;
+container.appendChild(itemEl);
+});
+}
+// 选择Quick Access图标
+function selectQuickAccessIcon(itemIndex, iconKey) {
+// Update the selected item's icon
+quickAccessItems[itemIndex].icon = iconKey;
+// Re-render the preview
+const itemEls = document.querySelectorAll('.quick-access-item-editor');
+const previewEl = itemEls[itemIndex].querySelector('.icon-preview');
+previewEl.innerHTML = iconLibrary[iconKey];
+// Update selected icon in selector
+const iconOptions = itemEls[itemIndex].querySelectorAll('.icon-option');
+iconOptions.forEach(option => {
+option.classList.remove('selected');
+});
+const selectedOption = itemEls[itemIndex].querySelector(`.icon-option[onclick="selectQuickAccessIcon(${itemIndex}, '${iconKey}')"]`);
+selectedOption.classList.add('selected');
+}
+// 添加Quick Access项
+function addQuickAccessItem() {
+const newItem = {
+name: 'New Item',
+url: 'https://',
+icon: 'article',
+desc: 'Description'
+};
+quickAccessItems.push(newItem);
+renderQuickAccessEditorItems();
+// Scroll to the bottom to show the new item
+document.getElementById('quickAccessEditorItems').scrollTo(0, document.getElementById('quickAccessEditorItems').scrollHeight);
+}
+// 删除Quick Access项
+function removeQuickAccessItem(index) {
+if (confirm('Are you sure you want to delete this item?')) {
+quickAccessItems.splice(index, 1);
+renderQuickAccessEditorItems();
+}
 }
 // 保存Quick Access编辑
 function saveQuickAccessEditor() {
-const newQuickAccessItems = [];
-document.querySelectorAll('.quick-access-item-editor').forEach(itemEl => {
-const name = itemEl.querySelector('.quick-access-name').value.trim();
-const url = itemEl.querySelector('.quick-access-url').value.trim();
-const icon = itemEl.querySelector('.quick-access-icon').value.trim();
-const desc = itemEl.querySelector('.quick-access-desc').value.trim();
-if (name && url && icon) {
-newQuickAccessItems.push({
-name,
-url,
-icon,
-desc
-});
+// Update items from form inputs
+const itemEls = document.querySelectorAll('.quick-access-item-editor');
+itemEls.forEach((itemEl, index) => {
+const nameInput = itemEl.querySelector('.quick-access-name-input');
+const urlInput = itemEl.querySelector('.quick-access-url-input');
+const descInput = itemEl.querySelector('.quick-access-desc-input');
+if (nameInput && urlInput && descInput) {
+quickAccessItems[index] = {
+name: nameInput.value.trim() || 'Untitled',
+url: urlInput.value.trim() || 'https://',
+icon: quickAccessItems[index].icon,
+desc: descInput.value.trim() || 'Description'
+};
 }
 });
-window.quickAccessItems = newQuickAccessItems;
 saveQuickAccessToStorage();
 renderQuickAccess();
 closeQuickAccessEditor();
 showStatus('Quick Access updated successfully!', 'success');
-}
-// 添加Quick Access项
-function addQuickAccessItem() {
-const formContainer = document.getElementById('quickAccessEditorForm');
-const itemIndex = formContainer.querySelectorAll('.quick-access-item-editor').length;
-const newItemHTML = `
-<div class="quick-access-category">
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<input type="text" class="quick-access-category-name" value="New Quick Access Item" readonly style="flex:1; padding:8px; border:1px solid var(--border); border-radius:6px; font-weight:500; background: #f0f0f0; color: #888;">
-<button type="button" class="timer-btn secondary" style="margin-left:10px;" onclick="removeQuickAccessItem(${itemIndex})">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
-</button>
-</div>
-<div class="quick-access-items" style="margin-left: 20px; margin-bottom: 20px;">
-<div class="quick-access-item-editor">
-<input type="text" class="quick-access-name" value="New Item" placeholder="Name" style="width: 150px;">
-<input type="url" class="quick-access-url" value="https://" placeholder="URL" style="flex:1;">
-<input type="text" class="quick-access-icon" value="➕" placeholder="Icon" maxlength="1" style="width: 40px; text-align: center;">
-<input type="text" class="quick-access-desc" value="New Description" placeholder="Description" style="width: 120px;">
-</div>
-</div>
-</div>
-`;
-// Find the add button and insert before it
-const addButton = formContainer.querySelector('.timer-btn[onclick="addQuickAccessItem()"]');
-if (addButton) {
-formContainer.insertBefore(document.createRange().createContextualFragment(newItemHTML), addButton.parentElement);
-} else {
-formContainer.insertAdjacentHTML('beforeend', newItemHTML);
-}
-}
-// 删除Quick Access项
-function removeQuickAccessItem(index) {
-const categoryEl = document.querySelectorAll('.quick-access-category')[index];
-if (categoryEl && confirm('Are you sure you want to delete this item?')) {
-categoryEl.remove();
-}
 }
 // ===== Task Management System =====
 let todos = [];
@@ -2202,7 +2329,7 @@ const newTodo = {
 id: Date.now(),
 text: text,
 completed: false,
-createdAt: new Date().toISOString(),
+createdAt: new Date().toISOString(), // Add creation time
 dueDate: null // Optional due date
 };
 todos.unshift(newTodo); // Add to beginning of array
@@ -2216,7 +2343,8 @@ function toggleTodoCompletion(id) {
 const todo = todos.find(t => t.id === id);
 if (todo) {
 todo.completed = !todo.completed;
-todo.completedAt = todo.completed ? new Date().toISOString() : null;
+todo.completedAt = todo.completed ? new Date().toISOString() : null; // Add completion time
+todo.modifiedAt = new Date().toISOString(); // Add modification time
 saveTodos();
 renderTodos();
 }
@@ -2264,7 +2392,7 @@ onclick="toggleTodoCompletion(${todo.id})">
 ${todoDate ? `<div class="todo-date">${todoDateText}</div>` : ''}
 <button class="notes-btn secondary" style="padding:2px 6px;margin-left:8px;"
 onclick="deleteTodo(${todo.id})" title="Delete task">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
+<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a-.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
 </button>
 `;
 todoListEl.appendChild(todoEl);
