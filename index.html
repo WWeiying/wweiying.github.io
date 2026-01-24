@@ -116,6 +116,13 @@ font-size: 12px;
 opacity: 0;
 transition: var(--transition);
 }
+.weather-location {
+font-size: 12px;
+color: var(--accent);
+margin-left: 5px;
+cursor: pointer;
+text-decoration: underline;
+}
 /* ===== 搜索区域优化 ===== */
 .search-section {
 display: flex;
@@ -246,6 +253,7 @@ padding: 4px 10px;
 border-radius: 20px;
 font-size: 11px;
 font-weight: 500;
+cursor: pointer;
 }
 .card-content {
 padding: 20px;
@@ -1231,6 +1239,245 @@ background: rgba(239, 68, 68, 0.1);
 color: var(--danger);
 border: 1px solid var(--danger);
 }
+/* ===== Deadlines Editor Modal ===== */
+.deadlines-editor-modal {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.5);
+z-index: 1003;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.deadlines-editor-content {
+background: white;
+border-radius: var(--radius);
+width: 90%;
+max-width: 800px;
+max-height: 80vh;
+overflow: auto;
+box-shadow: var(--shadow-lg);
+}
+.deadlines-editor-header {
+padding: 20px;
+border-bottom: 1px solid var(--border);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.deadlines-editor-title {
+font-size: 18px;
+font-weight: 600;
+}
+.deadlines-editor-form {
+padding: 20px;
+}
+.deadline-item-editor {
+display: flex;
+align-items: center;
+margin-bottom: 16px;
+padding: 12px;
+border: 1px solid var(--border);
+border-radius: 6px;
+background: white;
+}
+.deadline-inputs {
+display: flex;
+flex-direction: column;
+flex: 1;
+gap: 8px;
+}
+.deadline-name-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-url-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-date-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-location-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-abbr-input {
+width: 60px;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+text-align: center;
+}
+.deadline-ccf-input {
+width: 60px;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+text-align: center;
+}
+.deadline-type-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-timezone-input {
+width: 100%;
+padding: 6px 10px;
+border: 1px solid var(--border);
+border-radius: 4px;
+font-size: 13px;
+}
+.deadline-editor-footer {
+display: flex;
+gap: 10px;
+margin: 20px 0;
+padding-top: 15px;
+border-top: 1px solid var(--border);
+}
+.deadline-editor-footer button {
+flex: 1;
+padding: 10px;
+border-radius: 6px;
+font-weight: 500;
+cursor: pointer;
+}
+.deadline-editor-footer .save-btn {
+background: var(--accent);
+color: white;
+border: none;
+}
+.deadline-editor-footer .cancel-btn {
+background: var(--border);
+border: none;
+}
+.add-deadline-btn {
+background: var(--success);
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 6px;
+margin-top: 16px;
+}
+.add-deadline-btn svg {
+width: 16px;
+height: 16px;
+}
+.remove-deadline-btn {
+background: none;
+border: 1px solid var(--border);
+color: var(--muted);
+padding: 4px 8px;
+border-radius: 4px;
+cursor: pointer;
+margin-left: 8px;
+transition: var(--transition);
+}
+.remove-deadline-btn:hover {
+background: var(--danger);
+color: white;
+border-color: var(--danger);
+}
+/* ===== Weather Editor Modal ===== */
+.weather-editor-modal {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0,0,0,0.5);
+z-index: 1004;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.weather-editor-content {
+background: white;
+border-radius: var(--radius);
+width: 90%;
+max-width: 500px;
+box-shadow: var(--shadow-lg);
+padding: 20px;
+}
+.weather-editor-header {
+padding-bottom: 15px;
+border-bottom: 1px solid var(--border);
+margin-bottom: 15px;
+}
+.weather-editor-title {
+font-size: 18px;
+font-weight: 600;
+margin-bottom: 5px;
+}
+.weather-editor-form {
+margin: 20px 0;
+}
+.weather-inputs {
+display: flex;
+gap: 10px;
+margin-bottom: 15px;
+}
+.weather-city-input {
+flex: 2;
+padding: 10px;
+border: 1px solid var(--border);
+border-radius: 6px;
+font-size: 14px;
+}
+.weather-country-input {
+flex: 1;
+padding: 10px;
+border: 1px solid var(--border);
+border-radius: 6px;
+font-size: 14px;
+text-transform: uppercase;
+}
+.weather-actions {
+display: flex;
+gap: 10px;
+margin-top: 20px;
+}
+.weather-btn {
+flex: 1;
+padding: 10px;
+border-radius: 6px;
+font-weight: 500;
+cursor: pointer;
+border: none;
+}
+.weather-btn.cancel {
+background: var(--border);
+color: var(--fg);
+}
+.weather-btn.save {
+background: var(--accent);
+color: white;
+}
 /* ===== Footer ===== */
 footer {
 margin-top: 40px;
@@ -1331,6 +1578,7 @@ min-height: 200px; /* Increased for mobile */
 <div class="weather-minimal" id="weatherContainer" onclick="fetchWeather(true)">
 <span id="weatherIcon" class="weather-icon">🌤️</span>
 <span id="weatherText">--°C</span>
+<span id="weatherLocation" class="weather-location" onclick="openWeatherEditor(event)">Beijing</span>
 <span class="weather-refresh" title="Click to refresh">↻</span>
 </div>
 </div>
@@ -1358,7 +1606,7 @@ min-height: 200px; /* Increased for mobile */
 <div class="card">
 <div class="card-header">
 <div class="card-title">📅 Conference Deadlines</div>
-<div class="card-badge" id="ddlCountBadge">4 upcoming</div>
+<div class="card-badge" id="ddlCountBadge" onclick="openDeadlinesEditor()">4 upcoming</div>
 </div>
 <div class="card-content">
 <div class="ddl-list" id="deadlines">
@@ -1371,7 +1619,7 @@ min-height: 200px; /* Increased for mobile */
 <div class="card-header">
 <div class="card-title">📚 Resources</div>
 <button class="notes-btn" onclick="openResourceEditor()" title="Edit resources">
-<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
+<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .468-.325z"/></svg>
 Edit
 </button>
 </div>
@@ -1595,6 +1843,53 @@ Cancel
 </div>
 </div>
 </div>
+<!-- Deadlines Editor Modal -->
+<div class="deadlines-editor-modal" id="deadlinesEditorModal" style="display:none;">
+<div class="deadlines-editor-content">
+<div class="deadlines-editor-header">
+<div class="deadlines-editor-title">Edit Conference Deadlines</div>
+<button class="close-modal-btn" onclick="closeDeadlinesEditor()">&times;</button>
+</div>
+<div class="deadlines-editor-form">
+<div id="deadlinesEditorItems">
+<!-- Deadlines editor items will be populated by JavaScript -->
+</div>
+<button class="add-deadline-btn" onclick="addDeadlineItem()">
+<svg viewBox="0 0 16 16" width="16" height="16"><path fill="currentColor" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+Add Deadline
+</button>
+</div>
+<div class="deadline-editor-footer">
+<button class="save-btn" onclick="saveDeadlinesEditor()">
+Save Changes
+</button>
+<button class="cancel-btn" onclick="closeDeadlinesEditor()">
+Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Weather Editor Modal -->
+<div class="weather-editor-modal" id="weatherEditorModal" style="display:none;">
+<div class="weather-editor-content">
+<div class="weather-editor-header">
+<div class="weather-editor-title">Set Weather Location</div>
+<button class="close-modal-btn" onclick="closeWeatherEditor()">&times;</button>
+</div>
+<div class="weather-editor-form">
+<p>Set your city and country code to get accurate weather information.</p>
+<div class="weather-inputs">
+<input type="text" class="weather-city-input" id="weatherCityInput" placeholder="City name (e.g., Beijing)">
+<input type="text" class="weather-country-input" id="weatherCountryInput" placeholder="Country code (e.g., CN)" maxlength="2">
+</div>
+<div class="weather-actions">
+<button class="weather-btn cancel" onclick="closeWeatherEditor()">Cancel</button>
+<button class="weather-btn save" onclick="saveWeatherLocation()">Save & Update</button>
+</div>
+</div>
+</div>
+</div>
 <script>
 // ===== SVG Icon Library =====
 const iconLibrary = {
@@ -1641,37 +1936,33 @@ updateClock();
 let lastWeatherUpdate = 0;
 const WEATHER_CACHE_TIME = 30 * 60 * 1000; // 30 minutes in milliseconds
 let isFetchingWeather = false;
-// Get user's approximate location
-function getUserLocation() {
-return new Promise((resolve) => {
-// 使用浏览器地理位置API
-if (navigator.geolocation) {
-navigator.geolocation.getCurrentPosition(
-(position) => {
-resolve({
-latitude: position.coords.latitude,
-longitude: position.coords.longitude
-});
-},
-() => {
-// 如果用户拒绝或失败，使用默认位置（北京）
-console.log('Using default location (Beijing)');
-resolve({ latitude: 39.9042, longitude: 116.4074 });
+let weatherLocation = { city: 'Beijing', country: 'CN' };
+// Get weather location from localStorage
+function loadWeatherLocation() {
+const savedLocation = localStorage.getItem('weatherLocation');
+if (savedLocation) {
+try {
+weatherLocation = JSON.parse(savedLocation);
+document.getElementById('weatherLocation').textContent = weatherLocation.city;
+document.getElementById('weatherCityInput').value = weatherLocation.city;
+document.getElementById('weatherCountryInput').value = weatherLocation.country;
+} catch (e) {
+console.log('Error loading weather location, using default');
 }
-);
-} else {
-// 浏览器不支持地理位置
-resolve({ latitude: 39.9042, longitude: 116.4074 });
 }
-});
 }
-// Fetch weather from API
+// Save weather location to localStorage
+function saveWeatherLocationToStorage() {
+localStorage.setItem('weatherLocation', JSON.stringify(weatherLocation));
+}
+// Fetch weather from API with location
 async function fetchWeather(forceRefresh = false) {
 if (isFetchingWeather) return;
 const now = Date.now();
 const weatherContainer = document.getElementById('weatherContainer');
 const weatherText = document.getElementById('weatherText');
 const weatherIcon = document.getElementById('weatherIcon');
+const weatherLocationEl = document.getElementById('weatherLocation');
 // Check cache
 if (!forceRefresh && now - lastWeatherUpdate < WEATHER_CACHE_TIME) {
 return;
@@ -1681,57 +1972,79 @@ try {
 // Show loading
 weatherText.textContent = 'Loading...';
 weatherIcon.textContent = '⏳';
-// Get location
-const location = await getUserLocation();
-// Use Open-Meteo API (free, no API key needed)
-const response = await fetch(
-`https://api.open-meteo.com/v1/forecast?latitude=${location.latitude}&longitude=${location.longitude}&current_weather=true&timezone=auto`
+// Use Open-Meteo API with city name
+// First get coordinates from city name
+const city = weatherLocation.city || 'Beijing';
+const country = weatherLocation.country || 'CN';
+const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`);
+const geoData = await geoResponse.json();
+if (!geoData.results || geoData.results.length === 0) {
+throw new Error(`Location ${city} not found`);
+}
+const { latitude, longitude, name, country_code } = geoData.results[0];
+weatherLocation = { city: name, country: country_code };
+saveWeatherLocationToStorage();
+weatherLocationEl.textContent = name;
+// Now get weather data
+const weatherResponse = await fetch(
+`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto`
 );
-if (!response.ok) throw new Error('Weather API error');
-const data = await response.json();
-if (data.current_weather) {
-const temp = Math.round(data.current_weather.temperature);
-const weatherCode = data.current_weather.weathercode;
+if (!weatherResponse.ok) throw new Error('Weather API error');
+const weatherData = await weatherResponse.json();
+if (weatherData.current_weather) {
+const temp = Math.round(weatherData.current_weather.temperature);
+const weatherCode = weatherData.current_weather.weathercode;
 // Get weather icon based on WMO weather code
 const icon = getWeatherIcon(weatherCode);
 weatherText.textContent = `${temp}°C`;
 weatherIcon.textContent = icon;
 // Store in localStorage for offline use
-const weatherData = {
+const cachedData = {
 temp,
 icon,
+location: name,
 timestamp: now,
 weatherCode
 };
-localStorage.setItem('weatherData', JSON.stringify(weatherData));
+localStorage.setItem('weatherData', JSON.stringify(cachedData));
 lastWeatherUpdate = now;
 // Update tooltip
 const condition = getWeatherCondition(weatherCode);
-weatherContainer.title = `${condition} | Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+weatherContainer.title = `${condition} in ${name} | Updated: ${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
 }
 } catch (error) {
-console.log('Weather fetch error, using cached ', error);
+console.log('Weather fetch error, using cached data', error);
 // Try to load cached data
 try {
 const cached = localStorage.getItem('weatherData');
-if (cached) {
+if (cached && !forceRefresh) {
 const weatherData = JSON.parse(cached);
 weatherText.textContent = `${weatherData.temp}°C`;
 weatherIcon.textContent = weatherData.icon;
+document.getElementById('weatherLocation').textContent = weatherData.location || weatherLocation.city;
 weatherContainer.title = 'Using cached data';
 } else {
 // Fallback to mock data
 weatherText.textContent = '22°C';
 weatherIcon.textContent = '🌤️';
+weatherLocationEl.textContent = weatherLocation.city || 'Beijing';
 weatherContainer.title = 'Network error, using default data';
 }
 } catch (e) {
 weatherText.textContent = '22°C';
 weatherIcon.textContent = '🌤️';
+weatherLocationEl.textContent = weatherLocation.city || 'Beijing';
 }
 } finally {
 isFetchingWeather = false;
 }
+}
+// Get user's approximate location - now only used as fallback
+function getUserLocationFallback() {
+return new Promise((resolve) => {
+// Use default location (Beijing)
+resolve({ latitude: 39.9042, longitude: 116.4074, city: 'Beijing' });
+});
 }
 // Map weather codes to emojis
 function getWeatherIcon(weatherCode) {
@@ -1759,6 +2072,30 @@ if (weatherCode <= 86) return 'Snow showers';
 if (weatherCode <= 99) return 'Thunderstorm';
 return 'Fair';
 }
+// Weather Editor Functions
+function openWeatherEditor(e) {
+e.stopPropagation(); // Prevent triggering weather refresh
+document.getElementById('weatherEditorModal').style.display = 'flex';
+// Populate with current location
+document.getElementById('weatherCityInput').value = weatherLocation.city || 'Beijing';
+document.getElementById('weatherCountryInput').value = weatherLocation.country || 'CN';
+}
+function closeWeatherEditor() {
+document.getElementById('weatherEditorModal').style.display = 'none';
+}
+function saveWeatherLocation() {
+const city = document.getElementById('weatherCityInput').value.trim();
+const country = document.getElementById('weatherCountryInput').value.trim().toUpperCase();
+if (!city) {
+alert('Please enter a city name');
+return;
+}
+weatherLocation = { city, country: country || 'CN' };
+saveWeatherLocationToStorage();
+closeWeatherEditor();
+fetchWeather(true); // Force refresh with new location
+showStatus('Weather location updated', 'success');
+}
 // Load cached weather on start
 function loadCachedWeather() {
 try {
@@ -1767,6 +2104,7 @@ if (cached) {
 const weatherData = JSON.parse(cached);
 document.getElementById('weatherText').textContent = `${weatherData.temp}°C`;
 document.getElementById('weatherIcon').textContent = weatherData.icon;
+document.getElementById('weatherLocation').textContent = weatherData.location || weatherLocation.city;
 const updateTime = new Date(weatherData.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 document.getElementById('weatherContainer').title = `Last updated: ${updateTime}`;
 lastWeatherUpdate = weatherData.timestamp;
@@ -1775,8 +2113,25 @@ lastWeatherUpdate = weatherData.timestamp;
 console.log('Failed to load cached weather');
 }
 }
-// ===== Conference Deadlines 优化 =====
-const conferences = [
+// ===== Conference Deadlines Management =====
+let conferences = [];
+// Load conferences from localStorage
+function loadConferences() {
+const savedConferences = localStorage.getItem('dashboardConferences');
+if (savedConferences) {
+try {
+conferences = JSON.parse(savedConferences);
+} catch (e) {
+console.error('Error loading conferences, using default list', e);
+initDefaultConferences();
+}
+} else {
+initDefaultConferences();
+}
+}
+// Initialize default conferences
+function initDefaultConferences() {
+conferences = [
 {
 name: 'ASAP 2026',
 url: 'https://2026.asap-conf.org/',
@@ -1785,7 +2140,7 @@ abbr: 'ASAP',
 location: 'London, UK',
 ccf: 'C',
 type: 'Architecture',
-timezone: 'Etc/GMT+12'
+timezone: 'Europe/London'
 },
 {
 name: 'ICCD 2026',
@@ -1795,7 +2150,7 @@ abbr: 'ICCD',
 location: 'USA',
 ccf: 'B',
 type: 'Architecture',
-timezone: 'Etc/GMT+12'
+timezone: 'America/New_York'
 },
 {
 name: 'ASPLOS 2026',
@@ -1831,6 +2186,12 @@ type: 'Automation',
 timezone: 'America/Los_Angeles'
 }
 ];
+saveConferences();
+}
+// Save conferences to localStorage
+function saveConferences() {
+localStorage.setItem('dashboardConferences', JSON.stringify(conferences));
+}
 // 格式化分钟级别的倒计时
 function formatCountdown(diffMs) {
 if (diffMs <= 0) return 'Expired';
@@ -1868,12 +2229,17 @@ return dateStr.replace('T', ' ');
 function getBeijingTimeDiff(conferenceTimezone) {
 // 返回会议时区与北京时间的时差（分钟）
 // 北京时区：Asia/Shanghai
+try {
 const beijingTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' });
 const conferenceTime = new Date().toLocaleString('en-US', { timeZone: conferenceTimezone });
 const beijingDate = new Date(beijingTime);
 const conferenceDate = new Date(conferenceTime);
 // 计算时差（分钟）
 return Math.round((conferenceDate - beijingDate) / (1000 * 60));
+} catch (e) {
+// If timezone conversion fails, assume same as Beijing
+return 0;
+}
 }
 function getDeadlineClass(diffMs, index) {
 if (diffMs <= 0) return 'expired';
@@ -1889,7 +2255,7 @@ const badgeEl = document.getElementById('ddlCountBadge');
 const conferencesWithTime = conferences.map(conf => {
 const deadline = new Date(conf.deadline);
 // 计算会议时区与北京时间的时差
-const timezoneDiff = getBeijingTimeDiff(conf.timezone);
+const timezoneDiff = getBeijingTimeDiff(conf.timezone || 'Asia/Shanghai');
 // 将会议截止时间转换为北京时间
 const beijingDeadline = new Date(deadline.getTime() - timezoneDiff * 60 * 1000);
 // 计算与当前北京时间的时间差
@@ -1913,14 +2279,14 @@ return `
 <div class="conf-details">
 <a href="${conf.url}" class="conf-name" target="_blank">${conf.name}</a>
 <div class="conf-meta">
-<span class="conf-rank">${conf.rank}</span>
+${conf.rank ? `<span class="conf-rank">${conf.rank}</span>` : ''}
 <span class="ccf-rank">CCF ${conf.ccf}</span>
 <span class="location">📍 ${conf.location}</span>
 <span>${conf.type}</span>
 </div>
 </div>
 <div class="ddl-time">
-<div class="deadline-date" title="Deadline in conference local time (${conf.timezone})">
+<div class="deadline-date" title="Deadline in conference local time (${conf.timezone || 'local time'})">
 ${formatDeadlineTime(conf.deadline)}
 </div>
 <div class="countdown">${formatCountdown(conf.diffMs)}</div>
@@ -1945,6 +2311,116 @@ container.innerHTML = `
 }
 // 每秒更新一次倒计时
 setTimeout(updateDeadlines, 1000);
+}
+// ===== Deadlines Editor Functions =====
+function openDeadlinesEditor() {
+document.getElementById('deadlinesEditorModal').style.display = 'flex';
+renderDeadlinesEditorItems();
+}
+function closeDeadlinesEditor() {
+document.getElementById('deadlinesEditorModal').style.display = 'none';
+}
+function renderDeadlinesEditorItems() {
+const container = document.getElementById('deadlinesEditorItems');
+container.innerHTML = '';
+conferences.forEach((conf, index) => {
+const itemEl = document.createElement('div');
+itemEl.className = 'deadline-item-editor';
+itemEl.innerHTML = `
+<div class="deadline-inputs">
+<input type="text" class="deadline-name-input" value="${escapeHtml(conf.name)}" placeholder="Conference name">
+<input type="url" class="deadline-url-input" value="${escapeHtml(conf.url)}" placeholder="Conference URL">
+<div style="display: flex; gap: 10px;">
+<input type="text" class="deadline-abbr-input" value="${escapeHtml(conf.abbr)}" placeholder="Abbr" maxlength="10">
+<input type="text" class="deadline-ccf-input" value="${escapeHtml(conf.ccf || '')}" placeholder="CCF Rank" maxlength="1">
+<input type="text" class="deadline-location-input" value="${escapeHtml(conf.location)}" placeholder="Location">
+</div>
+<div style="display: flex; gap: 10px;">
+<input type="datetime-local" class="deadline-date-input" value="${formatForDateTimeLocal(conf.deadline)}" placeholder="Deadline">
+<input type="text" class="deadline-timezone-input" value="${escapeHtml(conf.timezone || 'Asia/Shanghai')}" placeholder="Timezone (e.g., Asia/Shanghai)">
+</div>
+<input type="text" class="deadline-type-input" value="${escapeHtml(conf.type || 'Conference')}" placeholder="Type (e.g., Architecture, Systems)">
+</div>
+<button type="button" class="remove-deadline-btn" onclick="removeDeadlineItem(${index})">
+<svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/></svg>
+Remove
+</button>
+`;
+container.appendChild(itemEl);
+});
+}
+// Helper function to format date for datetime-local input
+function formatForDateTimeLocal(dateString) {
+const date = new Date(dateString);
+return date.toISOString().slice(0, 16);
+}
+// Helper function to escape HTML
+function escapeHtml(unsafe) {
+if (!unsafe) return '';
+return unsafe
+.replace(/&/g, "&amp;")
+.replace(/</g, "&lt;")
+.replace(/>/g, "&gt;")
+.replace(/"/g, "&quot;")
+.replace(/'/g, "&#039;");
+}
+function addDeadlineItem() {
+const newItem = {
+name: 'New Conference',
+url: 'https://',
+deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+abbr: 'CONF',
+location: 'City, Country',
+ccf: 'C',
+type: 'Conference',
+timezone: 'Asia/Shanghai'
+};
+conferences.push(newItem);
+renderDeadlinesEditorItems();
+// Scroll to the bottom
+const container = document.getElementById('deadlinesEditorItems');
+container.scrollTop = container.scrollHeight;
+}
+function removeDeadlineItem(index) {
+if (confirm('Are you sure you want to delete this conference deadline?')) {
+conferences.splice(index, 1);
+renderDeadlinesEditorItems();
+}
+}
+function saveDeadlinesEditor() {
+const items = document.querySelectorAll('.deadline-item-editor');
+const newConferences = [];
+items.forEach(item => {
+const name = item.querySelector('.deadline-name-input').value.trim();
+const url = item.querySelector('.deadline-url-input').value.trim();
+const abbr = item.querySelector('.deadline-abbr-input').value.trim();
+const ccf = item.querySelector('.deadline-ccf-input').value.trim().toUpperCase();
+const location = item.querySelector('.deadline-location-input').value.trim();
+const deadline = item.querySelector('.deadline-date-input').value;
+const timezone = item.querySelector('.deadline-timezone-input').value.trim() || 'Asia/Shanghai';
+const type = item.querySelector('.deadline-type-input').value.trim() || 'Conference';
+if (name && url && abbr && deadline) {
+// Convert datetime-local to ISO string
+const deadlineDate = new Date(deadline);
+if (!isNaN(deadlineDate.getTime())) {
+newConferences.push({
+name,
+url,
+abbr,
+location,
+ccf: ccf || 'C',
+type,
+deadline: deadlineDate.toISOString(),
+timezone
+});
+}
+}
+});
+conferences = newConferences;
+saveConferences();
+closeDeadlinesEditor();
+updateDeadlines();
+showStatus('Conference deadlines updated successfully!', 'success');
 }
 // ===== Enhanced Search with Working Shortcuts =====
 const searchEngines = {
@@ -1978,7 +2454,9 @@ if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.ctrlKey
 document.getElementById('citationModal').style.display !== 'none' ||
 document.getElementById('resourceEditorModal').style.display !== 'none' ||
 document.getElementById('quickAccessEditorModal').style.display !== 'none' ||
-document.getElementById('importModal').style.display !== 'none') {
+document.getElementById('importModal').style.display !== 'none' ||
+document.getElementById('deadlinesEditorModal').style.display !== 'none' ||
+document.getElementById('weatherEditorModal').style.display !== 'none') {
 return;
 }
 const key = e.key.toLowerCase();
@@ -2004,12 +2482,20 @@ if (document.getElementById('resourceEditorModal').style.display !== 'none') {
 closeResourceEditor();
 return;
 }
-if (document.getElementById('quickAccessEditorModal').style.display !== 'none') { // Added quick access modal check
+if (document.getElementById('quickAccessEditorModal').style.display !== 'none') {
 closeQuickAccessEditor();
 return;
 }
 if (document.getElementById('importModal').style.display !== 'none') {
 closeImportModal();
+return;
+}
+if (document.getElementById('deadlinesEditorModal').style.display !== 'none') {
+closeDeadlinesEditor();
+return;
+}
+if (document.getElementById('weatherEditorModal').style.display !== 'none') {
+closeWeatherEditor();
 return;
 }
 }
@@ -2419,7 +2905,9 @@ iconOptions.forEach(option => {
 option.classList.remove('selected');
 });
 const selectedOption = itemEls[itemIndex].querySelector(`.icon-option[onclick="selectQuickAccessIcon(${itemIndex}, '${iconKey}')"]`);
+if (selectedOption) {
 selectedOption.classList.add('selected');
+}
 }
 // 添加Quick Access项
 function addQuickAccessItem() {
@@ -2463,7 +2951,6 @@ renderQuickAccess();
 closeQuickAccessEditor();
 showStatus('Quick Access updated successfully!', 'success');
 }
-
 // ===== Import Data Functionality =====
 function openImportModal() {
 document.getElementById('importModal').style.display = 'flex';
@@ -2472,73 +2959,58 @@ document.getElementById('importMessage').style.display = 'none';
 document.getElementById('importFileInput').value = '';
 document.getElementById('dropArea').classList.remove('drag-over');
 }
-
 function closeImportModal() {
 document.getElementById('importModal').style.display = 'none';
 }
-
 // Setup drop area event listeners
 document.addEventListener('DOMContentLoaded', function() {
 const dropArea = document.getElementById('dropArea');
 const fileInput = document.getElementById('importFileInput');
-
 // Prevent default drag behaviors
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
 dropArea.addEventListener(eventName, preventDefaults, false);
 document.body.addEventListener(eventName, preventDefaults, false);
 });
-
 // Highlight drop area when item is dragged over it
 ['dragenter', 'dragover'].forEach(eventName => {
 dropArea.addEventListener(eventName, highlight, false);
 });
-
 ['dragleave', 'drop'].forEach(eventName => {
 dropArea.addEventListener(eventName, unhighlight, false);
 });
-
 // Handle dropped files
 dropArea.addEventListener('drop', handleDrop, false);
-
 // Handle file selection via click
 dropArea.addEventListener('click', function() {
 fileInput.click();
 });
-
 // Handle file selection via input change
 fileInput.addEventListener('change', handleFileSelect, false);
 });
-
 function preventDefaults(e) {
 e.preventDefault();
 e.stopPropagation();
 }
-
 function highlight() {
 document.getElementById('dropArea').classList.add('drag-over');
 }
-
 function unhighlight() {
 document.getElementById('dropArea').classList.remove('drag-over');
 }
-
 function handleDrop(e) {
 const dt = e.dataTransfer;
 const files = dt.files;
 document.getElementById('importFileInput').files = files;
 handleFileSelect(e);
 }
-
 function handleFileSelect(e) {
 const fileInput = document.getElementById('importFileInput');
 const file = fileInput.files[0];
 if (!file) return;
-
 if (!file.name.endsWith('.json')) {
 showImportMessage('Please select a JSON file', 'error');
 return;
 }
-
 const reader = new FileReader();
 reader.onload = function(e) {
 try {
@@ -2550,26 +3022,25 @@ showImportMessage('Invalid JSON file format: ' + error.message, 'error');
 };
 reader.readAsText(file);
 }
-
 function previewImportData(data) {
 const previewEl = document.getElementById('importPreview');
 previewEl.style.display = 'block';
 previewEl.textContent = JSON.stringify({
-  notes: data.notes ? `${data.notes.substring(0, 50)}...` : 'Not available',
-  todos_count: data.todos ? data.todos.length : 0,
-  resources_categories: data.resources ? Object.keys(data.resources).length : 0,
-  quick_access_count: data.quickAccess ? data.quickAccess.length : 0,
-  last_updated: data.lastUpdated || 'Unknown'
+notes: data.notes ? `${data.notes.substring(0, 50)}...` : 'Not available',
+todos_count: data.todos ? data.todos.length : 0,
+resources_categories: data.resources ? Object.keys(data.resources).length : 0,
+quick_access_count: data.quickAccess ? data.quickAccess.length : 0,
+conferences_count: data.conferences ? data.conferences.length : 0,
+weather_location: data.weatherLocation ? `${data.weatherLocation.city}, ${data.weatherLocation.country}` : 'Not available',
+last_updated: data.lastUpdated || 'Unknown'
 }, null, 2);
 }
-
 function showImportMessage(message, type) {
 const messageEl = document.getElementById('importMessage');
 messageEl.textContent = message;
 messageEl.className = `import-message ${type}`;
 messageEl.style.display = 'block';
 }
-
 function processImport() {
 const fileInput = document.getElementById('importFileInput');
 const file = fileInput.files[0];
@@ -2577,14 +3048,12 @@ if (!file) {
 showImportMessage('Please select a file to import', 'error');
 return;
 }
-
 const reader = new FileReader();
 reader.onload = function(e) {
 try {
 const data = JSON.parse(e.target.result);
 let changesMade = false;
 let message = '';
-
 // Import notes if selected
 if (document.getElementById('importNotes').checked && data.notes !== undefined) {
 document.getElementById('quickNotes').value = data.notes;
@@ -2592,7 +3061,6 @@ saveNotes();
 changesMade = true;
 message += 'Notes updated. ';
 }
-
 // Import todos if selected
 if (document.getElementById('importTodos').checked && data.todos !== undefined) {
 todos = data.todos;
@@ -2602,7 +3070,6 @@ updateTodoCount();
 changesMade = true;
 message += 'To-do items updated. ';
 }
-
 // Import resources if selected
 if (document.getElementById('importResources').checked && data.resources !== undefined) {
 resources = data.resources;
@@ -2611,7 +3078,6 @@ renderResources();
 changesMade = true;
 message += 'Resources updated. ';
 }
-
 // Import quick access if selected
 if (document.getElementById('importQuickAccess').checked && data.quickAccess !== undefined) {
 quickAccessItems = data.quickAccess;
@@ -2620,7 +3086,23 @@ renderQuickAccess();
 changesMade = true;
 message += 'Quick access items updated. ';
 }
-
+// Import conferences if available
+if (data.conferences !== undefined) {
+conferences = data.conferences;
+saveConferences();
+updateDeadlines();
+changesMade = true;
+message += 'Conference deadlines updated. ';
+}
+// Import weather location if available
+if (data.weatherLocation !== undefined) {
+weatherLocation = data.weatherLocation;
+saveWeatherLocationToStorage();
+document.getElementById('weatherLocation').textContent = weatherLocation.city;
+changesMade = true;
+message += 'Weather location updated. ';
+fetchWeather(true); // Force refresh
+}
 if (changesMade) {
 showImportMessage(message + 'Import successful!', 'success');
 // Keep modal open to show success message
@@ -2634,7 +3116,6 @@ showImportMessage('Error importing data: ' + error.message, 'error');
 };
 reader.readAsText(file);
 }
-
 // ===== Task Management System =====
 let todos = [];
 let showCompleted = false;
@@ -2780,15 +3261,6 @@ checkbox.click();
 }
 }
 });
-// Escape HTML to prevent XSS
-function escapeHtml(unsafe) {
-return unsafe
-.replace(/&/g, "&amp;")
-.replace(/</g, "&lt;")
-.replace(/>/g, "&gt;")
-.replace(/"/g, "&quot;")
-.replace(/'/g, "&#039;");
-}
 // ===== Enhanced Notes System =====
 const notesTextarea = document.getElementById('quickNotes');
 const notesStatus = document.getElementById('notesStatus');
@@ -2865,7 +3337,9 @@ const data = {
 notes: notesTextarea.value,
 todos: todos,
 resources: resources,
-quickAccess: quickAccessItems, // Include quick access
+quickAccess: quickAccessItems,
+conferences: conferences,
+weatherLocation: weatherLocation,
 lastUpdated: new Date().toISOString()
 };
 const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -2891,9 +3365,10 @@ document.getElementById('citationModal').style.display = 'none';
 }
 function changeCitationFormat(format) {
 currentCitationFormat = format;
-// Update active button
-document.querySelectorAll('.format-btn').forEach(btn => btn.classList.remove('active'));
-document.querySelector(`.format-btn[data-format="${format}"]`).classList.add('active');
+document.querySelectorAll('.format-btn').forEach(btn => {
+btn.classList.remove('active');
+});
+event.target.classList.add('active');
 generateCitationPreview();
 }
 function generateCitationPreview() {
@@ -2903,223 +3378,157 @@ const source = document.getElementById('citationSource').value.trim();
 const year = document.getElementById('citationYear').value.trim();
 const details = document.getElementById('citationDetails').value.trim();
 const url = document.getElementById('citationUrl').value.trim();
-const previewEl = document.getElementById('citationPreview');
 if (!authors || !title || !source || !year) {
-previewEl.innerHTML = 'Fill in the required fields to generate a citation preview';
+document.getElementById('citationPreview').innerHTML = '<i>Please fill in required fields</i>';
 return;
 }
 let citation = '';
-switch (currentCitationFormat) {
+switch(currentCitationFormat) {
 case 'apa':
-citation = generateApaCitation(authors, title, source, year, details, url);
+citation = generateAPA(authors, title, source, year, details, url);
 break;
 case 'ieee':
-citation = generateIeeeCitation(authors, title, source, year, details, url);
+citation = generateIEEE(authors, title, source, year, details, url);
 break;
 case 'mla':
-citation = generateMlaCitation(authors, title, source, year, details, url);
+citation = generateMLA(authors, title, source, year, details, url);
 break;
 case 'chicago':
-citation = generateChicagoCitation(authors, title, source, year, details, url);
+citation = generateChicago(authors, title, source, year, details, url);
 break;
-default:
-citation = generateApaCitation(authors, title, source, year, details, url);
 }
-previewEl.innerHTML = citation;
+document.getElementById('citationPreview').innerHTML = citation;
 }
-function generateApaCitation(authors, title, source, year, details, url) {
-// Parse authors
-let authorList = authors.split(';').map(a => a.trim());
-let formattedAuthors = '';
-if (authorList.length === 1) {
-formattedAuthors = formatAuthor(authorList[0]);
-} else if (authorList.length === 2) {
-formattedAuthors = `${formatAuthor(authorList[0])} & ${formatAuthor(authorList[1])}`;
-} else if (authorList.length > 2) {
-formattedAuthors = `${formatAuthor(authorList[0])} et al.`;
+function generateAPA(authors, title, source, year, details, url) {
+let formattedAuthors = formatAuthorsAPA(authors);
+let citation = `${formattedAuthors} (${year}). ${title}. <i>${source}</i>`;
+if (details) citation += `, ${details.replace(/(pp\.?|p\.?)/i, '')}`;
+if (url) citation += `. https://doi.org/${url.replace(/^https?:\/\//, '')}`;
+return citation;
 }
-// Format title - sentence case for article titles
-let formattedTitle = title.charAt(0).toUpperCase() + title.slice(1);
-if (!formattedTitle.endsWith('.')) formattedTitle += '.';
-// Format source
-let sourceText = source;
-if (details) {
-sourceText += `, ${details}`;
+function generateIEEE(authors, title, source, year, details, url) {
+let formattedAuthors = formatAuthorsIEEE(authors);
+let citation = `[1] ${formattedAuthors}, "${title}," in ${source}`;
+if (details) citation += `, ${details}`;
+citation += `, ${year}.`;
+if (url) citation += ` Available: ${url}`;
+return citation;
 }
-sourceText += ` ${year}`;
-if (url) {
-return `${formattedAuthors} (${year}). ${formattedTitle} ${sourceText}. ${url}`;
-} else {
-return `${formattedAuthors} (${year}). ${formattedTitle} ${sourceText}.`;
+function generateMLA(authors, title, source, year, details, url) {
+let formattedAuthors = formatAuthorsMLA(authors);
+let citation = `${formattedAuthors}. "${title}." <i>${source}</i>, ${year}`;
+if (details) citation += `, ${details}`;
+if (url) citation += `, ${url}`;
+return citation + ".";
 }
+function generateChicago(authors, title, source, year, details, url) {
+let formattedAuthors = formatAuthorsChicago(authors);
+let citation = `${formattedAuthors}. "${title}." ${source} (${year})`;
+if (details) citation += `: ${details.replace(/(pp\.?|p\.?)/i, '')}`;
+if (url) citation += `. https://doi.org/${url.replace(/^https?:\/\//, '')}`;
+return citation;
 }
-function generateIeeeCitation(authors, title, source, year, details, url) {
-// Parse authors for IEEE (initials first, last name last)
-let authorList = authors.split(';').map(a => a.trim());
-let formattedAuthors = authorList.map(author => {
-const parts = author.split(',');
-if (parts.length === 2) {
-const lastName = parts[0].trim();
-const firstName = parts[1].trim();
-return `[${firstName.charAt(0)}. ${lastName}]`;
+function formatAuthorsAPA(authors) {
+const authorList = authors.split(';').map(a => a.trim());
+if (authorList.length === 1) return authorList[0];
+if (authorList.length === 2) return `${authorList[0]} & ${authorList[1]}`;
+return `${authorList[0]}, ${authorList.slice(1, -1).join(', ')}, & ${authorList[authorList.length-1]}`;
 }
-return `[${author}]`;
+function formatAuthorsIEEE(authors) {
+return authors.split(';').map(a => {
+const parts = a.split(',');
+return parts.length > 1 ? `${parts[1].trim()} ${parts[0].trim().charAt(0)}.` : a;
 }).join(', ');
-// Format title - quotation marks for article titles
-let formattedTitle = `"${title}"`;
-// Format source
-let sourceText = source;
-if (details) {
-sourceText += `, ${details}`;
 }
-sourceText += `, ${year}.`;
-if (url) {
-return `${formattedAuthors}, ${formattedTitle}, ${sourceText} [Online]. Available: ${url}`;
-} else {
-return `${formattedAuthors}, ${formattedTitle}, ${sourceText}`;
+function formatAuthorsMLA(authors) {
+const authorList = authors.split(';').map(a => a.trim());
+if (authorList.length === 1) return authorList[0];
+if (authorList.length === 2) return `${authorList[0]}, and ${authorList[1]}`;
+return `${authorList[0]}, et al.`;
 }
-}
-function generateMlaCitation(authors, title, source, year, details, url) {
-// Parse authors for MLA
-let authorList = authors.split(';').map(a => a.trim());
-let formattedAuthors = '';
-if (authorList.length > 0) {
-// First author: Last, First
-const firstAuthor = authorList[0].split(',');
-if (firstAuthor.length === 2) {
-formattedAuthors = `${firstAuthor[0].trim()}, ${firstAuthor[1].trim()}`;
-}
-// Additional authors
-if (authorList.length === 2) {
-const secondAuthor = authorList[1].split(',');
-if (secondAuthor.length === 2) {
-formattedAuthors += `, and ${secondAuthor[1].trim()} ${secondAuthor[0].trim()}`;
-}
-} else if (authorList.length > 2) {
-formattedAuthors += ', et al';
-}
-}
-// Format title - quotation marks
-let formattedTitle = `"${title}"`;
-// Format source
-let sourceText = source;
-if (details) {
-sourceText += `, ${details}`;
-}
-sourceText += `, ${year}`;
-if (url) {
-return `${formattedAuthors}. ${formattedTitle}. ${sourceText}, ${url}.`;
-} else {
-return `${formattedAuthors}. ${formattedTitle}. ${sourceText}.`;
-}
-}
-function generateChicagoCitation(authors, title, source, year, details, url) {
-// Parse authors for Chicago
-let authorList = authors.split(';').map(a => a.trim());
-let formattedAuthors = '';
-if (authorList.length > 0) {
-// First author: Last, First
-const firstAuthor = authorList[0].split(',');
-if (firstAuthor.length === 2) {
-formattedAuthors = `${firstAuthor[0].trim()}, ${firstAuthor[1].trim()}`;
-}
-// Additional authors
-if (authorList.length === 2) {
-const secondAuthor = authorList[1].split(',');
-if (secondAuthor.length === 2) {
-formattedAuthors += `, and ${secondAuthor[1].trim()} ${secondAuthor[0].trim()}`;
-}
-} else if (authorList.length > 2) {
-formattedAuthors += `, et al.`;
-}
-}
-// Format title - quotation marks
-let formattedTitle = `"${title}."`;
-// Format source
-let sourceText = source;
-if (details) {
-sourceText += ` ${details}`;
-}
-sourceText += ` (${year})`;
-if (url) {
-return `${formattedAuthors}. ${formattedTitle} ${sourceText}. ${url}.`;
-} else {
-return `${formattedAuthors}. ${formattedTitle} ${sourceText}.`;
-}
-}
-function formatAuthor(author) {
-// Convert "Last, First" to "Last, F."
-const parts = author.split(',');
-if (parts.length === 2) {
-const lastName = parts[0].trim();
-const firstName = parts[1].trim();
-return `${lastName}, ${firstName.charAt(0)}.`;
-}
-return author;
-}
-function copyCitation() {
-const citationText = document.getElementById('citationPreview').innerText;
-navigator.clipboard.writeText(citationText).then(() => {
-showStatus('Citation copied!', 'success');
-}, (err) => {
-console.error('Failed to copy citation: ', err);
-});
+function formatAuthorsChicago(authors) {
+const authorList = authors.split(';').map(a => a.trim());
+return authorList.join(', ');
 }
 function insertCitation() {
-const citationText = document.getElementById('citationPreview').innerText;
+const citation = document.getElementById('citationPreview').textContent;
+if (citation.includes('Please fill in required fields')) {
+alert('Please fill in all required fields first');
+return;
+}
 const notes = document.getElementById('quickNotes');
-// Save current scroll position
-const scrollPos = notes.scrollTop;
-// Insert citation at cursor position or at the end
 const startPos = notes.selectionStart;
 const endPos = notes.selectionEnd;
-notes.value = notes.value.substring(0, startPos) + '\n' + citationText + '\n' + notes.value.substring(endPos);
-// Restore scroll position
-notes.scrollTop = scrollPos;
-// Update stats and save
-updateNotesStats();
-saveNotes();
-showStatus('Citation inserted!', 'success');
-// Close modal after insertion
+notes.value = notes.value.substring(0, startPos) + '\n\n' + citation + '\n\n' + notes.value.substring(endPos);
+notes.focus();
 closeCitationModal();
+saveNotes();
+showStatus('Citation inserted', 'success');
 }
-// Add event listeners for citation form
-document.getElementById('citationAuthors').addEventListener('input', generateCitationPreview);
-document.getElementById('citationTitle').addEventListener('input', generateCitationPreview);
-document.getElementById('citationSource').addEventListener('input', generateCitationPreview);
-document.getElementById('citationYear').addEventListener('input', generateCitationPreview);
-document.getElementById('citationDetails').addEventListener('input', generateCitationPreview);
-document.getElementById('citationUrl').addEventListener('input', generateCitationPreview);
-// ===== Enter key handling for todo input =====
-document.getElementById('newTodoInput').addEventListener('keydown', (e) => {
-if (e.key === 'Enter') {
-addTodo();
+function copyCitation() {
+const citation = document.getElementById('citationPreview').textContent;
+if (citation.includes('Please fill in required fields')) {
+alert('Please fill in all required fields first');
+return;
 }
+navigator.clipboard.writeText(citation).then(() => {
+showStatus('Copied to clipboard', 'success');
 });
-// ===== Initialize Everything =====
-function init() {
-updateClock();
-loadCachedWeather();
-fetchWeather();
-updateDeadlines();
-initResources(); // Initialize resources
+}
+// ===== Initialization =====
+function initDashboard() {
+// Initialize resources
+initResources();
 renderResources();
-initQuickAccess(); // Initialize quick access
+// Initialize quick access
+initQuickAccess();
 renderQuickAccess();
+// Load weather location
+loadWeatherLocation();
+// Load cached weather
+loadCachedWeather();
+// Fetch weather after 1 second to allow UI to render
+setTimeout(fetchWeather, 1000);
+// Initialize conferences
+loadConferences();
+updateDeadlines();
+// Initialize todos
+loadTodos();
+// Initialize notes
 loadNotes();
-loadTodos(); // Load todos
-// Event listeners
-notesTextarea.addEventListener('input', () => {
-autoSaveNotes();
-updateNotesStats();
+// Set up notes auto-save
+notesTextarea.addEventListener('input', autoSaveNotes);
+// Set up search input
+searchInput.addEventListener('click', () => searchInput.select());
+// Set up new todo input
+document.getElementById('newTodoInput').addEventListener('keypress', (e) => {
+if (e.key === 'Enter') addTodo();
 });
-// Auto-save notes every 10 minutes
-setInterval(saveNotes, 600000);
-// Refresh weather every 30 minutes
-setInterval(fetchWeather, 1800000);
+// Focus search on '/'
+document.addEventListener('keypress', (e) => {
+if (e.key === '/' && document.activeElement !== searchInput) {
+e.preventDefault();
+searchInput.focus();
+searchInput.select();
 }
-// Start the application
-window.addEventListener('DOMContentLoaded', init);
+});
+// Add keyboard shortcuts for todos
+document.addEventListener('keydown', (e) => {
+if (e.key === 'n' && (e.ctrlKey || e.metaKey)) {
+e.preventDefault();
+document.getElementById('newTodoInput').focus();
+}
+});
+// Add keyboard shortcut for notes
+document.addEventListener('keydown', (e) => {
+if (e.key === 'm' && (e.ctrlKey || e.metaKey)) {
+e.preventDefault();
+notesTextarea.focus();
+}
+});
+}
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', initDashboard);
 </script>
 </body>
 </html>
