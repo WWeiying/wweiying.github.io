@@ -4444,5 +4444,77 @@ toggleCompletedBtn.disabled = (totalCompleted === 0);
         updateDeadlines();
     }
 </script>
+
+<style>
+.sort-btn{
+  margin-left:6px;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:4px;
+  padding:2px 6px;
+  cursor:pointer;
+  font-size:12px;
+}
+.sort-btn:hover{
+  background:var(--accent);
+  color:white;
+}
+</style>
+
+<script>
+// ===== BUTTON ONLY SORTING FOR EDITORS =====
+(function(){
+
+function moveUp(el){
+  const prev = el.previousElementSibling;
+  if(prev) el.parentNode.insertBefore(el, prev);
+}
+function moveDown(el){
+  const next = el.nextElementSibling;
+  if(next) el.parentNode.insertBefore(next, el);
+}
+
+function addButtons(root, selector){
+  root.querySelectorAll(selector).forEach(el=>{
+    // avoid duplicates
+    if(el.dataset.sorted==="1") return;
+    el.dataset.sorted="1";
+
+    const up=document.createElement("button");
+    up.textContent="↑";
+    up.className="sort-btn";
+
+    const down=document.createElement("button");
+    down.textContent="↓";
+    down.className="sort-btn";
+
+    up.onclick=()=>moveUp(el);
+    down.onclick=()=>moveDown(el);
+
+    el.appendChild(up);
+    el.appendChild(down);
+  });
+}
+
+const obs=new MutationObserver(()=>{
+  const resForm=document.getElementById("resourceEditorForm");
+  if(resForm){
+    addButtons(resForm,".resource-category");
+    resForm.querySelectorAll(".resource-category").forEach(cat=>{
+      addButtons(cat,".resource-item-editor");
+    });
+  }
+
+  const qa=document.getElementById("quickAccessEditorItems");
+  if(qa){
+    addButtons(qa,".quick-access-item-editor");
+  }
+});
+
+obs.observe(document.body,{childList:true,subtree:true});
+
+})();
+</script>
+
 </body>
 </html>
