@@ -1,0 +1,186 @@
+{
+  "version": "6.1",
+  "timestamp": "2026-01-25T06:59:50.695Z",
+  "notes": "",
+  "todos": [],
+  "resources": {
+    "科研": [
+      {
+        "name": "CCF论文列表",
+        "url": "https://www.ccf.org.cn/Academic_Evaluation/ARCH_DCP_SS/",
+        "key": null,
+        "icon": "C"
+      },
+      {
+        "name": "中科院分区",
+        "url": "https://www.fenqubiao.com/Landing.html",
+        "key": null,
+        "icon": "F"
+      },
+      {
+        "name": "专利之星",
+        "url": "https://cprs.patentstar.com.cn/Search/Index",
+        "key": null,
+        "icon": "Z"
+      },
+      {
+        "name": "IEEE Xplore",
+        "url": "https://ieeexplore.ieee.org/Xplore/home.jsp",
+        "key": null,
+        "icon": "I"
+      },
+      {
+        "name": "ACM Digital Library",
+        "url": "https://dl.acm.org/",
+        "key": null,
+        "icon": "A"
+      }
+    ],
+    "资源": [
+      {
+        "name": "Z-Library",
+        "url": "https://z-library.sk/",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "arXiv",
+        "url": "https://arxiv.org",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "DBLP",
+        "url": "https://dblp.org",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "Google Scholar",
+        "url": "https://scholar.google.com",
+        "key": null,
+        "icon": "N"
+      }
+    ],
+    "生活": [
+      {
+        "name": "谷歌地图",
+        "url": "https://www.google.com/maps",
+        "key": null,
+        "icon": "G"
+      },
+      {
+        "name": "Windy",
+        "url": "https://windy.com",
+        "key": null,
+        "icon": "W"
+      },
+      {
+        "name": "小红书",
+        "url": "https://www.xiaohongshu.com/explore",
+        "key": null,
+        "icon": "H"
+      },
+      {
+        "name": "Youtube",
+        "url": "https://YouTube.com",
+        "key": null,
+        "icon": "Y"
+      }
+    ]
+  },
+  "quickAccess": [
+    {
+      "name": "Overleaf",
+      "url": "https://www.overleaf.com/",
+      "icon": "article",
+      "desc": "LaTeX Editor"
+    },
+    {
+      "name": "元宝",
+      "url": "https://yuanbao.tencent.com/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "千问",
+      "url": "https://chat.qwen.ai/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "Chatgpt",
+      "url": "https://chatgpt.com/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "Jupyter Notebook",
+      "url": "http://localhost:8888/lab",
+      "icon": "terminal",
+      "desc": "Python Env"
+    },
+    {
+      "name": "B站",
+      "url": "https://www.bilibili.com/",
+      "icon": "bilibili",
+      "desc": "Video"
+    }
+  ],
+  "conferences": [
+    {
+      "name": "ASAP 2026",
+      "url": "https://2026.asap-conf.org/",
+      "abbr": "ASAP",
+      "location": "London, UK",
+      "ccf": "C",
+      "type": "Architecture",
+      "deadline": "2026-04-03T16:00:00.000Z",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "ICCD 2026",
+      "url": "https://www.iccd-conf.com/home.html",
+      "abbr": "ICCD",
+      "location": "USA",
+      "ccf": "B",
+      "type": "Architecture",
+      "deadline": "2026-05-11T16:00:00.000Z",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "ASPLOS 2026",
+      "url": "https://asplos-conference.org",
+      "abbr": "ASPLOS",
+      "location": "San Diego, USA",
+      "ccf": "A",
+      "type": "Systems",
+      "deadline": "2025-08-09T23:59:00.000Z",
+      "timezone": "America/Los_Angeles"
+    },
+    {
+      "name": "HPCA 2026",
+      "url": "https://hpca-conf.org",
+      "abbr": "HPCA",
+      "location": "Vienna, Austria",
+      "ccf": "A",
+      "type": "Architecture",
+      "deadline": "2025-07-19T23:59:00.000Z",
+      "timezone": "Europe/Vienna"
+    },
+    {
+      "name": "DAC 2025",
+      "url": "https://www.dac.com",
+      "abbr": "DAC",
+      "location": "San Francisco, USA",
+      "ccf": "B",
+      "type": "Automation",
+      "deadline": "2025-01-30T23:59:00.000Z",
+      "timezone": "America/Los_Angeles"
+    }
+  ],
+  "weatherLocation": {
+    "city": "Beijing",
+    "country": "CN"
+  }
+}
