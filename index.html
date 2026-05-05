@@ -2762,27 +2762,72 @@
         }
         
         /**
-         * Get time difference in minutes between conference timezone and Beijing time
-         * @param {string} conferenceTimezone - Conference timezone identifier
-         * @returns {number} - Time difference in minutes
+         * Parse a datetime-local value as a wall-clock time in the given IANA timezone,
+         * and return the corresponding absolute Date.
+         *
+         * Example: 2026-05-11T23:59:00 + America/New_York means
+         * "23:59 in New York", not "23:59 in the browser timezone".
          */
-        function getBeijingTimeDiff(conferenceTimezone) {
+        function zonedTimeToDate(dateTimeLocal, timeZone = 'Asia/Shanghai') {
+            const normalized = String(dateTimeLocal || '').trim();
+            const match = normalized.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?/);
+
+            if (!match) {
+                const fallback = new Date(dateTimeLocal);
+                return isNaN(fallback.getTime()) ? null : fallback;
+            }
+
+            const [, y, mo, d, h, mi, se = '0'] = match;
+            const wallTimeAsUTC = Date.UTC(+y, +mo - 1, +d, +h, +mi, +se);
+
+            // First estimate, then recalculate once to handle DST boundary offsets.
+            let offset = getTimeZoneOffset(new Date(wallTimeAsUTC), timeZone);
+            let utcDate = new Date(wallTimeAsUTC - offset);
+            offset = getTimeZoneOffset(utcDate, timeZone);
+            utcDate = new Date(wallTimeAsUTC - offset);
+
+            return utcDate;
+        }
+
+        /**
+         * Get offset of an IANA timezone at a specific absolute Date.
+         * @returns {number} offset in milliseconds, where local time = UTC + offset
+         */
+        function getTimeZoneOffset(date, timeZone) {
             try {
-                // Get current time in Beijing and conference timezone
-                const beijingTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Shanghai' });
-                const conferenceTime = new Date().toLocaleString('en-US', { timeZone: conferenceTimezone });
-                
-                const beijingDate = new Date(beijingTime);
-                const conferenceDate = new Date(conferenceTime);
-                
-                // Calculate difference in minutes
-                return Math.round((conferenceDate - beijingDate) / (1000 * 60));
+                const dtf = new Intl.DateTimeFormat('en-US', {
+                    timeZone,
+                    hour12: false,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+                const parts = dtf.formatToParts(date).reduce((acc, part) => {
+                    if (part.type !== 'literal') acc[part.type] = part.value;
+                    return acc;
+                }, {});
+
+                const asUTC = Date.UTC(
+                    Number(parts.year),
+                    Number(parts.month) - 1,
+                    Number(parts.day),
+                    Number(parts.hour === '24' ? '0' : parts.hour),
+                    Number(parts.minute),
+                    Number(parts.second)
+                );
+
+                return asUTC - date.getTime();
             } catch (e) {
-                console.warn(`Failed to calculate time difference for timezone: ${conferenceTimezone}`, e);
-                return 0; // Default to same time as Beijing
+                console.warn(`Invalid timezone: ${timeZone}. Falling back to Asia/Shanghai.`, e);
+                if (timeZone !== 'Asia/Shanghai') return getTimeZoneOffset(date, 'Asia/Shanghai');
+                return 8 * 60 * 60 * 1000;
             }
         }
-        
+
         /**
          * Format countdown display
          * @param {number} diffMs - Time difference in milliseconds
@@ -2808,30 +2853,31 @@
         }
         
         /**
-         * Format deadline time for display
-         * @param {string} dateStr - ISO date string
-         * @returns {string} - Formatted date string
+         * Format deadline time for display in Beijing time
+         * @param {Date} date - Absolute deadline Date
+         * @returns {string} - Formatted Beijing date string
          */
-        function formatDeadlineTime(dateStr) {
+        function formatDeadlineTime(date) {
             try {
-                const date = new Date(dateStr);
-                if (isNaN(date.getTime())) {
-                    return dateStr.replace('T', ' ');
+                if (!(date instanceof Date) || isNaN(date.getTime())) {
+                    return 'Invalid deadline';
                 }
                 
-                return date.toLocaleString('en-US', {
+                return `${date.toLocaleString('en-US', {
+                    timeZone: 'Asia/Shanghai',
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric',
                     hour: '2-digit',
-                    minute: '2-digit'
-                });
+                    minute: '2-digit',
+                    hour12: false
+                })} BJT`;
             } catch (e) {
                 console.warn('Error formatting deadline time', e);
-                return dateStr.replace('T', ' ');
+                return 'Invalid deadline';
             }
         }
-        
+
         /**
          * Get CSS class for deadline based on time remaining
          * @param {number} diffMs - Time difference in milliseconds
@@ -2859,24 +2905,20 @@
                     return;
                 }
                 
-                // Calculate time remaining for each conference
+                // Calculate time remaining for each conference.
+                // The saved deadline is interpreted as conference-local wall time,
+                // then converted to an absolute moment and displayed in Beijing time.
                 const conferencesWithTime = conferences.map(conf => {
-                    const deadline = new Date(conf.deadline);
-                    if (isNaN(deadline.getTime())) {
+                    const deadlineInstant = zonedTimeToDate(conf.deadline, conf.timezone || 'Asia/Shanghai');
+                    if (!deadlineInstant || isNaN(deadlineInstant.getTime())) {
                         console.warn(`Invalid deadline format for ${conf.name}: ${conf.deadline}`);
-                        return { ...conf, diffMs: Infinity, deadline };
+                        return { ...conf, diffMs: Infinity, deadlineInstant: null };
                     }
-                    
-                    // Calculate time difference with Beijing time
-                    const timezoneDiff = getBeijingTimeDiff(conf.timezone || 'Asia/Shanghai');
-                    const beijingDeadline = new Date(deadline.getTime() - timezoneDiff * 60 * 1000);
-                    const beijingNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }));
                     
                     return { 
                         ...conf, 
-                        diffMs: beijingDeadline - beijingNow,
-                        deadline,
-                        beijingDeadline
+                        diffMs: deadlineInstant - now,
+                        deadlineInstant
                     };
                 });
                 
@@ -2921,8 +2963,8 @@
                                     </div>
                                 </div>
                                 <div class="ddl-time">
-                                    <div class="deadline-date" title="Deadline in conference local time (${conf.timezone || 'local time'})">
-                                        ${escapeHtml(formatDeadlineTime(conf.deadline))}
+                                    <div class="deadline-date" title="Original deadline: ${escapeHtml(conf.deadline)} (${escapeHtml(conf.timezone || 'Asia/Shanghai')})">
+                                        ${escapeHtml(formatDeadlineTime(conf.deadlineInstant))}
                                     </div>
                                     <div class="countdown" aria-label="Time remaining: ${formatCountdown(conf.diffMs)}">${formatCountdown(conf.diffMs)}</div>
                                 </div>
@@ -3000,7 +3042,7 @@
                     futureDate.setDate(futureDate.getDate() + 30);
                     return futureDate.toISOString().slice(0, 16);
                 }
-                return date.toISOString().slice(0, 16);
+                return String(dateString).slice(0, 16);
             } catch (e) {
                 console.warn('Error formatting date for datetime-local input', e);
                 const futureDate = new Date();
@@ -3013,7 +3055,7 @@
             const newItem = {
                 name: 'New Conference',
                 url: 'https://',
-                deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days from now
+                deadline: formatForDateTimeLocal(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()), // 30 days from now, stored as local wall time
                 abbr: 'CONF',
                 location: 'City, Country',
                 ccf: 'C',
@@ -3053,8 +3095,8 @@
                 
                 if (name && url && abbr && deadline) {
                     // Validate date
-                    const deadlineDate = new Date(deadline);
-                    if (!isNaN(deadlineDate.getTime())) {
+                    const deadlineDate = zonedTimeToDate(deadline, timezone);
+                    if (deadlineDate && !isNaN(deadlineDate.getTime())) {
                         newConferences.push({
                             name,
                             url,
@@ -3062,7 +3104,8 @@
                             location,
                             ccf: ccf || 'C',
                             type,
-                            deadline: deadlineDate.toISOString(),
+                            // Keep the user-entered wall-clock time. The timezone field defines what it means.
+                            deadline: deadline.length === 16 ? `${deadline}:00` : deadline,
                             timezone
                         });
                     } else {
