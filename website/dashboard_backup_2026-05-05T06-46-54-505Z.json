@@ -1,0 +1,214 @@
+{
+  "version": "6.1",
+  "timestamp": "2026-05-05T06:46:54.504Z",
+  "notes": "",
+  "todos": [],
+  "resources": {
+    "资源": [
+      {
+        "name": "谷歌学术",
+        "url": "https://scholar.google.com",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "Z-Library",
+        "url": "https://z-library.sk/",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "arXiv",
+        "url": "https://arxiv.org",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "DBLP",
+        "url": "https://dblp.org",
+        "key": null,
+        "icon": "N"
+      },
+      {
+        "name": "专利之星",
+        "url": "https://cprs.patentstar.com.cn/Search/Index",
+        "key": null,
+        "icon": "N"
+      }
+    ],
+    "科研": [
+      {
+        "name": "CCF论文列表",
+        "url": "https://www.ccf.org.cn/Academic_Evaluation/ARCH_DCP_SS/",
+        "key": null,
+        "icon": "C"
+      },
+      {
+        "name": "中科院分区",
+        "url": "https://www.fenqubiao.com/Landing.html",
+        "key": null,
+        "icon": "F"
+      },
+      {
+        "name": "IEEE Xplore",
+        "url": "https://ieeexplore.ieee.org/Xplore/home.jsp",
+        "key": null,
+        "icon": "I"
+      },
+      {
+        "name": "ACM Digital Library",
+        "url": "https://dl.acm.org/",
+        "key": null,
+        "icon": "A"
+      },
+      {
+        "name": "Github",
+        "url": "https://github.com/wweiying",
+        "key": null,
+        "icon": "G"
+      }
+    ],
+    "生活": [
+      {
+        "name": "谷歌地图",
+        "url": "https://www.google.com/maps",
+        "key": null,
+        "icon": "G"
+      },
+      {
+        "name": "Windy",
+        "url": "https://windy.com",
+        "key": null,
+        "icon": "W"
+      },
+      {
+        "name": "小红书",
+        "url": "https://www.xiaohongshu.com/explore",
+        "key": null,
+        "icon": "H"
+      },
+      {
+        "name": "Youtube",
+        "url": "https://YouTube.com",
+        "key": null,
+        "icon": "Y"
+      }
+    ]
+  },
+  "quickAccess": [
+    {
+      "name": "Overleaf",
+      "url": "https://www.overleaf.com/",
+      "icon": "article",
+      "desc": "LaTeX Editor"
+    },
+    {
+      "name": "Jupyter Notebook",
+      "url": "http://localhost:8888/lab",
+      "icon": "terminal",
+      "desc": "Python Env"
+    },
+    {
+      "name": "元宝",
+      "url": "https://yuanbao.tencent.com/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "千问",
+      "url": "https://chat.qwen.ai/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "Chatgpt",
+      "url": "https://chatgpt.com/",
+      "icon": "search",
+      "desc": "LLM"
+    },
+    {
+      "name": "B站",
+      "url": "https://www.bilibili.com/",
+      "icon": "bilibili",
+      "desc": "Video"
+    },
+    {
+      "name": "Youtube",
+      "url": "https://Youtube.com",
+      "icon": "bilibili",
+      "desc": "Description"
+    },
+    {
+      "name": "Sep",
+      "url": "https://sep.ucas.ac.cn/",
+      "icon": "stackoverflow",
+      "desc": "Description"
+    }
+  ],
+  "conferences": [
+    {
+      "name": "ASAP 2026",
+      "url": "https://2026.asap-conf.org/",
+      "abbr": "ASAP",
+      "location": "London, UK",
+      "ccf": "C",
+      "type": "Architecture",
+      "deadline": "2026-04-09T23:59:00",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "ICCD 2026",
+      "url": "https://www.iccd-conf.com/home.html",
+      "abbr": "ICCD",
+      "location": "USA",
+      "ccf": "B",
+      "type": "Architecture",
+      "deadline": "2026-05-22T11:59:00",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "ICCAD 2026",
+      "url": "https://iccad.com/2026",
+      "abbr": "ICCAD",
+      "location": "San Jose, California, USA",
+      "ccf": "B",
+      "type": "Architecture",
+      "deadline": "2026-04-11T16:00:00",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "HPCA 2026",
+      "url": "https://hpca-conf.org",
+      "abbr": "HPCA",
+      "location": "Vienna, Austria",
+      "ccf": "A",
+      "type": "Architecture",
+      "deadline": "2025-07-17T07:59:00",
+      "timezone": "Europe/Vienna"
+    },
+    {
+      "name": "DAC 2025",
+      "url": "https://www.dac.com",
+      "abbr": "DAC",
+      "location": "San Francisco, USA",
+      "ccf": "B",
+      "type": "Automation",
+      "deadline": "2025-01-27T16:00:00",
+      "timezone": "Etc/GMT+12"
+    },
+    {
+      "name": "DATE 2027",
+      "url": "https://www.date-conference.com/date-2027-call-papers",
+      "abbr": "DATE",
+      "location": "Dresden, Germany",
+      "ccf": "B",
+      "type": "Conference",
+      "deadline": "2026-09-13T00:00:00",
+      "timezone": "Etc/GMT+12"
+    }
+  ],
+  "weatherLocation": {
+    "city": "Beijing",
+    "country": "CN"
+  }
+}
